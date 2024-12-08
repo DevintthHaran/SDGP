@@ -1,0 +1,113 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background-color:azure;
+}legend{
+    font-weight: 555;
+    background-color: #071952;
+    color: #ebf4f6;
+    width: 105.25%;
+    position: relative;
+    left: -15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+fieldset{
+    width: 500px;
+    border: 3px solid red;
+    margin: 10px;
+}#finalset{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 360px;
+    padding: 20px;
+    background: #f2f2f2;
+    box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
+    transition: 0.3s;
+    border: 3px solid black;
+}input,select{
+    border: 2px solid red;
+}#billaddress2,#billaddress3,#statecountry{
+    border: 1px solid black;
+}input:focus{
+    outline: none;
+}button{
+    width: 100px;
+    margin-top:10px ;
+    font-weight: 555;
+    cursor: pointer;
+    outline: none;
+}button:hover{
+    background-color:cadetblue;
+}
+#finalset legend{
+    width: 111.5%;
+    margin-left: -8px;
+}.stock{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+    border-top: 1px solid;
+}.s-dispaly{
+    font-size: 1rem;
+    font-weight: 666;
+}.s-price{
+    margin-left: 0.5rem;
+}.cart-box{
+    display: grid;
+    grid-template-columns: 32% 50% 18%;
+    gap: 1rem;
+    margin-top: 1rem;
+}.cart-img{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    padding: 10px;
+}.detail-box{
+    display: grid;
+    row-gap: 0.5rem;
+}.cart-product-title{
+    font-size: 1rem;
+}.cart-price{
+    font-weight: 555;
+}.cart-quantity{
+    text-align:justify;
+    font-size: 1rem;
+}#finalset button{
+    width: 100%;
+    font-weight: 555;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: none;
+}#finalset #Exit{
+    background-color:darkorange;
+}#finalset #Exit:hover{
+    background-color:crimson;
+}#finalset #PlaceOrder:hover{
+    background-color:#f2f2f2;
+}@media(max-width:1000px){
+    fieldset {
+        width: 300px;
+    }#finalset{
+        width: 300px;
+    }legend{
+        width: 108.5%;
+    }#finalset legend{
+        width:114%;
+    }
+}@media(max-width:700px){
+    fieldset{
+        width: 200px;
+    }#finalset{
+        width: 100px;
+    }.cart-img{
+        width: 80px;
+        height: 80px;
+        margin-left: -20px;
+    }legend{
+        width:113%;
+    }#finalset legend{
+        width: 124%;
+    }
+}

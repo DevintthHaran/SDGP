@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Site</title>
+    <link rel="stylesheet" href="Shopping.css">
+    <!-- External source for icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header class="hero-content">
+        <div class="header-menu">
+          <div class="logo">
+            <!-- Logo linking to the home page -->
+            <a href="home.html">Professional Odessey</a>
+          </div>
+          <!-- Navigation links -->
+          <nav class="navigation">
+            <a class="nav-link" href="home.html">Home</a>
+            <a class="nav-link" href="gallery.html">Gallery</a>
+            <a class="nav-link" href="shop.html">Shop</a>
+            <a class="nav-link" href="profile.html">User Profile</a>
+            <a class="nav-link" href="feedback.html">Feedback</a>
+            <a class="nav-link" href="sitemap.html">Sitemap</a>
+            <a class="nav-link" href="team.html">Team</a>
+          </nav>
+        </div>
+      </header>    
+    <header id="myheader">
+        <div class="nav container">
+            <span>Shopping</span>
+            <i class='bx bxs-cart' id="cart-icon"></i>
+            <!-- Display of selected items in cart-->
+            <div class="cart">
+                <h2 class="cart-title">Your Cart</h2>
+                <div class="cart-content">
+                    
+                    
+                </div>
+                <div class="total">
+                    <div class="total-display">Total</div>
+                    <div class="total-price">$0</div>
+                </div>
+                <button type="button" class="buy-now">Buy Now</button>
+                <i class='bx bx-exit' id="exit-cart"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Display of items -->
+    <div class="stock">
+        <div class="item">
+            <img class="itemImg" src="Images/Learning Soft Skills.jpg" alt="fileFolder">
+            <h3 class="itemName">Learning Soft Skills</h3>
+            <p>The Learning Soft Skill by Dr.Shlipi Saxena covers about Communication, Leadership, Social, Listening skill which would impove their personality and make them industry ready.</p>
+            <h5 class="itemPrice">$4.50</h5>
+            <button class="addcart">Add to cart</button>
+        </div>
+
+        <div class="item">
+            <img class="itemImg" src="Images/Personal Intelligence.jpg" alt="Notebook">
+            <h3 class="itemName">PeopleSmart</h3>
+            <p>PeopleSmart by Mel Silberman Ph.d is a practical guide to improving your interpersonal effectiveness in both professional and personal relationships.</p>
+            <h5 class="itemPrice">$28.99</h5>
+            <button class="addcart">Add to cart</button>
+        </div>
+
+        <div class="item">
+            <img class="itemImg" src="Images/Conversationally Speaking.jpg" alt="Marker">
+            <h3 class="itemName">Conversatio -nally Speaking</h3>
+            <p>Conversationally Speaking by Alan Garner offers tips for improving your conversation skills and reducing social anxiety.</p>
+            <h5 class="itemPrice">$27.95</h5>
+            <button class="addcart">Add to cart</button>
+        </div>
+ 
+        <div class="item">
+            <img class="itemImg" src="Images/The Fine Art of Small Talk.jpg" alt="Bag">
+            <h3 class="itemName">The Fine Art of Small Talk</h3>
+            <p>The Fine Art of Small Talk offers tips from communications expert Debra Fine about making better small talk.</p>
+            <h5 class="itemPrice">$30.97</h5>
+            <button class="addcart">Add to cart</button>
+        </div>
+    </div>
+    <footer class="homepage-footer">
+        <div class="footer-content">
+          <div class="footer-column">
+            <!-- Footer logo and subscription prompt -->
+            <h3 class="footer-logo">UN Quality Education</h3>
+            <p class="footer-text">Sign up to receive the latest news and updates.</p>
+            <!-- Email subscription form -->
+            <div class="footer-input">
+              <input class="input-box" type="email" placeholder="Email Address" />
+              <button class="subscribe">Subscribe</button>
+            </div>
+          </div>
+          <!-- Footer links for resources, about us, campaigns, and social media -->
+          <div class="footer-links">
+            <div class="resources">
+              <h3 class="footer-heading">Resources</h3>
+              <a class="footer-link" href="team.html">About</a>
+              <a class="footer-link" href="feedback.html">Contact</a>
+            </div>
+            <div class="about-us">
+              <h3 class="footer-heading">About Us</h3>
+              <a class="footer-link" href="#mission">Our Mission</a>
+              <a class="footer-link" href="#impact">Impact</a>
+            </div>
+            <div class="campaigns">
+              <h3 class="footer-heading">Campaigns</h3>
+              <a class="footer-link" href="#stories">Success Stories</a>
+              <a class="footer-link" href="shop.html">Fundraising</a>
+            </div>
+            <div class="social-media">
+              <h3 class="footer-heading">Social Media</h3>
+              <a class="footer-link" href="https://facebook.com/globalgoalsun" target="_blank">Facebook</a>
+              <a class="footer-link" href="https://twitter.com/globalgoalsun" target="_blank">Twitter</a>
+              <a class="footer-link" href="https://www.instagram.com/unitednations" target="_blank">Instagram</a>
+              <a class="footer-link" href="https://www.youtube.com/@unitednations" target="_blank">YouTube</a>
+            </div>
+          </div>
+        </div>
+        <!-- Footer bottom with copyright text and page editor button -->
+        <div class="footer-bottom">
+          <p class="footer-text">© 2024 Professional Odessey. All rights reserved.</p>
+          <a href="HaranPageEditor.html" target="_blank"><button class="page-editor">Page Editor</button></a>
+        </div>
+      </footer>
+    <script src="Shopping.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

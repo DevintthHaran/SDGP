@@ -1,10 +1,10 @@
 // src/components/Navbar.js
 import React from "react";
-import "../style/Navbar.css";
+import "../style/ShopNavbar.css";
 import 'boxicons/css/boxicons.min.css';
 import '../style/Header.css';
 
-const Navbar = ({ toggleCart }) => {
+const ShopNavbar = ({ toggleCart }) => {
   return (
     <header>
       <div className="nav container">
@@ -15,4 +15,4 @@ const Navbar = ({ toggleCart }) => {
   );
 };
 
-export default Navbar;
+export default ShopNavbar;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import Navbar from "../components/Navbar";
+import ShopNavbar from "../components/ShopNavbar";
 import Cart from "../components/Cart";
 import ProductList from "../components/ProductList";
 import "../style/Shop.css";
@@ -19,28 +19,28 @@ const Shop = () => {
   const products = [
     {
       name: "Learning Soft Skills",
-      price: 4.5,
+      price: 1317.80,
       image: LearningSoftSkills,
       description:
         "The Learning Soft Skill by Dr.Shlipi Saxena covers about Communication, Leadership, Social, Listening skill which would improve their personality and make them industry ready.",
     },
     {
       name: "PeopleSmart",
-      price: 28.99,
+      price: 8489.53,
       image: PeopleSmart,
       description:
         "PeopleSmart by Mel Silberman Ph.d is a practical guide to improving your interpersonal effectiveness in both professional and personal relationships.",
     },
     {
-      name: "Conversationally Speaking",
-      price: 27.95,
+      name: "Conversation -ally Speaking",
+      price: 8184.98,
       image: ConversationallySpeaking,
       description:
         "Conversationally Speaking by Alan Garner offers tips for improving your conversation skills and reducing social anxiety.",
     },
     {
       name: "The Fine Art of Small Talk",
-      price: 30.97,
+      price: 9069.36,
       image: FineArtSmallTalk,
       description:
         "The Fine Art of Small Talk offers tips from communications expert Debra Fine about making better small talk.",
@@ -83,7 +83,7 @@ const Shop = () => {
 
   return (
     <div>
-      <Navbar toggleCart={toggleCart} />
+      <ShopNavbar toggleCart={toggleCart} />
       <Cart
         cartItems={cartItems}
         removeFromCart={removeFromCart}

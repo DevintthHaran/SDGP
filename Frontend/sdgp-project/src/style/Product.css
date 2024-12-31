@@ -47,6 +47,67 @@
     margin: 0 auto;
     display: block;
 }
+/* Accordion styling: Remove shadow and background */
+.accordion {
+    box-shadow: none !important; /* No shadow */
+    background: transparent !important; /* Transparent background */
+    margin: 10px 0;
+    transition: background 0.3s ease; /* Smooth background transition */
+}
+
+/* Hover effect for Accordion */
+.accordion:hover {
+    background: #f0f4f8 !important; /* Light background on hover */
+    box-shadow: none !important; /* Light shadow on hover */
+}
+
+/* AccordionSummary styling */
+.accordion-summary {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Title of Accordion (Click to view description) */
+.accordion-title {
+    font-size: 16px; /* Professional font size */
+    font-weight: 600; /* Slightly bold text for emphasis */
+    color: #007BFF; /* Professional blue color for text */
+    cursor: pointer; /* Clear indication that it’s clickable */
+    transition: color 0.3s ease; /* Smooth transition for color on hover */
+}
+
+/* Specific hover effect for the Typography (View Description) */
+.accordion-title:hover {
+    color: #0056b3 !important; /* Darker blue when hovered */
+}
+
+/* AccordionDetails styling */
+.accordion-details {
+    padding: 10px 0 !important;
+    margin-top: -10px !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+/* Paragraph inside AccordionDetails (Product description) */
+.accordion-paragraph {
+    font-size: 14px; /* Slightly smaller font for readability */
+    color: #333; /* Neutral color for the description */
+    margin: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    line-height: 1.6; /* Improved readability */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect for the description paragraph */
+.accordion-details:hover .accordion-paragraph {
+    color: #555 !important; /* Slightly lighter color for better contrast when hovered */
+    transform: translateY(-2px); /* Subtle lift effect when hovered */
+}
+
+
+
 @media (max-width: 1000px) {
     .item {
         width: 45%;

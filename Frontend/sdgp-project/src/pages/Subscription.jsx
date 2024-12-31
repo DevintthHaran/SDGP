@@ -6,26 +6,39 @@ import "../style/Subscription.css"; // Optional CSS for styling
 const Subscription = () => {
   const plans = [
     {
-      name: "Gold Plan",
-      price: 1000,
-      recurrence: "1 Month",
-      id: "gold",
-    },
-    {
       name: "Silver Plan",
-      price: 2000,
+      price: 3000,
       recurrence: "1 Month",
       id: "silver",
+      featureA: "+3 counseling",
+      featureB: "Free career assessment",
+      featureC: "Free job assessment",
+      accessibility: 3,
+    },
+    {
+      name: "Gold Plan",
+      price: 4000,
+      recurrence: "1 Month",
+      id: "gold",
+      featureA: "+4 counseling",
+      featureB: "Free career assessment",
+      featureC: "Free job assessment",
+      accessibility: 4,
     },
     {
       name: "Platinum Plan",
-      price: 3000,
+      price: 5000,
       recurrence: "1 Month",
       id: "platinum",
+      featureA: "+5 counseling",
+      featureB: "Free career assessment",
+      featureC: "Free job assessment",
+      accessibility: 5,
     },
   ];
 
   const [activeSubscriptions, setActiveSubscriptions] = useState([]);
+  const [accessible, setAccessible] = useState(0); // Default accessibility value
 
   // Check subscription state on component mount
   useEffect(() => {
@@ -33,6 +46,10 @@ const Subscription = () => {
     const now = new Date();
     const validSubscriptions = storedSubscriptions.filter((sub) => new Date(sub.expirationDate) > now);
     setActiveSubscriptions(validSubscriptions);
+
+    // Restore accessible value
+    const storedAccessible = parseInt(localStorage.getItem("accessible"), 10) || 0;
+    setAccessible(storedAccessible);
 
     // Clean up expired subscriptions
     const updatedSubscriptions = storedSubscriptions.filter(
@@ -49,7 +66,15 @@ const Subscription = () => {
 
     const merchantSecret = "Mzc0OTk2OTcxMTE2OTk1MDg0MTkyNjMzMTA2NDk3NDAzNjg4MDY2";
     const formattedAmount = amount.toFixed(2);
-    const hash = md5(merchantId + subscriptionId + formattedAmount + currency + md5(merchantSecret).toString().toUpperCase()).toString().toUpperCase();
+    const hash = md5(
+      merchantId +
+        subscriptionId +
+        formattedAmount +
+        currency +
+        md5(merchantSecret).toString().toUpperCase()
+    )
+      .toString()
+      .toUpperCase();
 
     const subscription = {
       sandbox: true,
@@ -90,6 +115,11 @@ const Subscription = () => {
       const updatedSubscriptions = [...activeSubscriptions, newSubscription];
       setActiveSubscriptions(updatedSubscriptions);
       localStorage.setItem("activeSubscriptions", JSON.stringify(updatedSubscriptions));
+
+      // Increment accessible by the plan's accessibility value
+      const updatedAccessible = accessible + plan.accessibility;
+      setAccessible(updatedAccessible);
+      localStorage.setItem("accessible", updatedAccessible.toString());
     };
 
     payhere.onDismissed = () => {
@@ -118,9 +148,9 @@ const Subscription = () => {
             <h2>{plan.name}</h2>
             <p>Price: {plan.price} LKR / {plan.recurrence}</p>
             <ul>
-              <li>Feature A</li>
-              <li>Feature B</li>
-              <li>Feature C</li>
+              <li>{plan.featureA}</li>
+              <li>{plan.featureB}</li>
+              <li>{plan.featureC}</li>
             </ul>
             {isSubscribed(plan.id) ? (
               <p>Your subscription for {plan.name} is active. Thank you!</p>
@@ -129,6 +159,9 @@ const Subscription = () => {
             )}
           </div>
         ))}
+      </div>
+      <div className="accessibility-status">
+        <h2>Total Accessibility: {accessible}</h2>
       </div>
     </div>
   );

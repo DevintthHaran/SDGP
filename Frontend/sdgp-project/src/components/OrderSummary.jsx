@@ -25,13 +25,13 @@ const OrderSummary = ({ handlePlaceOrder, setCartData }) => {
           <div key={index}>
             <img src={item.image} alt={item.name} />
             <div>{item.name}</div>
-            <div>{item.price}</div>
+            <div>Rs. {item.price}</div>
             <div>Quantity: {item.quantity}</div>
           </div>
         ))}
       </div>
       <div className="stock">
-        <div>Total</div>
+        <div>Total Rs. </div>
         <div>{totalAmount}</div>
       </div>
       <button onClick={handlePlaceOrder} id="PlaceOrder">Place Order</button>

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   return (
@@ -8,6 +8,7 @@ function HomePage() {
       <Link to="/shop">Go to Shop</Link> {/* Link to navigate to Shop page */}
       <Link to="/order">Go to Order</Link>
       <Link to="/subscription">Go to subscription</Link>
+      <Link to="/feedback">Go to Feedback</Link>
     </div>
   );
 }

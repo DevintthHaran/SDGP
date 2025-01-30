@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'; // Import the HomePage
 import Shop from './pages/Shop';         // Import the Shop page
 import Order from './pages/Order';
 import Subscription from './pages/Subscription';
+import Feedback from './components/Feedback';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
         <Route path='/order' element={<Order/>}/>
         {/* Define the route for the Subscription page */}
         <Route path='/subscription' element={<Subscription/>}/>
+        {/* Define the route for the Feedback page */}
+        <Route path='/feedback' element={<Feedback/>}/>
       </Routes>
     </Router>
   );

@@ -44,7 +44,7 @@ const Product = ({ product, addToCart }) => {
         </AccordionDetails>
       </Accordion>
 
-      <h5 className="itemPrice">LKR{product.price.toFixed(2)}</h5>
+      <h5 className="itemPrice">LKR {product.price.toFixed(2)}</h5>
       <button className="addcart" onClick={() => addToCart(product)}>
         Add to cart
       </button>

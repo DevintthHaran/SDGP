@@ -16,7 +16,7 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity, cartOpen, toggleCart,
               <img src={item.image} alt={item.name} className="cart-img" />
               <div className="detail-box">
                 <div className="cart-product-title">{item.name}</div>
-                <div className="cart-price">${item.price.toFixed(2)}</div>
+                <div className="cart-price">LKR {item.price.toFixed(2)}</div>
                 <input
                   type="number"
                   value={item.quantity}
@@ -34,7 +34,7 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity, cartOpen, toggleCart,
       </div>
       <div className="total">
         <div className="total-display">Total</div>
-        <div className="total-price">${calculateTotal().toFixed(2)}</div>
+        <div className="total-price">LKR {calculateTotal().toFixed(2)}</div>
       </div>
       <button type="button" className="buy-now" onClick={buyNow}>
         Buy Now

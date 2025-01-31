@@ -1,0 +1,51 @@
+.category-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .category-box {
+    flex: 1 1 calc(33.333% - 20px); /* 3 boxes per row */
+    max-width: calc(33.333% - 20px);
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .category-box:nth-child(4), .category-box:nth-child(5) {
+    flex: 1 1 calc(50% - 20px); /* 2 boxes in the next row */
+    max-width: calc(50% - 20px);
+  }
+  
+  .category-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .category-title {
+    margin: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .schedule-button {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .schedule-button:hover {
+    background-color: #0056b3;
+  }
+  

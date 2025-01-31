@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ContactDetails = ({ handleFormSubmit,setContactDetails }) => {
+const ContactDetails = ({ handleFormSubmit, setContactDetails }) => {
   const [contact, setContact] = useState({ firstname: '', surname: '', phone: '', email: '' });
   const [isValid, setIsValid] = useState({ firstname: false, surname: false, phone: false, email: false });
   const [isSaved, setIsSaved] = useState(false);
@@ -47,58 +47,60 @@ const ContactDetails = ({ handleFormSubmit,setContactDetails }) => {
   };
 
   return (
-    <fieldset className={isSaved ? 'fieldset-success' : ''}>
-      <legend>Contact Details</legend>
-      <form onSubmit={handleSubmit}>
-        <label>First Name</label>
-        <input
-          type="text"
-          name="firstname"
-          value={contact.firstname}
-          onChange={handleInputChange}
-          className={isValid.firstname ? 'input-success' : ''}
-          required
-        />
-        <label>SurName</label>
-        <input
-          type="text"
-          name="surname"
-          value={contact.surname}
-          onChange={handleInputChange}
-          className={isValid.surname ? 'input-success' : ''}
-          required
-        />
-        <label>Phone Number</label>
-        <input
-          type="tel"
-          name="phone"
-          value={contact.phone}
-          onChange={handleInputChange}
-          className={isValid.phone ? 'input-success' : ''}
-          required
-          maxLength="10"
-        />
-        <label>Email Address</label>
-        <input
-          type="email"
-          name="email"
-          value={contact.email}
-          onChange={handleInputChange}
-          className={isValid.email ? 'input-success' : ''}
-          required
-        />
-        <button
-          type="reset"
-          onClick={() => {
-            setContact({ firstname: '', surname: '', phone: '', email: '' })
-            setIsValid({ firstname: false, surname: false, phone: false, email: false });
-          }}
-        >
-          Reset
-        </button>
-        <button type="submit">Save</button>
-      </form>
-    </fieldset>
+    <div className="order">
+      <fieldset className={isSaved ? 'fieldset-success' : ''}>
+        <legend>Contact Details</legend>
+        <form onSubmit={handleSubmit}>
+          <label>First Name</label>
+          <input
+            type="text"
+            name="firstname"
+            value={contact.firstname}
+            onChange={handleInputChange}
+            className={isValid.firstname ? 'input-success' : ''}
+            required
+          />
+          <label>Surname</label>
+          <input
+            type="text"
+            name="surname"
+            value={contact.surname}
+            onChange={handleInputChange}
+            className={isValid.surname ? 'input-success' : ''}
+            required
+          />
+          <label>Phone Number</label>
+          <input
+            type="tel"
+            name="phone"
+            value={contact.phone}
+            onChange={handleInputChange}
+            className={isValid.phone ? 'input-success' : ''}
+            required
+            maxLength="10"
+          />
+          <label>Email Address</label>
+          <input
+            type="email"
+            name="email"
+            value={contact.email}
+            onChange={handleInputChange}
+            className={isValid.email ? 'input-success' : ''}
+            required
+          />
+          <button
+            type="reset"
+            onClick={() => {
+              setContact({ firstname: '', surname: '', phone: '', email: '' });
+              setIsValid({ firstname: false, surname: false, phone: false, email: false });
+            }}
+          >
+            Reset
+          </button>
+          <button type="submit">Save</button>
+        </form>
+      </fieldset>
+    </div>
   );
 };
 

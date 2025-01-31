@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const BillingAddress = ({ handleFormSubmit,setBillingDetails }) => {
+const BillingAddress = ({ handleFormSubmit, setBillingDetails }) => {
   const [address, setAddress] = useState({ address1: '', city: '', zip: '', country: '' });
   const [isFieldValid, setIsFieldValid] = useState({ address1: false, city: false, zip: false, country: false });
   const [isFormValid, setIsFormValid] = useState(false);
@@ -15,8 +15,6 @@ const BillingAddress = ({ handleFormSubmit,setBillingDetails }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
-    // For the ZIP field, remove non-numeric characters
     const sanitizedValue = name === "zip" ? value.replace(/\D/g, "") : value;
 
     setAddress({ ...address, [name]: sanitizedValue });
@@ -27,7 +25,6 @@ const BillingAddress = ({ handleFormSubmit,setBillingDetails }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const allValid = Object.values(isFieldValid).every(Boolean);
     if (allValid) {
       setIsFormValid(true);
@@ -40,98 +37,90 @@ const BillingAddress = ({ handleFormSubmit,setBillingDetails }) => {
   };
 
   return (
-    <fieldset className={isFormValid ? 'fieldset-success' : ''}>
-      <legend>Billing Address</legend>
-      <form onSubmit={handleSubmit}>
-        {/* Required Field */}
-        <label>Address Line 1 (Required)</label>
-        <input
-          type="text"
-          name="address1"
-          value={address.address1}
-          onChange={handleInputChange}
-          className={isFieldValid.address1 ? 'input-success' : ''}
-          required
-        />
+    <div className="order">
+      <fieldset className={isFormValid ? 'fieldset-success' : ''}>
+        <legend>Billing Address</legend>
+        <form onSubmit={handleSubmit}>
+          <label>Address Line 1 (Required)</label>
+          <input
+            type="text"
+            name="address1"
+            value={address.address1}
+            onChange={handleInputChange}
+            className={isFieldValid.address1 ? 'input-success' : ''}
+            required
+          />
 
-        {/* Optional Field */}
-        <label>Address Line 2 (Optional)</label>
-        <input
-          type="text"
-          name="address2"
-          id="billaddress2"
-          value={address.address2 || ''}
-          onChange={handleInputChange}
-        />
+          <label>Address Line 2 (Optional)</label>
+          <input
+            type="text"
+            name="address2"
+            value={address.address2 || ''}
+            onChange={handleInputChange}
+          />
 
-        {/* Optional Field */}
-        <label>Address Line 3 (Optional)</label>
-        <input
-          type="text"
-          name="address3"
-          id="billaddress3"
-          value={address.address3 || ''}
-          onChange={handleInputChange}
-        />
+          <label>Address Line 3 (Optional)</label>
+          <input
+            type="text"
+            name="address3"
+            value={address.address3 || ''}
+            onChange={handleInputChange}
+          />
 
-        {/* Required Field */}
-        <label>City (Required)</label>
-        <input
-          type="text"
-          name="city"
-          value={address.city}
-          onChange={handleInputChange}
-          className={isFieldValid.city ? 'input-success' : ''}
-          required
-        />
+          <label>City (Required)</label>
+          <input
+            type="text"
+            name="city"
+            value={address.city}
+            onChange={handleInputChange}
+            className={isFieldValid.city ? 'input-success' : ''}
+            required
+          />
 
-        <label>State/Country</label>
-        <input
-          type="text"
-          name="state"
-          id="statecountry"
-          value={address.state || ''}
-          onChange={handleInputChange}
-        />
+          <label>State/Country</label>
+          <input
+            type="text"
+            name="state"
+            value={address.state || ''}
+            onChange={handleInputChange}
+          />
 
-        {/* Required Field */}
-        <label>Zip Code (Required)</label>
-        <input
-          type="text"
-          name="zip"
-          value={address.zip}
-          onChange={handleInputChange}
-          className={isFieldValid.zip ? 'input-success' : ''}
-          required
-          maxLength="5"
-        />
+          <label>Zip Code (Required)</label>
+          <input
+            type="text"
+            name="zip"
+            value={address.zip}
+            onChange={handleInputChange}
+            className={isFieldValid.zip ? 'input-success' : ''}
+            required
+            maxLength="5"
+          />
 
-        {/* Required Field */}
-        <label>Country (Required)</label>
-        <select
-          name="country"
-          value={address.country}
-          onChange={handleInputChange}
-          className={isFieldValid.country ? 'input-success' : ''}
-          required
-        >
-          <option value="">
-            Please select
-          </option>
-          <option value="Sri Lanka">Sri Lanka</option>
-          <option value="India">India</option>
-        </select>
+          <label>Country (Required)</label>
+          <select
+            name="country"
+            value={address.country}
+            onChange={handleInputChange}
+            className={isFieldValid.country ? 'input-success' : ''}
+            required
+          >
+            <option value="">Please select</option>
+            <option value="Sri Lanka">Sri Lanka</option>
+            <option value="India">India</option>
+          </select>
 
-        <button type="reset" 
-        onClick={() => {
-          setAddress({address1:"",address2:"",address3:"",city:"",zip:"",country:"",});
-          setIsFieldValid({ address1: false, city: false, zip: false, country: false });
-        }}>
-          Reset
-        </button>
-        <button type="submit">Save</button>
-      </form>
-    </fieldset>
+          <button type="reset" 
+            onClick={() => {
+              setAddress({ address1: "", address2: "", address3: "", city: "", zip: "", country: "" });
+              setIsFieldValid({ address1: false, city: false, zip: false, country: false });
+            }}
+          >
+            Reset
+          </button>
+          <button type="submit">Save</button>
+        </form>
+      </fieldset>
+    </div>
   );
 };
 

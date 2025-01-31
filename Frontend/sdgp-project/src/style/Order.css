@@ -3,21 +3,21 @@ body{
     font-family: sans-serif;
     background-color:azure;
 }/* Make sure the form has some margin for better spacing */
-form {
+.order form {
     display: flex;
     flex-direction: column;
     gap: 15px; /* Add some space between fields */
 }
 
 /* Style for the labels */
-form label {
+.order form label {
     font-weight: bold;
     margin-bottom: 5px;
     color: #333;
 }
 
 /* Style for the input fields */
-form input {
+.order form input {
     padding: 10px;
     font-size: 1rem;
     border-radius: 5px;
@@ -28,7 +28,7 @@ form input {
 
 
 /* Style for the fieldset */
-fieldset {
+.order fieldset {
     padding: 20px;
     border: 2px solid #ccc;
     border-radius: 10px;
@@ -39,7 +39,7 @@ fieldset {
 }
 
 /* Style for the legend */
-legend {
+.order legend {
     position: relative;
     font-size: 1.2rem;
     font-weight: 600;
@@ -77,7 +77,7 @@ fieldset{
     box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
     transition: 0.3s;
     border: 3px solid black;
-}input,select{
+}.order input,select{
     padding: 10px;
     font-size: 1rem;
     border-radius: 5px;
@@ -87,10 +87,10 @@ fieldset{
     outline: none;
 }#billaddress2,#billaddress3,#statecountry{
     border: 1px solid black;
-}input:focus{
+}.order input:focus{
     outline: none;
 }/* Style for buttons */
-button {
+.order button {
     width: 100%;
     margin-top: 10px;
     padding: 12px 20px; /* Increased padding for better clickable area */
@@ -105,25 +105,25 @@ button {
 }
 
 /* Button hover effect */
-button:hover {
+.order button:hover {
     background-color: #4a76a8; /* Change to a lighter shade when hovered */
     transform: translateY(-2px); /* Slight lift effect on hover */
 }
 
 /* Style for the 'Reset' button */
-button[type="reset"] {
+.order button[type="reset"] {
     background-color: #f2f2f2; /* Light color for Reset button */
     color: #333; /* Dark color for text */
     border: 2px solid #ccc; /* Light border */
 }
 
-button[type="reset"]:hover {
+.order button[type="reset"]:hover {
     background-color: #e0e0e0; /* Slightly darker when hovered */
     transform: translateY(-2px); /* Slight lift effect */
 }
 
 /* Focus effect for buttons */
-button:focus {
+.order button:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.6); /* Add a blue outline when focused */
 }
@@ -172,9 +172,9 @@ button:focus {
     background-color:crimson;
 }#finalset #PlaceOrder:hover{
     background-color:#f2f2f2;
-}.input-success {
+}.order .input-success {
     border: 2px solid greenyellow;
-  }.fieldset-success {
+  }.order .fieldset-success {
     border: 3px solid greenyellow;
   }@media(max-width:1000px){
     fieldset {

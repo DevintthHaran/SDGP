@@ -2,11 +2,15 @@ package com.devintth.sdgp.services;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.json.JSONObject;
+import org.json.JSONArray;
+
 
 @Service
 public class QuestionService {
@@ -14,7 +18,7 @@ public class QuestionService {
     @Value("${openai.api.key}")
     private String apiKey;  // Use Spring's property injection to store your API Key
 
-    private static final String API_URL = "https://api.openai.com/v1/completions";
+    private static final String API_URL = "https://api.openai.com/v1/chat/completions";
 
     // RestTemplate to make the API request
     private final RestTemplate restTemplate;
@@ -25,28 +29,42 @@ public class QuestionService {
 
     public String fetchQuestion(String role) {
         String prompt = "Generate an interview question for a " + role + " role.";
-
-        // Request body for OpenAI API
         String requestBody = String.format(
-                "{\"model\": \"text-davinci-003\", \"prompt\": \"%s\", \"max_tokens\": 100}",
+                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
                 prompt
         );
 
-        // Set up the headers
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + apiKey);
         headers.set("Content-Type", "application/json");
 
-        // Make the HTTP request
         HttpEntity<String> entity = new HttpEntity<>(requestBody, headers);
-        ResponseEntity<String> response = restTemplate.exchange(API_URL, HttpMethod.POST, entity, String.class);
 
-        // Parse the response (You may need to add JSON parsing)
-        String result = response.getBody();
+        try {
+            ResponseEntity<String> response = restTemplate.exchange(API_URL, HttpMethod.POST, entity, String.class);
+            String result = response.getBody();
 
-        // Extract the question from the JSON response (simple extraction for demo)
-        // For a more structured solution, you could use a JSON parser like Jackson
-        return result != null ? result.split("\"text\":\"")[1].split("\"")[0] : "No question found.";
+            System.out.println("API Response: " + result); // Debugging
+
+            if (result != null) {
+                JSONObject jsonResponse = new JSONObject(result);
+                JSONArray choicesArray = jsonResponse.getJSONArray("choices");
+                JSONObject firstChoice = choicesArray.getJSONObject(0);
+                JSONObject messageObject = firstChoice.getJSONObject("message");
+
+                return messageObject.getString("content"); // Extract the question
+            }
+        } catch (HttpClientErrorException e) {
+            System.err.println("Error fetching from OpenAI: " + e.getMessage());
+            return "Error fetching question.";
+        } catch (Exception e) {
+            System.err.println("Unexpected error: " + e.getMessage());
+            return "Error parsing response.";
+        }
+
+        return "No question found.";
     }
+
+
 }
 

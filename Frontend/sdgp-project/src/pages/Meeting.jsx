@@ -2,30 +2,36 @@ import React from "react";
 import "../style/Meeting.css";
 import { useNavigate } from "react-router-dom";
 
+import IT from "../Images/IT.png";
+import Science from "../Images/Science.png";
+import Business from "../Images/Business.png";
+import OLevel from "../Images/O Level.png";
+import ALevel from "../Images/A Level.png";
+
 const categories = [
   {
     title: "IT",
-    image: "path-to-it-image.jpg",
+    image: IT,
     link: "/it-meeting",
   },
   {
     title: "Science",
-    image: "path-to-science-image.jpg",
+    image: Science,
     link: "/science-meeting",
   },
   {
     title: "Business",
-    image: "path-to-business-image.jpg",
+    image: Business,
     link: "/business-meeting",
   },
   {
     title: "O Level",
-    image: "path-to-olevel-image.jpg",
+    image: OLevel,
     link: "/olevel-meeting",
   },
   {
     title: "A Level",
-    image: "path-to-alevel-image.jpg",
+    image: ALevel,
     link: "/alevel-meeting",
   },
 ];

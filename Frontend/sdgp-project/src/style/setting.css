@@ -1,4 +1,4 @@
-body {
+/* body {
     
     font-family: "Times New Roman", Times, serif;
     background-color: #f9f9f9;
@@ -14,8 +14,8 @@ body {
     background-size: cover; /* Ensure the image covers the entire page 
     background-repeat: no-repeat; /* Prevent the image from repeating 
     background-attachment: fixed; /* Keep the background fixed while scrolling 
-    background-position: center; /* Center the image */
-  } 
+    background-position: center; /* Center the image 
+  }  */
   
   .settings-page {
     width: 100%;
@@ -139,7 +139,7 @@ body {
 }
 
 /* Button Styling */
-button {
+.setting button {
   display: block;
   width: 100%;
   padding: 10px;
@@ -153,7 +153,7 @@ button {
   transition: background 0.3s ease-in-out;
 }
 
-button:hover {
+.setting button:hover {
   background: #0056b3;
 }
 
@@ -179,7 +179,7 @@ button:hover {
     align-items: flex-start;
   }
 
-  button {
+  .setting button {
     font-size: 14px;
   }
 }

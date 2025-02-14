@@ -29,6 +29,7 @@ const Setting = () => {
 
   return (
     <>
+    <div className="setting">
     
       <div className="settings-page">
         <header className="header">
@@ -148,7 +149,7 @@ const Setting = () => {
           </button>
         </main>
       </div>
-    
+    </div>
     </>
   );
 };

@@ -5,7 +5,11 @@ import Shop from './pages/Shop';         // Import the Shop page
 import Order from './pages/Order';
 import Subscription from './pages/Subscription';
 import Meeting from './pages/Meeting';
+<<<<<<< Updated upstream
 import Question from './pages/Question';
+=======
+import Setting from './pages/Setting';
+>>>>>>> Stashed changes
 
 //Import Specific  Catergory Meeting Pages
 import ITMeeting from './pages/ITMeeting';
@@ -28,9 +32,13 @@ function App() {
         <Route path='/subscription' element={<Subscription/>}/>
         {/* Define the route for the Meeting pages */}
         <Route path='/meeting' element={<Meeting/>}/>
+<<<<<<< Updated upstream
         {/* Define the route for the Question pages */}
         <Route path='/question' element={<Question/>}/>
 
+=======
+        <Route path='/setting' element={<Setting/>}/>
+>>>>>>> Stashed changes
         {/* Define the route for the Specific Meeting pages */}
         <Route path="/it-meeting" element={<ITMeeting/>} />
         <Route path="/science-meeting" element={<ScienceMeeting />} />

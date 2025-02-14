@@ -1,0 +1,185 @@
+body {
+    
+    font-family: "Times New Roman", Times, serif;
+    background-color: #f9f9f9;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #333;
+    height: 100%;
+    overflow-x: hidden;
+    /* background-image: url('../assets/Career.png'); /* Adjust the path based on your image location 
+    background-size: cover; /* Ensure the image covers the entire page 
+    background-repeat: no-repeat; /* Prevent the image from repeating 
+    background-attachment: fixed; /* Keep the background fixed while scrolling 
+    background-position: center; /* Center the image */
+  } 
+  
+  .settings-page {
+    width: 100%;
+    margin: 0 ;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: rgb(176, 215, 235);
+    flex: 1; /* Take up all available space */
+    padding: 20px; /* Add some padding to the content */
+    box-sizing: border-box;
+  }
+  
+  .header {
+    background-color: rgb(165, 218, 240);
+    color: black;
+    padding: 20px;
+    text-align: left;
+    
+  }
+  
+  .header h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .main-content {
+    padding: 20px;
+  }
+  
+  .settings-section {
+    margin-bottom: 20px;
+  }
+  
+  /*.settings-section h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #5b6d81;
+  }*/
+  
+  /*.settings-item {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }*/
+  
+  /*.settings-item label {
+    font-size: 16px;
+  }/*
+  
+  .settings-item input[type="checkbox"],
+  .settings-item select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .save-button {
+    background-color: #003366;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .save-button:hover {
+    background-color: #357ABD;
+  }
+
+
+  /**/
+
+
+/* Header Styling */
+
+
+/* Main Content Layout */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Settings Section */
+.settings-section {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.settings-section h2 {
+  font-size: 20px;
+  color: #444;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+/* Label & Input Styling */
+.settings-section label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.settings-section select,
+.settings-section input[type="checkbox"] {
+  margin-right: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 14px;
+}
+
+/* Button Styling */
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: #468dd7;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+/* Save Button */
+.save-button {
+  background: #197f4e;
+  font-weight: bold;
+}
+
+.save-button:hover {
+  background: #57d773;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .settings-page {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .settings-section label {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  button {
+    font-size: 14px;
+  }
+}

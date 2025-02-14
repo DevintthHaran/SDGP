@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Navbar from'../components/Navbar';
-import Footer from "../components/Footer";
 import "../style/setting.css";
 
 const Setting = () => {
@@ -31,7 +29,7 @@ const Setting = () => {
 
   return (
     <>
-      <Navbar />
+    
       <div className="settings-page">
         <header className="header">
           <h1>Settings</h1>
@@ -150,7 +148,7 @@ const Setting = () => {
           </button>
         </main>
       </div>
-      <Footer />
+    
     </>
   );
 };

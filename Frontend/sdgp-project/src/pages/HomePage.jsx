@@ -10,6 +10,9 @@ function HomePage() {
       <Link to="/subscription">Go to subscription</Link>
       <Link to="/meeting">Go to meeting page</Link>
       <Link to="/question">Go to Question</Link>
+      <Link to="/setting">Go to setting page</Link>
+      
+
     </div>
   );
 }

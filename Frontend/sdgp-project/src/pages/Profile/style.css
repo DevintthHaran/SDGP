@@ -1,0 +1,97 @@
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.profile-img-action-btn .col-auto {
+    border: 1px solid grey;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.custom-cursor{
+    cursor:pointer;
+}
+
+.lang-icon{
+   width:40px;
+   height:30px; 
+}
+
+.themes-container > div {
+    border: 1px solid #4c3799;
+    padding: 2px;
+    border-radius: 5px;
+    margin-right: 10px; /* Add some space between the boxes */
+}
+
+.themes-container div {
+    width: 60px; /* Set the width of the theme boxes */
+    height: 30px; /* Set the height of the theme boxes */
+    border-radius: 5px;
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.theme-1-box {
+    background-color:#fbe3e8;
+}
+
+.theme-2-box {
+    background-color: #9bc400;
+}
+
+.theme-3-box {
+    background-color: #f9c5bd;
+}
+
+.selected {
+    border: 2px solid #000; /* Example border for selected theme */
+}
+
+.profile-tabs div{
+    cursor:pointer;
+    text-align: center;
+    background-color:#dea6af;
+    font-weight: 500;
+    font-size: 18px;
+   
+}
+
+.profile-tabs .active-tab {
+    border-bottom: 3px solid blue;
+    background-color: white;
+}
+
+.edit-profile-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.submit-profile-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-profile-btn:hover {
+    background-color: #0056b3;
+}
+
+.cancel-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}

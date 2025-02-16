@@ -1,0 +1,133 @@
+/* ProfileView.css */
+.profile-card {
+  background: linear-gradient(145deg, #f0f8ff, #e0f0ff);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  animation: fadeIn 0.5s ease-in-out, float 4s ease-in-out infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.profile-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.profile-card h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  animation: textGlow 2s ease-in-out infinite;
+}
+
+.profile-card-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  animation: slideIn 1s ease-in-out;
+}
+
+.profile-card-image {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card-image:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.profile-details p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  margin: 0.5rem 0;
+}
+
+.profile-details strong {
+  color: #333;
+  font-weight: 600;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes textGlow {
+  0%,
+  100% {
+    text-shadow: 0 0 10px rgba(51, 51, 51, 0.7), 0 0 20px rgba(51, 51, 51, 0.5),
+      0 0 30px rgba(51, 51, 51, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(51, 51, 51, 0.9), 0 0 40px rgba(51, 51, 51, 0.7),
+      0 0 60px rgba(51, 51, 51, 0.5);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Additional decorative elements */
+.profile-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 10%,
+    transparent 10.01%
+  );
+  transform: rotate(45deg);
+  animation: rotateBackground 20s linear infinite;
+}
+
+@keyframes rotateBackground {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

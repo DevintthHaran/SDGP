@@ -3,6 +3,7 @@ import React, { useState } from "react";
 function Question() {
   const [role, setRole] = useState("");
   const [question, setQuestion] = useState("");
+  const [audioUrl, setAudioUrl] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const fetchQuestion = async () => {
@@ -13,13 +14,22 @@ function Question() {
 
     setLoading(true);
     setQuestion("");
+    setAudioUrl(null);
 
     try {
       const response = await fetch(`http://localhost:8080/generate-question?role=${role}`);
       if (!response.ok) throw new Error("Failed to fetch");
 
-      const data = await response.text(); // Assuming API returns plain text
+      const data = await response.text();
       setQuestion(data);
+
+      // Fetch and play the audio
+      const audioResponse = await fetch(`http://localhost:8080/generate-audio?text=${encodeURIComponent(data)}`);
+      if (audioResponse.ok) {
+        const blob = await audioResponse.blob();
+        const audioUrl = URL.createObjectURL(blob);
+        setAudioUrl(audioUrl);
+      }
     } catch (error) {
       console.error("Error fetching question:", error);
       setQuestion("Failed to fetch question.");
@@ -43,6 +53,7 @@ function Question() {
       </button>
       {loading && <p>Loading...</p>}
       {question && <p><strong>Question:</strong> {question}</p>}
+      {audioUrl && <audio controls autoPlay><source src={audioUrl} type="audio/mpeg" /></audio>}
     </div>
   );
 }

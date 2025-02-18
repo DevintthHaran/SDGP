@@ -6,6 +6,7 @@ import Order from './pages/Order';
 import Subscription from './pages/Subscription';
 import Meeting from './pages/Meeting';
 import Question from './pages/Question';
+import Chat from './pages/Chat';
 
 //Import Specific  Catergory Meeting Pages
 import ITMeeting from './pages/ITMeeting';
@@ -30,6 +31,7 @@ function App() {
         <Route path='/meeting' element={<Meeting/>}/>
         {/* Define the route for the Question pages */}
         <Route path='/question' element={<Question/>}/>
+        <Route path='/chat' element={<Chat/>}/>
 
         {/* Define the route for the Specific Meeting pages */}
         <Route path="/it-meeting" element={<ITMeeting/>} />

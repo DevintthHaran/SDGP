@@ -21,5 +21,13 @@ public class InterviewController {
     public String generateQuestion(@RequestParam String role) {
         return questionService.fetchQuestion(role);
     }
+    @GetMapping("/generate-alternate-question")
+    public String alternateQuestion() {
+        return questionService.alternateQuestion();
+    }
+    @GetMapping("/generate-feedback")
+    public String generateFeedback(@RequestParam String answer) {
+        return questionService.fetchfeedback(answer);
+    }
 }
 

@@ -65,6 +65,82 @@ public class QuestionService {
         return "No question found.";
     }
 
+    public String alternateQuestion() {
+        String prompt = "Generate another interview question for a the same role you generated before.";
+        String requestBody = String.format(
+                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
+                prompt
+        );
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + apiKey);
+        headers.set("Content-Type", "application/json");
+
+        HttpEntity<String> entity = new HttpEntity<>(requestBody, headers);
+
+        try {
+            ResponseEntity<String> response = restTemplate.exchange(API_URL, HttpMethod.POST, entity, String.class);
+            String result = response.getBody();
+
+            System.out.println("API Response: " + result); // Debugging
+
+            if (result != null) {
+                JSONObject jsonResponse = new JSONObject(result);
+                JSONArray choicesArray = jsonResponse.getJSONArray("choices");
+                JSONObject firstChoice = choicesArray.getJSONObject(0);
+                JSONObject messageObject = firstChoice.getJSONObject("message");
+
+                return messageObject.getString("content"); // Extract the question
+            }
+        } catch (HttpClientErrorException e) {
+            System.err.println("Error fetching from OpenAI: " + e.getMessage());
+            return "Error fetching question.";
+        } catch (Exception e) {
+            System.err.println("Unexpected error: " + e.getMessage());
+            return "Error parsing response.";
+        }
+
+        return "No question found.";
+    }
+
+    public String fetchfeedback(String answer) {
+        String prompt = "Generate a feedback for the answer asked in an interview question."+answer;
+        String requestBody = String.format(
+                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
+                prompt
+        );
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + apiKey);
+        headers.set("Content-Type", "application/json");
+
+        HttpEntity<String> entity = new HttpEntity<>(requestBody, headers);
+
+        try {
+            ResponseEntity<String> response = restTemplate.exchange(API_URL, HttpMethod.POST, entity, String.class);
+            String result = response.getBody();
+
+            System.out.println("API Response: " + result); // Debugging
+
+            if (result != null) {
+                JSONObject jsonResponse = new JSONObject(result);
+                JSONArray choicesArray = jsonResponse.getJSONArray("choices");
+                JSONObject firstChoice = choicesArray.getJSONObject(0);
+                JSONObject messageObject = firstChoice.getJSONObject("message");
+
+                return messageObject.getString("content"); // Extract the question
+            }
+        } catch (HttpClientErrorException e) {
+            System.err.println("Error fetching from OpenAI: " + e.getMessage());
+            return "Error fetching question.";
+        } catch (Exception e) {
+            System.err.println("Unexpected error: " + e.getMessage());
+            return "Error parsing response.";
+        }
+
+        return "No question found.";
+    }
+
 
 }
 

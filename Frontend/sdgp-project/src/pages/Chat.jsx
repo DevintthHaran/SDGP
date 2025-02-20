@@ -4,6 +4,8 @@ function Chat() {
     const [userInput, setUserInput] = useState("");
     const [chatHistory, setChatHistory] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [initial, setInitial] = useState(true);
+    const [question, setQuestion] = useState(false);
     const [showInput, setShowInput] = useState(false);
     const [isListening, setIsListening] = useState(false);
     const [isSpeaking, setIsSpeaking] = useState(false);
@@ -99,11 +101,28 @@ function Chat() {
       e.preventDefault();
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:8080/generate-question?role=${userInput}`);
-        if (!response.ok) throw new Error("Failed to fetch");
-        const generatedText = await response.text();
-        setChatHistory([...chatHistory, { user: userInput, bot: generatedText }]);
-        setUserInput("");
+        if(initial){
+          const response = await fetch(`http://localhost:8080/generate-question?role=${userInput}`);
+          if (!response.ok) throw new Error("Failed to fetch");
+          const generatedText = await response.text();
+          setChatHistory([...chatHistory, { user: userInput, bot: generatedText }]);
+          setUserInput("");
+          setInitial(!initial);
+        }else if(question){
+          const response = await fetch(`http://localhost:8080/generate-alternate-question`);
+          if (!response.ok) throw new Error("Failed to fetch");
+          const generatedText = await response.text();
+          setChatHistory([...chatHistory, { user: userInput, bot: generatedText }]);
+          setUserInput("");
+          setQuestion(!question);
+        }else{
+          const response = await fetch(`http://localhost:8080/generate-feedback?answer=${userInput}`);
+          if (!response.ok) throw new Error("Failed to fetch");
+          const generatedText = await response.text();
+          setChatHistory([...chatHistory, { user: userInput, bot: generatedText }]);
+          setUserInput("");
+          setQuestion(!question);          
+        }
       } catch (error) {
         console.error("Error:", error);
       }

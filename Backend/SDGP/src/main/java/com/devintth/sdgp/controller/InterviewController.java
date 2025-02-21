@@ -22,12 +22,12 @@ public class InterviewController {
         return questionService.fetchQuestion(role);
     }
     @GetMapping("/generate-alternate-question")
-    public String alternateQuestion() {
-        return questionService.alternateQuestion();
+    public String alternateQuestion(@RequestParam String role) {
+        return questionService.alternateQuestion(role);
     }
     @GetMapping("/generate-feedback")
-    public String generateFeedback(@RequestParam String answer) {
-        return questionService.fetchfeedback(answer);
+    public String generateFeedback(@RequestParam String question,@RequestParam String answer) {
+        return questionService.fetchfeedback(question,answer);
     }
 }
 

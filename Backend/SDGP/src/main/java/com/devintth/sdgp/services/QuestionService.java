@@ -28,9 +28,9 @@ public class QuestionService {
     }
 
     public String fetchQuestion(String role) {
-        String prompt = "Generate an interview question for a " + role + " role.";
+        String prompt = "Ask a direct interview question for a " + role + " role, without any extra text or formatting.";
         String requestBody = String.format(
-                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
+                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a professional interviewer.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
                 prompt
         );
 
@@ -65,10 +65,10 @@ public class QuestionService {
         return "No question found.";
     }
 
-    public String alternateQuestion() {
-        String prompt = "Generate another interview question for a the same role you generated before.";
+    public String alternateQuestion(String role) {
+        String prompt = "Ask a direct, new and different interview question for a " + role + " role, without any extra text or formatting.";;
         String requestBody = String.format(
-                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
+                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a professional interviewer..\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
                 prompt
         );
 
@@ -103,10 +103,12 @@ public class QuestionService {
         return "No question found.";
     }
 
-    public String fetchfeedback(String answer) {
-        String prompt = "Generate a feedback for the answer asked in an interview question."+answer;
+    public String fetchfeedback(String question,String answer) {
+        String prompt = "Evaluate the following answer based on the given interview question. Provide a short, professional feedback without any extra text or formatting."
+                + "Question: " + question
+                + ", Answer: " + answer;
         String requestBody = String.format(
-                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
+                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are an experienced interviewer providing concise feedback on candidates' answers.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
                 prompt
         );
 

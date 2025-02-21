@@ -5,7 +5,8 @@ function Chat() {
     const [chatHistory, setChatHistory] = useState([]);
     const [loading, setLoading] = useState(false);
     const [initial, setInitial] = useState(true);
-    const [question, setQuestion] = useState(false);
+    const [role,setRole]=useState("");
+    const [question, setQuestion] = useState(true);
     const [showInput, setShowInput] = useState(false);
     const [isListening, setIsListening] = useState(false);
     const [isSpeaking, setIsSpeaking] = useState(false);
@@ -101,33 +102,44 @@ function Chat() {
       e.preventDefault();
       setLoading(true);
       try {
-        if(initial){
+        let isQuestion = false;
+        let generatedText="";
+    
+        if (initial) {
           const response = await fetch(`http://localhost:8080/generate-question?role=${userInput}`);
           if (!response.ok) throw new Error("Failed to fetch");
-          const generatedText = await response.text();
-          setChatHistory([...chatHistory, { user: userInput, bot: generatedText }]);
+          setRole(userInput);
+          generatedText = await response.text();
+          setInitial(!initial);
+          isQuestion = true; // This is a question
+          setChatHistory([...chatHistory, { user: userInput, bot: generatedText, isQuestion }]);
           setUserInput("");
           setInitial(!initial);
-        }else if(question){
-          const response = await fetch(`http://localhost:8080/generate-alternate-question`);
+        } else if (!question) {
+          const response = await fetch(`http://localhost:8080/generate-alternate-question?role=${role}`);
           if (!response.ok) throw new Error("Failed to fetch");
-          const generatedText = await response.text();
-          setChatHistory([...chatHistory, { user: userInput, bot: generatedText }]);
+          generatedText = await response.text();
+          isQuestion = true; // Alternate question, still a question
+          setChatHistory([...chatHistory, { user: userInput, bot: generatedText, isQuestion }]);
           setUserInput("");
           setQuestion(!question);
-        }else{
-          const response = await fetch(`http://localhost:8080/generate-feedback?answer=${userInput}`);
+        } else {
+          const lastQuestion = chatHistory[chatHistory.length - 1].bot;
+          const response = await fetch(`http://localhost:8080/generate-feedback?question=${encodeURIComponent(lastQuestion)}&answer=${encodeURIComponent(userInput)}`);
           if (!response.ok) throw new Error("Failed to fetch");
-          const generatedText = await response.text();
-          setChatHistory([...chatHistory, { user: userInput, bot: generatedText }]);
+          generatedText = await response.text();
+          isQuestion = false; // This is feedback
+          setChatHistory([...chatHistory, { user: userInput, bot: generatedText, isQuestion }]);
           setUserInput("");
-          setQuestion(!question);          
+          setQuestion(!question);
+          
         }
       } catch (error) {
         console.error("Error:", error);
       }
       setLoading(false);
     };
+    
   
     const toggleInput = () => {
       setShowInput(!showInput);
@@ -160,7 +172,7 @@ function Chat() {
                           <strong>You:</strong> {chat.user}
                         </p>
                         <p className="teacher-response">
-                          <strong>ChatGPT:</strong> {chat.bot}
+                        <strong>{chat.isQuestion ? "Interviewer:" : "Feedback:"}</strong> {chat.bot}
                         </p>
                       </div>
                     ))

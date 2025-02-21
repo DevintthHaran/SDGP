@@ -9,6 +9,7 @@ import Meeting from './pages/Meeting';
 import Question from './pages/Question';
 
 import Setting from './pages/Setting';
+import Feedback from './pages/Feedback';
 
 
 //Import Specific  Catergory Meeting Pages
@@ -38,6 +39,7 @@ function App() {
 
 
         <Route path='/setting' element={<Setting/>}/>
+        <Route path='/feedback' element={<Feedback/>}/>
 
         {/* Define the route for the Specific Meeting pages */}
         <Route path="/it-meeting" element={<ITMeeting/>} />

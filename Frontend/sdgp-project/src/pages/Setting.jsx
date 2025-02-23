@@ -21,6 +21,7 @@ const Setting = () => {
       [name]: type === "checkbox" ? checked : value,
     });
   };
+  
 
   const handleSave = () => {
     alert("Settings saved successfully!");

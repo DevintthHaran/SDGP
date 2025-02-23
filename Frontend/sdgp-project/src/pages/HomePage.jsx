@@ -11,6 +11,11 @@ function HomePage() {
       <Link to="/meeting">Go to meeting page</Link>
       <Link to="/question">Go to Question</Link>
       <Link to="/chat">Go to Chat</Link>
+      <Link to="/setting">Go to setting page</Link>
+      <Link to="/feedback">Go to feedback page</Link>
+      
+
+
     </div>
   );
 }

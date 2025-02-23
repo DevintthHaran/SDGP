@@ -7,6 +7,7 @@ import Subscription from './pages/Subscription';
 import Meeting from './pages/Meeting';
 
 import Question from './pages/Question';
+import Chat from './pages/Chat';
 
 import Setting from './pages/Setting';
 import Feedback from './pages/Feedback';
@@ -36,6 +37,7 @@ function App() {
 
         {/* Define the route for the Question pages */}
         <Route path='/question' element={<Question/>}/>
+        <Route path='/chat' element={<Chat/>}/>
 
 
         <Route path='/setting' element={<Setting/>}/>

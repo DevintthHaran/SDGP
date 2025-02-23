@@ -28,9 +28,87 @@ public class QuestionService {
     }
 
     public String fetchQuestion(String role) {
-        String prompt = "Generate an interview question for a " + role + " role.";
+        String prompt = "Ask a direct interview question for a " + role + " role, without any extra text or formatting.";
         String requestBody = String.format(
-                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
+                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a professional interviewer.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
+                prompt
+        );
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + apiKey);
+        headers.set("Content-Type", "application/json");
+
+        HttpEntity<String> entity = new HttpEntity<>(requestBody, headers);
+
+        try {
+            ResponseEntity<String> response = restTemplate.exchange(API_URL, HttpMethod.POST, entity, String.class);
+            String result = response.getBody();
+
+            System.out.println("API Response: " + result); // Debugging
+
+            if (result != null) {
+                JSONObject jsonResponse = new JSONObject(result);
+                JSONArray choicesArray = jsonResponse.getJSONArray("choices");
+                JSONObject firstChoice = choicesArray.getJSONObject(0);
+                JSONObject messageObject = firstChoice.getJSONObject("message");
+
+                return messageObject.getString("content"); // Extract the question
+            }
+        } catch (HttpClientErrorException e) {
+            System.err.println("Error fetching from OpenAI: " + e.getMessage());
+            return "Error fetching question.";
+        } catch (Exception e) {
+            System.err.println("Unexpected error: " + e.getMessage());
+            return "Error parsing response.";
+        }
+
+        return "No question found.";
+    }
+
+    public String alternateQuestion(String role) {
+        String prompt = "Ask a direct, new and different interview question for a " + role + " role, without any extra text or formatting.";;
+        String requestBody = String.format(
+                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a professional interviewer..\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
+                prompt
+        );
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + apiKey);
+        headers.set("Content-Type", "application/json");
+
+        HttpEntity<String> entity = new HttpEntity<>(requestBody, headers);
+
+        try {
+            ResponseEntity<String> response = restTemplate.exchange(API_URL, HttpMethod.POST, entity, String.class);
+            String result = response.getBody();
+
+            System.out.println("API Response: " + result); // Debugging
+
+            if (result != null) {
+                JSONObject jsonResponse = new JSONObject(result);
+                JSONArray choicesArray = jsonResponse.getJSONArray("choices");
+                JSONObject firstChoice = choicesArray.getJSONObject(0);
+                JSONObject messageObject = firstChoice.getJSONObject("message");
+
+                return messageObject.getString("content"); // Extract the question
+            }
+        } catch (HttpClientErrorException e) {
+            System.err.println("Error fetching from OpenAI: " + e.getMessage());
+            return "Error fetching question.";
+        } catch (Exception e) {
+            System.err.println("Unexpected error: " + e.getMessage());
+            return "Error parsing response.";
+        }
+
+        return "No question found.";
+    }
+
+    public String fetchfeedback(String question,String answer) {
+        String prompt = "Evaluate the following answer based on the given interview question. Provide a short, professional feedback without any extra text or formatting."
+                + "Question: " + question
+                + ", Answer: " + answer;
+        String requestBody = String.format(
+                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are an experienced interviewer providing concise feedback on candidates' answers.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
                 prompt
         );
 

@@ -162,8 +162,8 @@ function Chat() {
                 <div className="content">
                   {chatHistory.length === 0 ? (
                     <p className="welcome-message">
-                      Welcome to the chat! Ask a question to start a conversation
-                      with the Teacher Emilian.
+                      Welcome to the Interview! Tell me the job u prefer to start a conversation
+                      with the Interviwer Emilian.
                     </p>
                   ) : (
                     chatHistory.map((chat, index) => (
@@ -179,12 +179,13 @@ function Chat() {
                   )}
                 </div>
                 <div className="input-container">
+                  {question ?(
                   <form onSubmit={handleSubmit}>
                     <input
                       type="text"
                       value={userInput}
                       onChange={handleUserInput}
-                      placeholder="Type your message..."
+                      placeholder={initial?"Type your job...":"Type your answer..."}
                       required
                     />
                     {SpeechRecognition && (
@@ -203,6 +204,11 @@ function Chat() {
                       <span>Send</span>
                     </button>
                   </form>
+                  ):(
+                    <button onClick={handleSubmit}>
+                    Next Question
+                    </button>
+                  )}
                 </div>
                 {chatHistory.length > 0 && (
                   <div className="buttons">

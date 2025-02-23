@@ -162,7 +162,7 @@ function Chat() {
                 <div className="content">
                   {chatHistory.length === 0 ? (
                     <p className="welcome-message">
-                      Welcome to the Interview! Tell me the job u prefer to start a conversation
+                      Welcome to the Interview! Tell me the job you prefer to start a conversation
                       with the Interviwer Emilian.
                     </p>
                   ) : (

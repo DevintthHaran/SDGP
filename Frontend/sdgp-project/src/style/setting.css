@@ -23,19 +23,38 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: rgb(176, 215, 235);
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+   
     flex: 1; /* Take up all available space */
     padding: 20px; /* Add some padding to the content */
     box-sizing: border-box;
   }
+  /* Center all sections inside */
+  .settings-section, .faq-section, .terms-section, .privacy-section {
+    width: 100%; /* Reduce width for better centering */
+    max-width: 800px; /* Limit width */
+    text-align: center; /* Center text */
+  }
   
-  .header {
-    background-color: rgb(165, 218, 240);
+  /* .header {
+    background-color: rgb(192, 230, 246);
     color: black;
-    padding: 20px;
+    padding: 10px;
     text-align: left;
     
-  }
+  } */
+    /* Default Light Theme */
+    body.light {
+      background-color: #f3ebeb;
+      color: #333;
+    }
+  
+    /* Dark Theme */
+    body.dark {
+      background-color: #1e1e1e;
+      color: #ffffff;
+    }
   
   .header h1 {
     margin: 0;
@@ -124,6 +143,7 @@
 .settings-section label {
   display: flex;
   justify-content: space-between;
+  flex-direction: row-reverse;
   align-items: center;
   padding: 8px 0;
   font-size: 16px;
@@ -137,6 +157,100 @@
   padding: 5px;
   font-size: 14px;
 }
+
+/* appliaction prefererence*/
+
+.settings-section-application label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.settings-section-application select,
+.settings-section-application input[type="checkbox"] {
+  margin-right: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 14px;
+}
+.settings-section-application {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* .settings-section label {
+  display: flex;
+  align-items: center; /* Ensures text and checkbox are aligned */
+  /* gap: 10px;  Adds some spacing between the text and checkbox 
+  padding: 8px 0;
+  font-size: 16px;
+  color: #555;
+} */ 
+
+
+/*FAQ SEction css*/
+.faq-section {
+  background: #f9f9f9;
+  color: black;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.faq-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.faq-item p{
+  text-align: left;
+}
+/*Terms of Service*/
+.terms-section {
+  color: black;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+/*Privacy section page style*/
+.privacy-section {
+  color: black;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+
+/* cookies style*/
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #222;
+  color: rgb(235, 206, 206);
+  padding: 10px;
+  text-align: center;
+}
+.cookie-banner button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background: #4caf50;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
 
 /* Button Styling */
 .setting button {

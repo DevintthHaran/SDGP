@@ -6,6 +6,13 @@ const FAQs = [
   { question: "What is this platform about?", answer: "This platform helps users explore career paths, receive job alerts, and get resume feedback." },
   { question: "Is this service free to use?", answer: "Yes! Basic features like job alerts and career suggestions are free." },
   { question: "How do I create an account?", answer: "Click the Sign Up button, fill in your details, and verify your email to start using the platform." },
+  { question: "How does this career guidance app help job seekers?", answer: " This app provides personalized career recommendations, resume-building tools, and job market insights to help users make informed career decisions."},
+  { question: "Is my personal information safe in this application?", answer: " Yes, we follow strict security protocols to protect your personal data and do not share it with third parties without consent."},
+  { question: "How do I update my career preferences in the app?" , answer: "You can update your preferences in the Settings section by selecting your skills, interests, and desired job roles."},
+  { question: "Can I connect with mentors or career advisors through this app?", answer: " Yes! The app offers a feature to connect with career advisors for personalized guidance and mentorship."},
+  { question:  "How do I get job recommendations based on my profile?", answer: "Our AI-powered system analyzes your profile details, skills, and work experience to provide suitable job recommendations."},
+  { question: "Does this app support resume and cover letter creation?" , answer: "Yes, you can create, edit, and download professional resumes and cover letters using our built-in templates."},
+  { question: "What should I do if I experience technical issues with the app?", answer: " If you face any issues, go to Settings → Support and report the problem. Our support team will assist you as soon as possible."},
 ];
 
 const termsofService = `
@@ -129,9 +136,9 @@ const Setting = () => {
     <div className="setting">
     
       <div className="settings-page">
-        <header className="header">
+        {/* <header className="header">
           <h1>Settings</h1>
-        </header>
+        </header> */}
         <main className="main-content">
           {/* Account Settings */}
           <section className="settings-section">
@@ -183,7 +190,8 @@ const Setting = () => {
           </section>
 
           {/* Application Preferences */}
-          <section className="settings-section">
+          <div className="settings-section">    
+          <section className="settings-section-application">
             <h2>Application Preferences</h2>
             <label>
               Preferred Career Fields
@@ -198,7 +206,7 @@ const Setting = () => {
               </select>
             </label>
             <label>
-              Language & Region
+              Language 
               <select
                 name="language"
                 value={settings.language}
@@ -222,6 +230,7 @@ const Setting = () => {
               </select>
             </label>
           </section>
+          </div>
 
           {/* Help & Support */}
           <section className="settings-section">
@@ -237,7 +246,7 @@ const Setting = () => {
             <h2>Frequently Asked Questions</h2>
             {FAQs.map((faq, index) => (
               <div key={index} className="faq-item">
-                <h3>{faq.question}</h3>
+                <h4>{faq.question}</h4>
                 <p>{faq.answer}</p>
               </div>
             ))}

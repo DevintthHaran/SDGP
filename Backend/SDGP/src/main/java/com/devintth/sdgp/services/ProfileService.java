@@ -1,29 +1,30 @@
 package com.devintth.sdgp.services;
-
-
-
-
 import com.devintth.sdgp.dto.ProfileDTO;
 import com.devintth.sdgp.entity.Profile;
 import com.devintth.sdgp.repository.ProfileRepository;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class ProfileService {
     @Autowired
     private ProfileRepository profileRepository;
 
-    private ProfileDTO saveProfile(ProfileDTO profileDTO){
+    public ProfileDTO saveProfile(ProfileDTO profileDTO){
         Profile profile=convertDtoToEntity(profileDTO);
         Profile savedProfile=profileRepository.save(profile);
         return convertEntityToDto(savedProfile);
 
     }
-    public ProfileDTO getProfileByUsername(String username){
-        Profile profile=profileRepository.findByUsername(username);
-        return convertEntityToDto(profile);
+    public ProfileDTO getProfileByUsername(String username) {
+        Optional<Profile> profile = profileRepository.findByUsername(username);
+        if (profile.isPresent()) {
+            return convertEntityToDto(profile.get());
+        } else {
+            return null;
+        }
     }
 
     private Profile convertDtoToEntity(ProfileDTO dto) {

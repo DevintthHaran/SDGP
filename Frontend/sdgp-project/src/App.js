@@ -5,6 +5,8 @@ import Shop from './pages/Shop';         // Import the Shop page
 import Order from './pages/Order';
 import Subscription from './pages/Subscription';
 import Meeting from './pages/Meeting';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 import Question from './pages/Question';
 import Chat from './pages/Chat';
@@ -24,8 +26,11 @@ function App() {
   return (
     <Router>
       <Routes>
+        
         {/* Define the route for the homepage */}
         <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<Signup/>}/>
         {/* Define the route for the Shop page */}
         <Route path="/shop" element={<Shop />} />
         {/* Define the route for the Order page */}

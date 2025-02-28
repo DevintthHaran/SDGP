@@ -5,12 +5,16 @@ import Shop from './pages/Shop';         // Import the Shop page
 import Order from './pages/Order';
 import Subscription from './pages/Subscription';
 import Meeting from './pages/Meeting';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 import Question from './pages/Question';
 import Chat from './pages/Chat';
 
 import Setting from './pages/Setting';
 import Feedback from './pages/Feedback';
+
+import SkillAssessment from './pages/SkillAssessment';
 
 
 //Import Specific  Catergory Meeting Pages
@@ -24,8 +28,12 @@ function App() {
   return (
     <Router>
       <Routes>
+        
         {/* Define the route for the homepage */}
         <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<Signup/>}/>
+        <Route path="/skill" element={<SkillAssessment/>}/>
         {/* Define the route for the Shop page */}
         <Route path="/shop" element={<Shop />} />
         {/* Define the route for the Order page */}

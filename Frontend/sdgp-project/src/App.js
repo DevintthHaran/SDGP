@@ -14,6 +14,8 @@ import Chat from './pages/Chat';
 import Setting from './pages/Setting';
 import Feedback from './pages/Feedback';
 
+import SkillAssessment from './pages/SkillAssessment';
+
 
 //Import Specific  Catergory Meeting Pages
 import ITMeeting from './pages/ITMeeting';
@@ -31,6 +33,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
+        <Route path="/skill" element={<SkillAssessment/>}/>
         {/* Define the route for the Shop page */}
         <Route path="/shop" element={<Shop />} />
         {/* Define the route for the Order page */}

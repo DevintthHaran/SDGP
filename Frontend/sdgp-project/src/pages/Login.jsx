@@ -3,6 +3,7 @@ import '../style/Login.css';
 
 const Login = () => {
   return (
+    <div classname='login'>
     <div style={{ padding: '20px' }}>
       <h2>Login</h2>
       <form>
@@ -16,6 +17,7 @@ const Login = () => {
         </div>
         <button type="submit" style={{ marginTop: '10px' }}>Login</button>
       </form>
+    </div>
     </div>
   );
 };

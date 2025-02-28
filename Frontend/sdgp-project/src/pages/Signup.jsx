@@ -3,6 +3,7 @@ import '../style/Signup.css';
 
 const Signup = () => {
   return (
+    <div className='signup'>
     <div style={{ padding: '20px' }}>
       <h2>Signup</h2>
       <form>
@@ -20,6 +21,7 @@ const Signup = () => {
         </div>
         <button type="submit" style={{ marginTop: '10px' }}>Signup</button>
       </form>
+    </div>
     </div>
   );
 };

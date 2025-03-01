@@ -34,6 +34,9 @@ const ContactUs = () => {
           text: "Message sent successfully!",
           icon: "success",
         });
+
+        // Reset the form after successful submission
+        formRef.current.reset();
       } else {
         Swal.fire({
           title: "Error!",

@@ -3,7 +3,7 @@ import '../style/Login.css';
 
 const Login = () => {
   return (
-    <div classname='login'>
+    <div className='login'>
     <div style={{ padding: '20px' }}>
       <h2>Login</h2>
       <form>

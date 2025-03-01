@@ -8,6 +8,7 @@ function HomePage() {
       <Link to="/login">Go to Login</Link>
       <Link to="/signup">Go to Signup</Link>
       <Link to="/skill">Go to Skill Assessment</Link>
+      <Link to="/career">Go to Career Assessment</Link>
       <Link to="/shop">Go to Shop</Link> {/* Link to navigate to Shop page */}
       <Link to="/order">Go to Order</Link>
       <Link to="/subscription">Go to subscription</Link>

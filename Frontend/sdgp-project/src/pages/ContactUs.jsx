@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useRef} from "react";
 import ContactImage from "../Images/ContactImg.jpg"
 import "../style/ContactUs.css";
 import Swal from 'sweetalert2'
 
 const ContactUs = () => {
+
+  const formRef = useRef(null);
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -81,7 +83,7 @@ const ContactUs = () => {
       {/* Right Section - Contact Form */}
       <div className="contact-right">
         <h2>Contact Us</h2>
-        <form onSubmit={onSubmit}>
+        <form  ref={formRef} onSubmit={onSubmit}>
           <div className="input-box">
             <input type="text" placeholder="Name" name="name" required />
           </div>

@@ -138,7 +138,7 @@ const Setting = () => {
       <div className="settings-page">
         {/* <header className="header">
           <h1>Settings</h1>
-        </header> */}
+        </header>  */}
         <main className="main-content">
           {/* Account Settings */}
           <section className="settings-section">
@@ -149,7 +149,9 @@ const Setting = () => {
           </section>
 
           {/* Notification Settings */}
-          <section className="settings-section">
+          <div  className="settings-section">
+          <section className="settings-section-notification">
+
             <h2>Notification Settings</h2>
             <label>
               <input
@@ -188,6 +190,7 @@ const Setting = () => {
               Email Preferences (Subscribe/Unsubscribe)
             </label>
           </section>
+          </div>
 
           {/* Application Preferences */}
           <div className="settings-section">    

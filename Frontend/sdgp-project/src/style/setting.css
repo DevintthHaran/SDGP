@@ -160,13 +160,26 @@
 
 /* appliaction prefererence*/
 
+.settings-section-application{
+  display: flex;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* Stack elements properly */
+  align-items: center; /* Align to the center */
+  width: 100%;
+  max-width: 800px; /* Keep it same as Notification Settings */
+}
 .settings-section-application label {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
+  
+  width: 100%;
   font-size: 16px;
   color: #555;
+  margin-bottom: 10px; /* Adds space between fields */
 }
 
 .settings-section-application select,
@@ -176,7 +189,45 @@
   padding: 5px;
   font-size: 14px;
 }
-.settings-section-application {
+
+
+.settings-section-application select {
+  flex: 1; /* Allows dropdowns to take equal space */
+  max-width: 70%; /* Adjust width so label stays aligned */
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* notification setting css*/
+.settings-section-notification label{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 16px;
+  gap: 10px; /* Adds spacing between label and input */
+  width: 100%; /* Ensures the label and input take full width */
+  color: #555;
+
+}
+
+.settings-section-notification select,
+.settings-section-notification input[type="checkbox"] {
+  margin-right: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 14px;
+}
+
+
+.settings-section-notification select {
+  flex: 1; /* Allows dropdowns to take equal space */
+  max-width: 70%; /* Adjust width so label stays aligned */
+}
+
+.settings-section-notification {
   background: #ffffff;
   padding: 15px;
   border-radius: 8px;
@@ -186,7 +237,7 @@
 
 
 /* .settings-section label {
-  display: flex;
+  display: flex;  
   align-items: center; /* Ensures text and checkbox are aligned */
   /* gap: 10px;  Adds some spacing between the text and checkbox 
   padding: 8px 0;

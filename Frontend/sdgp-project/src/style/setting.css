@@ -1,21 +1,4 @@
-/* body {
-    
-    font-family: "Times New Roman", Times, serif;
-    background-color: #f9f9f9;
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: #333;
-    height: 100%;
-    overflow-x: hidden;
-    /* background-image: url('../assets/Career.png'); /* Adjust the path based on your image location 
-    background-size: cover; /* Ensure the image covers the entire page 
-    background-repeat: no-repeat; /* Prevent the image from repeating 
-    background-attachment: fixed; /* Keep the background fixed while scrolling 
-    background-position: center; /* Center the image 
-  }  */
+
   
   .settings-page {
     width: 100%;
@@ -37,16 +20,10 @@
     text-align: center; /* Center text */
   }
   
-  /* .header {
-    background-color: rgb(192, 230, 246);
-    color: black;
-    padding: 10px;
-    text-align: left;
-    
-  } */
+ 
     /* Default Light Theme */
     body.light {
-      background-color: #f3ebeb;
+      background-color: #c8e4f2;
       color: #333;
     }
   
@@ -65,52 +42,10 @@
     padding: 20px;
   }
   
-  .settings-section {
+.settings-section {
     margin-bottom: 20px;
-  }
+}
   
-  /*.settings-section h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #5b6d81;
-  }*/
-  
-  /*.settings-item {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }*/
-  
-  /*.settings-item label {
-    font-size: 16px;
-  }/*
-  
-  .settings-item input[type="checkbox"],
-  .settings-item select {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .save-button {
-    background-color: #003366;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-  }
-  
-  .save-button:hover {
-    background-color: #357ABD;
-  }
-
-
-  /**/
 
 
 /* Header Styling */

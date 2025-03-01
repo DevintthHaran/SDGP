@@ -16,6 +16,7 @@ function HomePage() {
       <Link to="/chat">Go to Chat</Link>
       <Link to="/setting">Go to setting page</Link>
       <Link to="/feedback">Go to feedback page</Link>
+      <Link to="/contactus">Go to contact us page</Link>
     </div>
   );
 }

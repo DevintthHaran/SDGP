@@ -7,6 +7,7 @@ import Subscription from './pages/Subscription';
 import Meeting from './pages/Meeting';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import ContactUs from './pages/ContactUs';
 
 import Question from './pages/Question';
 import Chat from './pages/Chat';
@@ -50,6 +51,7 @@ function App() {
 
         <Route path='/setting' element={<Setting/>}/>
         <Route path='/feedback' element={<Feedback/>}/>
+        <Route path='/contactus' element={<ContactUs/>}/>
 
         {/* Define the route for the Specific Meeting pages */}
         <Route path="/it-meeting" element={<ITMeeting/>} />

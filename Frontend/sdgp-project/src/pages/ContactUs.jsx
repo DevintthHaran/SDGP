@@ -1,5 +1,6 @@
 import React from "react";
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import ContactImage from "../Images/ContactImg.jpg"
 import "../style/ContactUs.css";
 import Swal from 'sweetalert2'
@@ -93,6 +94,8 @@ const ContactUs = () => {
           <div className="input-box">
             <textarea placeholder="Message" name="message" required></textarea>
 =======
+=======
+>>>>>>> Stashed changes
 import ContactImage from "../assets/Contactus.png";
 import "./ContactUs.css";
 
@@ -112,12 +115,21 @@ const ContactUs = () => {
           </div>
           <div className="input-box">
             <textarea placeholder="Message" required></textarea>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
           </div>
           <button type="submit">Send Message</button>
         </form>
       </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+      <div className="contact-image">
+        <img src={ContactImage} alt="Contact Illustration" />
+      </div>
+>>>>>>> Stashed changes
 =======
       <div className="contact-image">
         <img src={ContactImage} alt="Contact Illustration" />
@@ -128,6 +140,7 @@ const ContactUs = () => {
 };
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     
 
 
@@ -135,6 +148,8 @@ const ContactUs = () => {
 
   
   
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 export default ContactUs;

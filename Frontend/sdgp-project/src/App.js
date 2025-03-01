@@ -15,6 +15,7 @@ import Setting from './pages/Setting';
 import Feedback from './pages/Feedback';
 
 import SkillAssessment from './pages/SkillAssessment';
+import CareerAssessment from './pages/CareerAssessment';
 
 
 //Import Specific  Catergory Meeting Pages
@@ -34,6 +35,7 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/skill" element={<SkillAssessment/>}/>
+        <Route path="/career" element={<CareerAssessment/>}/>
         {/* Define the route for the Shop page */}
         <Route path="/shop" element={<Shop />} />
         {/* Define the route for the Order page */}

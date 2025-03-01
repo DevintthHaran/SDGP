@@ -27,7 +27,7 @@ const SkillAssessment = () => {
   };
 
   return (
-    <div className="App">
+    <div className="SkillAssessment">
    
       {step === 0 && <WelcomeSection onStart={handleStart} />}
       {step === 1 && <SkillCategories onNext={handleCategorySelect} />}

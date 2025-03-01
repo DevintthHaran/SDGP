@@ -57,24 +57,24 @@ const ContactUs = () => {
         <img src={ContactImage} alt="Contact" className="contact-image" />
         <div className="contact-details">
           <div className="info-box">
-            <span className="icon">📍</span>
+            <span className="icon">✉️</span>
             <div>
-              <h3>Location</h3>
-              <p>123 Business St, NY</p>
+              <h4>Email</h4>
+              <p>professional.odyssey.lk@gmail.com</p>
             </div>
           </div>
           <div className="info-box">
             <span className="icon">📞</span>
             <div>
-              <h3>Phone</h3>
-              <p>+1 (555) 123-4567</p>
+              <h4>Phone</h4>
+              <p>+91 (555) 123-4567</p>
             </div>
           </div>
           <div className="info-box">
-            <span className="icon">⏰</span>
+            <span className="icon">🔗</span>
             <div>
-              <h3>Hours</h3>
-              <p>Mon - Fri: 9AM - 5PM</p>
+              <h4>LinkedIn</h4>
+              <p>www.linkedin.com/in/professional-odyssey</p>
             </div>
           </div>
         </div>

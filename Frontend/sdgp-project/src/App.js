@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Splash from './pages/Splash';
 import Home from './pages/Home'; // Import the HomePage
 import Shop from './pages/Shop';         // Import the Shop page
 import Order from './pages/Order';
@@ -31,6 +32,7 @@ function App() {
       <Routes>
         
         {/* Define the route for the homepage */}
+        <Route path="/" element={<Splash />} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>

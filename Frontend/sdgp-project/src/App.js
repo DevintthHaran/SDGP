@@ -12,6 +12,7 @@ import Profile from './pages/Profile';
 import Question from './pages/Question';
 import Chat from './pages/Chat';
 
+import JobApply from './pages/JobApply';
 import Admin from './pages/Admin';
 
 import Setting from './pages/Setting';
@@ -34,6 +35,7 @@ function App() {
       <Routes>
         
         {/* Define the route for the homepage */}
+        <Route path="/" element={<JobApply />} />
         <Route path="/" element={<Admin />} />
         <Route path="/" element={<Splash />} />
         <Route path="/" element={<Home />} />

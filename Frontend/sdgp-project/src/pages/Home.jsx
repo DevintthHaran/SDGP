@@ -1,7 +1,7 @@
 import React from 'react';
 import '../style/Home.css';
-// import Header from '../pages/Header.jsx';
-// import Footer from '../pages/Footer.jsx';
+import Header from '../components/Header.jsx';
+// import Footer from '../components/Footer.jsx';
 import img1 from '../Images/img1.png';
 import img2 from '../Images/img2.png';
 import img3 from '../Images/img3.png';
@@ -12,7 +12,7 @@ import video2 from '../Images/video2.mp4';
 function Home() {
     return (
         <div>
-            {/* <Header /> */}
+            <Header />
             <div className="Homecontainer">
                 <div id="grid-container1">
                     <div className="box" id="box1">

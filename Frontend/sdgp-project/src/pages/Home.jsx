@@ -1,7 +1,7 @@
 import React from 'react';
 import '../style/Home.css';
 import Header from '../components/Header.jsx';
-import Footer from '../components/Footer.jsx';
+// import Footer from '../components/Footer.jsx';
 import img1 from '../Images/img1.png';
 import img2 from '../Images/img2.png';
 import img3 from '../Images/img3.png';
@@ -92,7 +92,7 @@ function Home() {
                     <div className="sign-up-button-div" ><a className="sign-up-button" href="../Home/Home.html"><span>Sign up</span></a></div>
                 </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 };

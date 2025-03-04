@@ -36,14 +36,14 @@ function App() {
         
         {/* Define the route for the homepage */}  
         <Route path="/" element={<Splash />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/skill" element={<SkillAssessment/>}/>
         <Route path="/career" element={<CareerAssessment/>}/>
         {/* Define the Pages related to counseling */}
-        <Route path="/" element={<JobApply />} />
-        <Route path="/" element={<Admin />} />
+        <Route path="/job" element={<JobApply />} />
+        <Route path="/admin" element={<Admin />} />
         {/* Define the route for the Shop page */}
         <Route path="/shop" element={<Shop />} />
         {/* Define the route for the Order page */}

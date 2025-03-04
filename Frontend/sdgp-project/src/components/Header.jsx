@@ -11,15 +11,15 @@ const Header = () => {
             <h2><b>ProfessionalOdyssey</b></h2>
         </div>
         <ul>
-          <li><a href="./pages/Home.jsx">Home</a></li>
-          <li><a href="./pages/Shop.jsx">Shop</a></li>
-          <li><a href="./pages/">Counseling</a></li>
-          <li><a href="./pages/">Skill Assessment</a></li>
-          <li><a href="./pages/">Interview simulation</a></li>
-          <li><a href="./pages/">Job Market Trend</a></li>
-          <li><a href="./pages/">Career Report</a></li>
-          <li><a href="./pages/">Profile</a></li>
-          <li><a href=""><img src="https://img.icons8.com/?size=100&id=84040&format=png&color=000000" alt="Settings icon" /></a></li>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/shop">Shop</a></li>
+          <li><a href="/meeting">Counseling</a></li>
+          <li><a href="/skill">Skill Assessment</a></li>
+          <li><a href="/chat">Interview simulation</a></li>
+          <li><a href="/job">Job Market Trend</a></li>
+          <li><a href="/career">Career Report</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/setting"><img src="https://img.icons8.com/?size=100&id=84040&format=png&color=000000" alt="Settings icon" /></a></li>
         </ul>
       </nav>
     </header>

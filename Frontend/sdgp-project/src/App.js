@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage'; // Import the HomePage
+import Splash from './pages/Splash';
+import Home from './pages/Home'; // Import the HomePage
 import Shop from './pages/Shop';         // Import the Shop page
 import Order from './pages/Order';
 import Subscription from './pages/Subscription';
@@ -10,6 +11,9 @@ import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import Question from './pages/Question';
 import Chat from './pages/Chat';
+
+import JobApply from './pages/JobApply';
+import Admin from './pages/Admin';
 
 import Setting from './pages/Setting';
 import Feedback from './pages/Feedback';
@@ -30,12 +34,16 @@ function App() {
     <Router>
       <Routes>
         
-        {/* Define the route for the homepage */}
-        <Route path="/" element={<HomePage />} />
+        {/* Define the route for the homepage */}  
+        <Route path="/" element={<Splash />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/skill" element={<SkillAssessment/>}/>
         <Route path="/career" element={<CareerAssessment/>}/>
+        {/* Define the Pages related to counseling */}
+        <Route path="/" element={<JobApply />} />
+        <Route path="/" element={<Admin />} />
         {/* Define the route for the Shop page */}
         <Route path="/shop" element={<Shop />} />
         {/* Define the route for the Order page */}

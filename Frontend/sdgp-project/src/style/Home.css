@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjord+One&display=swap');
+
+.Homecontainer {
+  height: 450%;
+  background-color: #E3E9FF;
+  margin: 0;
+  padding: 55px;
+}
+
+#grid-container2 {
+    display: grid;
+    grid-template-columns: 1fr; /* 2 equal columns */
+    grid-template-rows: 1fr ; /* 3 equal rows */
+    margin: 20px;
+}
+
+#grid-container1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 equal columns */
+    grid-template-rows: auto; /* 3 equal rows */
+    gap: 2px; /* Space between rows and columns */
+}
+
+.sign-up-button-div {
+    display: flex;
+    justify-content: center;
+}
+  
+.box {
+  background-color: #E3E9FF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 30px 10px 0px 0px;
+  
+}
+
+.pageBreakLine {
+  border: 0;
+  width: 195%;
+  height: 0%;
+  border: 1px solid #0022ff; /* Adjust color and thickness as needed */
+  margin: 10px 10px 10px 25px; /* Adjust the spacing around the line */
+}
+
+#box6 ul li {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  margin-top: 20px;
+}
+
+.Homecontainer h1 {
+  font-size: 35px;
+  color: rgb(0, 0, 0);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+}
+
+.Homecontainer h2 {
+  font-size: 20px;
+}
+
+.box h2 {
+  font-size: 30px;
+  color: rgb(62, 0, 128);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.Homecontainer h3 {
+  margin-top: 20px;
+  font-size: 20px;
+
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+#simplified-goal {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+  font-size: 20px;
+  color: rgb(1, 35, 85);
+}
+
+.Homecontainer p {
+  margin: 5px;
+}
+
+#box1 {
+  background-color: white;
+  align-items: center;
+  border-radius: 50px;
+  min-height: 500px;
+}
+
+#box2 {
+  min-height: 500px;
+}
+
+#box3 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0;
+  }
+
+#box3 p {
+    text-align: justify;
+}
+
+.box4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+}
+
+#box4-1 {
+  border: none;
+  height: 300px;
+}
+
+#img1 {
+  width: 50%;
+  height: auto;
+}
+
+#img2 {
+  width: 50%;
+  height: auto;
+}
+
+#img1 {
+  transition: transform 0.3s ease;
+}
+
+#img1:hover {
+  transform: scale(1.2);
+}
+
+#img2 {
+  transition: transform 0.3s ease;
+}
+
+#img2:hover {
+  transform: scale(1.2);
+}
+
+#img3 {
+  transition: transform 0.3s ease;
+  width: 50%;
+  height: auto;
+}
+
+#img3:hover {
+  transform: scale(1.2);
+}
+
+#box2, #box5 {
+  text-align: center;
+}
+
+#box6 {
+    margin-left: 20px;
+}
+
+#box5 {
+  background-color: white;
+  align-items: center;
+  border-radius: 50px;
+  min-height: 500px;
+  margin-left: 10px;
+}
+
+#img4 {
+  transition: transform 0.3s ease;
+  width: 50%;
+  
+}
+
+#img4:hover {
+  transform: scale(1.2);
+}
+
+
+.homepage-buttons {
+  background-color: #0084ff;
+  border-radius: 20px;
+  width: 35%;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transitions for transform, shadow, and background color */
+}
+
+.homepage-buttons span {
+  background-color: aquamarine;
+  width: 86%;
+  border-radius: 20px;
+  height: 100%;
+  padding: 3px 3px 3px 0px;
+  text-align: center;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition for transform and background color */
+}
+
+.homepage-buttons:hover {
+  display: flex;
+  justify-content: flex-end;
+  text-align: start;
+  filter: drop-shadow(5px 5px 2px rgb(0, 119, 255));
+  transform: scale(1.1);
+  background-color: #0066cc; /* Slight color change on hover for smooth transition */
+}
+
+.sign-up-button {
+    
+    border-radius: 20px;
+    background-color: green;
+    width: 10%;
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+    color: rgb(255, 255, 255);
+    transition: transform 0.3s ease, filter 0.3s ease, background-color 0.3s ease, border 0.3s ease; /* Smooth transitions for all effects */
+}
+
+.sign-up-button:hover {
+  filter: drop-shadow(15px 0px 15px rgb(4, 255, 0));
+  border: 3px solid black;
+  transform: scale(1.05); /* Smooth scaling */
+  background-color: #4CAF50; /* Slight background color change */
+}
+
+#box6 ul li span {
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+}
+
+

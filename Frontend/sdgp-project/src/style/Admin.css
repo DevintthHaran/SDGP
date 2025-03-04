@@ -1,0 +1,163 @@
+/* Admin Dashboard Container */
+.Admin {
+    background-color: #E3E9FF;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+}
+
+.admin-dashboard {
+    padding: 20px;
+    background-color: #c4d1fe;
+    min-width: 1500px; /* Limits width */
+    margin: 50px 20px 0 20px; /* Centers the content */
+  }
+  
+  /* Titles */
+  .dashboard-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .dashboard-subtitle {
+    color: #6c757d;
+    margin-bottom: 20px;
+  }
+  
+  /* Stats Section */
+  .stats-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .stat-box {
+    flex: 1;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .stat-box h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .stat-box p {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  
+  /* Main Layout */
+  .admin-main-container {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+  
+  /* Candidates List - Left Side (75%) */
+  .candidates-container {
+    flex: 0.75;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Candidate Details - Right Side (25%) */
+  .candidate-details {
+    flex: 0.25;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Candidate Card */
+  .candidate-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .candidate-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .profile-icon {
+    font-size: 24px;
+  }
+  
+  .status {
+    font-size: 14px;
+    padding: 3px 8px;
+    border-radius: 5px;
+  }
+  
+  .pending {
+    background-color: #ffc107;
+    color: #fff;
+  }
+  
+  /* Buttons */
+  .view-cv,
+  .approve,
+  .reject {
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .view-cv {
+    background: none;
+    font-size: 16px;
+  }
+  
+  .approve {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .reject {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  /* Hover Effects */
+  .view-cv:hover {
+    color: #007bff;
+    text-decoration: underline;
+  }
+  
+  .approve:hover {
+    background-color: #00ff37;
+    color: #000000;
+  }
+  
+  .reject:hover {
+    background-color: #ff0000;
+    color: #000000;
+  }
+  
+  /* Click Effects */
+  .view-cv:active,
+  .approve:active,
+  .reject:active {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  

@@ -1,0 +1,196 @@
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #7480ea; /* Change to your preferred background color */
+    color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    opacity: 1;
+    animation: fadeOut 3s forwards;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Adjust the gap between the logo and the title */
+  }
+
+  .app-logo-sign {
+    display: flex;
+  }
+  
+  .splash-logo {
+    animation: fadeIn 2s ease-in-out;
+    width: 65px; /* Adjust logo size */
+    height: auto;
+    margin-bottom: 30px;
+    border-radius: 50%;
+    margin-right: 2px;
+  }
+  
+  .header h1 {
+    font-weight: bold;
+    color: black;
+    animation: fadeIn 2s ease-in-out;
+    margin-bottom: 0;
+  }
+  
+  
+  .main-content {
+    padding: 20px;
+  }
+  
+  :root {
+    --bar-gap: 400px; /* Customizable gap between bars */
+    --bar-width: 30px; /* Default bar width */
+  }
+
+  
+  .bar {
+    animation: growBar 1s ease-out forwards;
+    background-color: #d4d4d4;
+    margin-left: var(--bar-gap); /* Use the gap variable */
+    width: var(--bar-width); /* Use the width variable */
+  }
+  
+  .bar1 {
+    animation-delay: 0.2s;
+  }
+  
+  .bar2 {
+    animation-delay: 0.4s;
+  }
+  
+  .bar3 {
+    animation-delay: 0.6s;
+  }
+  
+  .bar4 {
+    animation-delay: 0.8s;
+  }
+  
+  @keyframes growBar {
+    from {
+      height: 0;
+      y: 180;
+    }
+    to {
+      height: calc(180px - var(--bar-height));
+      y: var(--bar-y);
+    }
+  }
+  
+  /* Bar Heights and Positions (Set custom properties for animation) */
+  .bar1 {
+    --bar-height: 150px; /* Bar A height */
+    --bar-x: 50px;     /* Bar A y position */
+    --bar-y: 100px; 
+    --bar-width: 40px;
+    --bar-gap: 255px;
+  }
+  
+  .bar2 {
+    --bar-height: 120px; /* Bar B height */
+    --bar-x: 50px;       /* Bar B y position */
+    --bar-y: 70px; 
+    --bar-width: 60px;
+    
+  }
+  
+  .bar3 {
+    --bar-height: 100px; /* Bar C height */
+    --bar-x: 50px;       /* Bar C y position */
+    --bar-y: 50px; 
+    --bar-width: 30px;
+     /* Custom gap below Bar 2 */
+  }
+  
+  .bar4 {
+    --bar-height: 100px; /* Bar C height */
+    --bar-x: 50px;       /* Bar C y position */
+    --bar-y: 50px; 
+    --bar-width: 30px;
+     /* Custom gap below Bar 2 */
+  }
+  
+  .bar5 {
+    --bar-height: 80px; /* Bar C height */
+    --bar-x: 50px;       /* Bar C y position */
+    --bar-y: 30px; 
+    --bar-width: 30px;
+  }
+  
+  .splash-screen  h1 {
+    font-weight: bold;
+    color: black;
+    animation: fadeIn 2s ease-in-out;
+    margin-bottom: 20px;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .bar {
+    animation: growBar 1s ease-out forwards;
+    background-color: #d4d4d4;
+    margin-left: var(--bar-gap); /* Use the gap variable */
+    width: var(--bar-width); /* Use the width variable */
+    position: relative; /* Required for the slant effect */
+    clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 100%); /* Default slant */
+  }
+  
+  /* Bar Heights and Positions (Set custom properties for animation) */
+  .bar1 {
+    --bar-height: 150px; /* Bar A height */
+    --bar-x: 50px;       /* Bar A y position */
+    --bar-y: 100px; 
+    --bar-width: 40px;
+    --bar-gap: 255px;
+    clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%); /* Opposite slant */
+  }
+  
+  .bar2 {
+    --bar-height: 120px; /* Bar B height */
+    --bar-x: 50px;       /* Bar B y position */
+    --bar-y: 70px; 
+    --bar-width: 60px;
+    clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%); /* Opposite slant */
+  }
+  
+  .bar3 {
+    --bar-height: 120px; /* Bar C height */
+    --bar-x: 190px;       /* Bar C y position */
+    --bar-y: 50px; 
+    --bar-width: 70px;
+    clip-path: polygon(0 100%, 0% 100%, 0% 100%, 0% 100%); /* Opposite slant */
+  }
+  
+  .bar4 {
+    --bar-height: 100px; /* Bar C height */
+    --bar-x: 50px;       /* Bar C y position */
+    --bar-y: 50px; 
+    --bar-width: 30px;
+    clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%); /* Opposite slant */
+  }
+  
+  .bar5 {
+    --bar-height: 80px; /* Bar D height */
+    --bar-x: 50px;      /* Bar D y position */
+    --bar-y: 30px; 
+    --bar-width: 30px;
+    clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%); /* Opposite slant */
+  }
+  

@@ -1,33 +1,98 @@
-/* header.css */
-header {
+.navbar {
+    background-color: rgb(129, 145, 234);
+    padding: 10px 15px;
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
-    z-index: 100;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    left: 0;
+    transition: background-color 0.3s ease;
 }
-.nav {
+
+.logo-and-text {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.logo-and-text h2 {
+    margin-top: 4px;
+}
+
+.logo-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-left: 20px;
+    transition: transform 0.3s ease; /* Keep logo scaling transition */
+}
+
+.navbar ul {
+    list-style-type: none;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px 0;
+    margin: 0;
+    padding: 0;
 }
-.logo {
-    font-size: 1.1rem;
-    font-weight: 400;
+
+.navbar ul li {
+    margin-left: 20px;
+    display: inline-flex;
+    position: relative;
 }
-#cart-icon {
-    font-size: 1.8rem;
-    cursor: pointer;
+
+.navbar ul li a {
+    text-decoration: none;
+    font-size: 13px;
+    color: rgb(1, 20, 99);
+    font-weight: bold;
+    transition: color 0.4s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 0; /* Add some vertical padding for a cleaner hover effect */
 }
-@media (max-width: 1000px) {
-    .nav {
-        padding: 15px;
-    }
+
+.navbar ul li a:hover {
+    color: rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(255, 255, 255); /* Underline effect on hover */
 }
-@media (max-width: 750px) {
-    .nav {
-        padding: 11px;
-    }
+
+.navbar ul li a:active {
+    color: rgb(0, 0, 0); /* Green color for active state */
+    border-bottom: 2px solid rgb(0, 170, 255); /* Green underline when clicked */
+}
+
+.navbar ul li a::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background-color: rgb(255, 255, 255); /* White line after hover */
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar ul li a:hover::after {
+    transform: scaleX(1); /* Show the white line after hover */
+}
+
+.navbar ul li a:active::after {
+    transform: scaleX(1); /* Keep the white line visible when clicked */
+    background-color: rgb(0, 128, 0); /* Green color after click */
+}
+
+.navbar ul li a img {
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+}
+
+.navbar ul li a:hover img {
+    transform: scale(1.1); /* Slightly scale the icon when hovering */
+}
+
+.navbar:hover .logo-img {
+    transform: scale(1.05); /* Slightly scale the logo */
 }

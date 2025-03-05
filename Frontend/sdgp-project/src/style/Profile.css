@@ -107,7 +107,7 @@
   }
   
 .profile .theme-3-box {
-    background-color: #88dbc8;
+    background-color: #bddb88;
   }
   
 .profile .selected {
@@ -122,7 +122,7 @@
 .profile .profile-tabs {
     display: flex;
     justify-content: space-around;
-    background-color: #dea6af;
+    background-color: #4edeae;
     padding:  0;
   }
   

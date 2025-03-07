@@ -10,6 +10,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.json.JSONObject;
 import org.json.JSONArray;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.Random;
 
 
 @Service
@@ -66,9 +68,28 @@ public class QuestionService {
     }
 
     public String alternateQuestion(String role) {
-        String prompt = "Ask a direct, new and different interview question for a " + role + " role, without any extra text or formatting.";;
+        String[] categories = {"Technical Skills", "IQ Test", "Soft Skills", "Project Experience", "Industry Knowledge"};
+        Random random = new Random();
+        String randomCategory = categories[random.nextInt(categories.length)];
+        String prompt = "Generate a different interview question for a "+ role + "role from the" +randomCategory+ "category. Keep the question direct without extra text.";
         String requestBody = String.format(
-                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a professional interviewer..\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
+                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a professional interviewer conducting realistic job interviews. Your task is to generate **one interview question at a time** based on the following categories:" +
+                        " " +
+                        "1. Technical Skills  " +
+                        "2. IQ Test  " +
+                        "3. Soft Skills  " +
+                        "4. Project Experience  " +
+                        "5. Industry Knowledge  " +
+                        " " +
+                        "**Rules to Follow Strictly:**" +
+                        "- Ask only one question without extra text or greetings." +
+                        "- Randomly select one category at a time." +
+                        "- Never ask the same category twice in a row." +
+                        "- Maintain balance: 50%% Technical + 50%% Non-Technical." +
+                        "- Alternate between technical and non-technical categories in every question." +
+                        "- If the user's role is IT-related, prioritize Technical Skills + Project Experience more." +
+                        "- If the user's role is Business-related, prioritize Soft Skills + Industry Knowledge more." +
+                        "- Questions must feel **human-like** without robotic repetition.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
                 prompt
         );
 

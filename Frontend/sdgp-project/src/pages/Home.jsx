@@ -29,25 +29,25 @@ function Home() {
                         <h2>What We Offer</h2>
                         <h3>Personalized Career Guidance</h3>
                         <p>Explore career paths tailored to your unique strengths, interests, and aspirations.</p>
-                        <a className="homepage-buttons" href="../Home/Home.html"><span>Check out now</span></a>
+                        <a className="homepage-buttons" href="./Admin.jsx"><span>Check out now</span></a>
                         <h3>One on One Counseling</h3>
                         <p>Connect with expert career counselors to make informed decisions about your future.</p>
-                        <a className="homepage-buttons" href="../Home/Home.html"><span>Check out now</span></a>
+                        <a className="homepage-buttons" href="./Admin"><span>Check out now</span></a>
                         <h3>Job Suggestions</h3>
                         <p>Receive personalized job recommendations based on your skills, interests, and market demand. Find the perfect role that aligns with your career goals.</p>
-                        <a className="homepage-buttons" href="../Home/Home.html"><span>Check out now</span></a>
+                        <a className="homepage-buttons" href="./Admin"><span>Check out now</span></a>
                         <h3>Interview Simulations</h3>
                         <p>Practice with AI-powered 3D interview simulations and gain confidence for real-world interviews.</p>
-                        <a className="homepage-buttons" href="../Home/Home.html"><span>Check out now</span></a>
+                        <a className="homepage-buttons" href="./Admin"><span>Check out now</span></a>
                         <h3>Real-Time Market Trends</h3>
                         <p>Stay ahead of the curve with up-to-date insights into the job market. Explore trending careers, in-demand skills, and emerging opportunities in Sri Lanka and beyond.</p>
-                        <a className="homepage-buttons" href="../Home/Home.html"><span>Check out now</span></a>
+                        <a className="homepage-buttons" href="./Admin"><span>Check out now</span></a>
                         <h3>Skill Assessment</h3>                       
                         <p>Identify your strengths and areas for improvement with detailed skill evaluations. Our assessments are designed to match your abilities with the right career opportunities.</p>
-                        <a className="homepage-buttons" href="../Home/Home.html"><span>Check out now</span></a>
+                        <a className="homepage-buttons" href="./Admin"><span>Check out now</span></a>
                         <h3>Comprehensive Skill Analysis</h3>
                         <p>Gain a detailed breakdown of your skills, highlighting strengths and areas for improvement.</p>  
-                        <a className="homepage-buttons" href="../Home/Home.html"><span>Check out now</span></a>
+                        <a className="homepage-buttons" href="./JobApply.jsx"><span>Check out now</span></a>
                     </div>
                     <div className="box" id="box4">
                         <div className="box4" id="box4-1">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Splash from './pages/Splash';
-import Home from './pages/Home'; // Import the HomePage
+import Home from './pages/Home';
 import Shop from './pages/Shop';         // Import the Shop page
 import Order from './pages/Order';
 import Subscription from './pages/Subscription';
@@ -33,16 +33,16 @@ function App() {
   return (
     <Router>
       <Routes>
-        
+        <Route path="/job" element={<JobApply />} />
         {/* Define the route for the homepage */}  
-        <Route path="/" element={<Splash />} />
+        <Route path="/Splash" element={<Splash />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/skill" element={<SkillAssessment/>}/>
         <Route path="/career" element={<CareerAssessment/>}/>
         {/* Define the Pages related to counseling */}
-        <Route path="/job" element={<JobApply />} />
+        
         <Route path="/admin" element={<Admin />} />
         {/* Define the route for the Shop page */}
         <Route path="/shop" element={<Shop />} />

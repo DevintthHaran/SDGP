@@ -4,29 +4,6 @@ import NowHiring from '../Images/NowHiring.png';
 import Header from '../components/Header.jsx';
 
 function JobApply() {
-    const [file, setFile] = useState(null);
-    const [errorMessage, setErrorMessage] = useState('');
-
-    const handleFileChange = (e) => {
-        const uploadedFile = e.target.files[0];
-        if (uploadedFile && uploadedFile.size <= 10 * 1024 * 1024) { // 10MB limit
-            setFile(uploadedFile);
-            setErrorMessage('');
-        } else {
-            setFile(null);
-            setErrorMessage('File must be less than 10MB.');
-        }
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!file) {
-            setErrorMessage('Please upload a valid CV (less than 10MB).');
-            return;
-        }
-        alert('Form submitted successfully!');
-        // Add further submission logic here (e.g., API calls)
-    };
 
     return (
         <div className='JobApplication'>

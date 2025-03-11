@@ -29,4 +29,8 @@ public class CareerReportController {
     public String potentialGrowth(@RequestParam List<String> questions, @RequestParam List<String> answers) {
         return CareerReportService.potentialGrowth(questions, answers);
     }
+    @GetMapping("/career-rating")
+    public List<Integer> careerRating(@RequestParam List<String> questions, @RequestParam List<String> answers) {
+        return CareerReportService.careerRate(questions, answers);
+    }
 }

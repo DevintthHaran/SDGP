@@ -169,4 +169,61 @@ public class CareerReportService {
             return "Error generating report.";
         }
     }
+    public List<Integer> careerRate(List<String> questions, List<String> answers) {
+        // Validate lists
+        if (questions == null || answers == null || questions.size() != answers.size()) {
+            throw new IllegalArgumentException("Mismatch in question and answer list sizes.");
+        }
+
+        // Prepare input for OpenAI
+        StringBuilder userContent = new StringBuilder();
+        userContent.append("Based on the user's skill and career assessment test responses, provide a percentage rating (0-100) for the following categories: Skill, Strength, Weakness, Values, Interests, and Personality Traits. Output only six integers in order, separated by commas, without any extra text. ");
+
+        for (int i = 0; i < questions.size(); i++) {
+            userContent.append("Q").append(i + 1).append(": ").append(questions.get(i)).append(" ");
+            userContent.append("Answer: ").append(answers.get(i)).append("    ");
+        }
+
+        // Construct JSON request body
+        String requestBody = String.format(
+                "{ \"model\": \"gpt-4o-mini\", \"messages\": [" +
+                        "{\"role\": \"system\", \"content\": \"You are an AI career advisor. Your task is to analyze the user's skill and career assessment responses and generate percentage ratings (0-100) for the following categories: Skill, Strength, Weakness, Values, Interests, and Personality Traits. Only return six comma-separated integers in order without any explanation, extra text, or formatting. Example output: 90,50,30,80,70,75.\"}," +
+                        "{\"role\": \"user\", \"content\": \"%s\"} " +
+                        "], \"max_tokens\": 20 }", // Ensuring a short response to avoid extra text
+                userContent.toString()
+        );
+
+        // Prepare HTTP headers
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + apiKey);
+        headers.set("Content-Type", "application/json");
+
+        // Send HTTP request
+        HttpEntity<String> entity = new HttpEntity<>(requestBody, headers);
+        ResponseEntity<String> response = restTemplate.exchange(API_URL, HttpMethod.POST, entity, String.class);
+
+        // Parse response JSON manually
+        try {
+            JSONObject root = new JSONObject(response.getBody());
+            JSONArray choicesArray = root.getJSONArray("choices");
+            JSONObject firstChoice = choicesArray.getJSONObject(0);
+            JSONObject message = firstChoice.getJSONObject("message");
+
+            // Extract AI-generated numeric ratings
+            String content = message.getString("content").trim();
+
+            // Convert response into a List of Integers
+            List<Integer> ratings = new ArrayList<>();
+            for (String num : content.split(",")) {
+                ratings.add(Integer.parseInt(num.trim()));
+            }
+
+            return ratings;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return List.of(0, 0, 0, 0, 0, 0); // Return default values in case of an error
+        }
+    }
+
 }

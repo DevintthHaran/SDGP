@@ -19,6 +19,7 @@ const Header = () => {
           <li><a href="/job">Job Market Trend</a></li>
           <li><a href="/career">Career Report</a></li>
           <li><a href="/profile">Profile</a></li>
+          <li><a href="/admin">Admin</a></li>
           <li><a href="/setting"><img src="https://img.icons8.com/?size=100&id=84040&format=png&color=000000" alt="Settings icon" /></a></li>
         </ul>
       </nav>

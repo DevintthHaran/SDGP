@@ -4,6 +4,64 @@ import NowHiring from '../Images/NowHiring.png';
 import Header from '../components/Header.jsx';
 
 function JobApply() {
+    const [file, setFile] = useState(null);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [contactNumber, setContactNumber] = useState('');
+    const [contactError, setContactError] = useState('');
+    const [email, setEmail] = useState('');
+    const [emailError, setEmailError] = useState('');
+
+    const handleFileChange = (e) => {
+        const uploadedFile = e.target.files[0];
+        const allowedFormats = ['pdf', 'docx', 'txt'];
+        const fileExtension = uploadedFile?.name.split('.').pop().toLowerCase();
+
+        if (uploadedFile && uploadedFile.size <= 10 * 1024 * 1024 && allowedFormats.includes(fileExtension)) {
+            setFile(uploadedFile);
+            setErrorMessage('');
+        } else {
+            setFile(null);
+            setErrorMessage('Invalid file format or size. Please upload PDF, DOCX, or TXT (max 10MB).');
+        }
+    };
+
+    const handleContactChange = (e) => {
+        const value = e.target.value;
+        setContactNumber(value);
+        if (/^\d{10}$/.test(value)) {
+            setContactError('');
+        } else {
+            setContactError('Enter a valid 10-digit phone number.');
+        }
+    };
+
+    const handleEmailChange = (e) => {
+        const value = e.target.value;
+        setEmail(value);
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+            setEmailError('');
+        } else {
+            setEmailError('Enter a valid email address.');
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!file) {
+            setErrorMessage('Please upload a valid CV (PDF, DOCX, or TXT less than 10MB).');
+            return;
+        }
+        if (!/^\d{10}$/.test(contactNumber)) {
+            setContactError('Enter a valid 10-digit phone number.');
+            return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            setEmailError('Enter a valid email address.');
+            return;
+        }
+        alert('Form submitted successfully!');
+        // Add API call logic here
+    };
 
     return (
         <div className='JobApplication'>
@@ -64,29 +122,40 @@ function JobApply() {
 
                     <div className="input-field">
                         <label>Email Address</label>
-                        <input type="email" placeholder="Your E-mail address" required />
+                        <input
+                            type="email"
+                            placeholder="Your E-mail address"
+                            value={email}
+                            onChange={handleEmailChange}
+                            required
+                        />
+                        {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
                     </div>
 
-                    <label>Position You are applying for</label>
-                    <div className="job-positions">
-                        {[
-                            "School Student Pathway Selection",
-                            "Career Advisor In All Fields",
-                            "Career Advisor For IT Field",
-                            "Career Advisor For Commerce Field",
-                            "Career Advisor For Science Field",
-                            "Career Advisor For Maths Field",
-                            "Career Advisor For Arts Field",
-                        ].map((position, index) => (
-                            <button
-                                type="button"
-                                key={index}
-                                className="job-button"
-                                onClick={(e) => e.target.classList.toggle("selected")}
-                            >
-                                {position}
-                            </button>
-                        ))}
+                    <div className="input-field">
+                        <label>Contact Number</label>
+                        <input
+                            type="tel"
+                            placeholder="Your 10-digit phone number"
+                            value={contactNumber}
+                            onChange={handleContactChange}
+                            required
+                        />
+                        {contactError && <p style={{ color: 'red' }}>{contactError}</p>}
+                    </div>
+
+                    <div className="input-field">
+                        <label>Position Applying For</label>
+                        <select name="position" required>
+                            <option value="">Select Position</option>
+                            <option value="School Student Pathway Selection">School Student Pathway Selection</option>
+                            <option value="Career Advisor In All Fields">Career Advisor In All Fields</option>
+                            <option value="Career Advisor For IT Field">Career Advisor For IT Field</option>
+                            <option value="Career Advisor For Commerce Field">Career Advisor For Commerce Field</option>
+                            <option value="Career Advisor For Science Field">Career Advisor For Science Field</option>
+                            <option value="Career Advisor For Maths Field">Career Advisor For Maths Field</option>
+                            <option value="Career Advisor For Arts Field">Career Advisor For Arts Field</option>
+                        </select>
                     </div>
 
                     <div className="file-upload">

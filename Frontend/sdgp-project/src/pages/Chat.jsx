@@ -106,7 +106,7 @@ function Chat() {
         let generatedText="";
     
         if (initial) {
-          const response = await fetch(`http://localhost:8080/generate-question?role=${userInput}`);
+          const response = await fetch(`http://localhost:8080/generate-question?role=${encodeURIComponent(userInput)}`);
           if (!response.ok) throw new Error("Failed to fetch");
           setRole(userInput);
           generatedText = await response.text();
@@ -116,7 +116,7 @@ function Chat() {
           setUserInput("");
           setInitial(!initial);
         } else if (!question) {
-          const response = await fetch(`http://localhost:8080/generate-alternate-question?role=${role}`);
+          const response = await fetch(`http://localhost:8080/generate-alternate-question?role=${encodeURIComponent(role)}`);
           if (!response.ok) throw new Error("Failed to fetch");
           generatedText = await response.text();
           isQuestion = true; // Alternate question, still a question
@@ -148,6 +148,8 @@ function Chat() {
     const handleClear = () => {
       setChatHistory([]);
       setUserInput("");
+      setInitial(true);
+      setQuestion(true);
     };
   
     return (

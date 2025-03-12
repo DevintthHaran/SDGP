@@ -2,9 +2,10 @@
   margin: 20px auto;
   padding: 20px;
   max-width: 600px;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 5%;
 }
 
 .careerassessment .progress-bar {
@@ -12,8 +13,6 @@
   background-color: #e0e0e0;
   border-radius: 10px;
   margin: 20px 0;
-
-  
 }
  
   
@@ -39,6 +38,7 @@
   background-color: #f9f9f9;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 7%;
 }
 
 .careerassessment ul {
@@ -52,44 +52,46 @@
   padding: 10px;
   border-radius: 5px;
 }
-
 .careerassessment .intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Adds spacing between the image and the text */
   margin: 20px auto;
   padding: 20px;
-  max-width: 800px;
-  text-align: center;
-  background-color: #f9f9f9;
+  max-width: 900px;
+  text-align: left; /* Align text to the left */
+  background-color: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(25, 219, 233, 0.1);
+  margin-top: 7%;
 }
 
 .careerassessment .intro-image {
-  width: 100%;
-  max-width: 600px;
+  width: 50%; /* Adjust width */
+  max-width: 400px;
   height: auto;
-  margin: 20px 0;
   border-radius: 10px;
-  margin-left: 20px;
-  padding-left: 120px;
+}
+
+.careerassessment .intro-content {
+  flex: 1; /* Allows the content section to take remaining space */
 }
 
 .careerassessment .intro h2 {
   font-size: 2rem;
   margin-bottom: 20px;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(86, 75, 246, 0.5);
+  font-family: 'Manrope', sans-serif;
 }
 
 .careerassessment .intro p {
-  font-size: 1.2rem;
-  line-height: 1.5;
+  font-size: 17px;
   margin-bottom: 20px;
-  text-shadow: 1px 1px 3px rgba(85, 58, 235, 0.5);
+  font-family: 'Manrope', sans-serif;
 }
 
 .careerassessment button {
-  background-color: #305cdf;
-  color: black;
+  background-color: #fd9b23b0;
+  color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -98,8 +100,7 @@
 }
 
 .careerassessment button:hover {
-  background-color: #083c9c;
-  transform: scale(1.25);
+  background-color: #818C78;
   
 }
 
@@ -116,7 +117,7 @@
   max-width: 400px;
   padding: 15px;
   font-size: 16px;
-  background-color: #36b9dd;
+  background-color: #fd9b23b0;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -124,6 +125,6 @@
 }
 
 .careerassessment .options button:hover {
-  background-color: #1329d1;
+  background-color: #5C7285;
   transform: scale(1.05);
 }

@@ -3,6 +3,7 @@ import Intro from '../components/Intro';
 import Assessment from '../components/Assessment';
 import Results from '../components/Results';
 import '../style/Career.css';
+import Header from '../components/Header';
 
 function CareerAssessment() {
   const [showIntro, setShowIntro] = useState(true);
@@ -27,13 +28,16 @@ function CareerAssessment() {
   };
 
   return (
-    <div >
-      {showIntro && <Intro startAssessment={startAssessment} />}
-      {showAssessment && (
-        <Assessment onComplete={handleAssessmentCompletion} setAnswers={setAnswers} />
-      )}
-      {showResults && <Results restartAssessment={restartAssessment} answers={answers} />}
-     
+    <div>
+      <Header />
+      <div >
+        {showIntro && <Intro startAssessment={startAssessment} />}
+        {showAssessment && (
+          <Assessment onComplete={handleAssessmentCompletion} setAnswers={setAnswers} />
+        )}
+        {showResults && <Results restartAssessment={restartAssessment} answers={answers} />}
+
+      </div>
     </div>
   );
 }

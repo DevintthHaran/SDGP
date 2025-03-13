@@ -35,6 +35,7 @@ const Results = ({ restartAssessment, answers }) => {
         <p>No specific career matches found. Try exploring different fields!</p>
       )}
       <button onClick={restartAssessment}>Restart Assessment</button>
+      <button onClick={() => window.location.href = "/report"}>Career Report </button>
     </div>
     </div>
   );

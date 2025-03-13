@@ -74,7 +74,7 @@ const Assessment = ({ onComplete }) => {
           style={{
             width: `${((answers.length) / questions.length) * 100}%`,
             height: "10px",
-            backgroundColor: "#61dafb",
+            backgroundColor: "#5C7285",
           }}
         ></div>
       </div>

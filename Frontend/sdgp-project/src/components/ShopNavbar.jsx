@@ -8,7 +8,7 @@ const ShopNavbar = ({ toggleCart }) => {
     <div className="shopNarBar">
     <header>
       <div className="nav container">
-        <span>Shopping</span>
+        <span></span>
         <i className="bx bxs-cart" id="cart-icon" onClick={toggleCart}></i>
       </div>
     </header>

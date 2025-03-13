@@ -37,9 +37,9 @@ const BillingAddress = ({ handleFormSubmit, setBillingDetails }) => {
   };
 
   return (
-    <div className="order">
+    <div className="order-container">
       <fieldset className={isFormValid ? 'fieldset-success' : ''}>
-        <legend>Billing Address</legend>
+        <legend className='order-legend'>Billing Address</legend>
         <form onSubmit={handleSubmit}>
           <label>Address Line 1 (Required)</label>
           <input
@@ -85,7 +85,7 @@ const BillingAddress = ({ handleFormSubmit, setBillingDetails }) => {
             onChange={handleInputChange}
           />
 
-          <label>Zip Code (Required)</label>
+          <label>ZipCode (Required)</label>
           <input
             type="text"
             name="zip"
@@ -110,6 +110,7 @@ const BillingAddress = ({ handleFormSubmit, setBillingDetails }) => {
           </select>
 
           <button type="reset" 
+          className='reset'
             onClick={() => {
               setAddress({ address1: "", address2: "", address3: "", city: "", zip: "", country: "" });
               setIsFieldValid({ address1: false, city: false, zip: false, country: false });
@@ -117,7 +118,7 @@ const BillingAddress = ({ handleFormSubmit, setBillingDetails }) => {
           >
             Reset
           </button>
-          <button type="submit">Save</button>
+          <button className='submit' type="submit">Save</button>
         </form>
       </fieldset>
     </div>

@@ -10,6 +10,7 @@ import LearningSoftSkills from "../Images/Learning Soft Skills.jpg";
 import PeopleSmart from "../Images/Personal Intelligence.jpg";
 import ConversationallySpeaking from "../Images/Conversationally Speaking.jpg";
 import FineArtSmallTalk from "../Images/The Fine Art of Small Talk.jpg";
+import Header from "../components/Header";
 
 const Shop = () => {
   const [cartOpen, setCartOpen] = useState(false); // Controls cart visibility
@@ -83,6 +84,7 @@ const Shop = () => {
 
   return (
     <div>
+      <Header />
       <ShopNavbar toggleCart={toggleCart} />
       <Cart
         cartItems={cartItems}

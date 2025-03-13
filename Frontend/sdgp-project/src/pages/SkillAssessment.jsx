@@ -5,6 +5,7 @@ import SkillCategories from '../components/SkillCategories';
 import AssessmentQuestions from '../components/AssessmentQuestions';
 import ResultsPage from '../components/ResultsPage';
 import '../style/Skill.css';
+import Header from '../components/Header';
 
 const SkillAssessment = () => {
   const [step, setStep] = useState(0);
@@ -27,13 +28,16 @@ const SkillAssessment = () => {
   };
 
   return (
-    <div className="SkillAssessment">
-   
-      {step === 0 && <WelcomeSection onStart={handleStart} />}
-      {step === 1 && <SkillCategories onNext={handleCategorySelect} />}
-      {step === 2 && <AssessmentQuestions categories={categories} onComplete={handleComplete} />}
-      {step === 3 && <ResultsPage results={results} />}
-      
+    <div>
+      <Header />
+      <div className="SkillAssessment">
+
+        {step === 0 && <WelcomeSection onStart={handleStart} />}
+        {step === 1 && <SkillCategories onNext={handleCategorySelect} />}
+        {step === 2 && <AssessmentQuestions categories={categories} onComplete={handleComplete} />}
+        {step === 3 && <ResultsPage results={results} />}
+
+      </div>
     </div>
   );
 };

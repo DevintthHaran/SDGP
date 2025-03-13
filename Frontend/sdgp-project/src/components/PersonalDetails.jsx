@@ -4,7 +4,7 @@ import InputField from "./inputField";
 function PersonalDetails({ updateProfileData, profileData }) {
   return (
     <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
-      <div style={{ flex: "1", minWidth: "200px" }}>
+      <div style={{ flex: "1", minWidth: "100px" }}>
         <InputField
           label="First Name"
           type="text"
@@ -16,7 +16,7 @@ function PersonalDetails({ updateProfileData, profileData }) {
           placeholder="First Name"
         />
       </div>
-      <div style={{ flex: "1", minWidth: "200px" }}>
+      <div style={{ flex: "1", minWidth: "150px" }}>
         <InputField
           label="Last Name"
           type="text"

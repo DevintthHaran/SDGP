@@ -47,9 +47,9 @@ const ContactDetails = ({ handleFormSubmit, setContactDetails }) => {
   };
 
   return (
-    <div className="order">
+    <div className="order-container">
       <fieldset className={isSaved ? 'fieldset-success' : ''}>
-        <legend>Contact Details</legend>
+        <legend className='order-legend'>Contact Details</legend>
         <form onSubmit={handleSubmit}>
           <label>First Name</label>
           <input
@@ -89,6 +89,7 @@ const ContactDetails = ({ handleFormSubmit, setContactDetails }) => {
             required
           />
           <button
+            className='reset'
             type="reset"
             onClick={() => {
               setContact({ firstname: '', surname: '', phone: '', email: '' });
@@ -97,7 +98,7 @@ const ContactDetails = ({ handleFormSubmit, setContactDetails }) => {
           >
             Reset
           </button>
-          <button type="submit">Save</button>
+          <button className='submit' type="submit">Save</button>
         </form>
       </fieldset>
     </div>

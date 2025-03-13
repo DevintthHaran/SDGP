@@ -15,7 +15,7 @@ function InputField({
     lineHeight: "1.5",
     borderRadius: "0.25rem",
     border: "1px solid #ced4da",
-    width: "100%",
+    width: "90%",
   };
 
   const labelStyles = {

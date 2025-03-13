@@ -1,97 +1,93 @@
-@import url('https://fonts.googleapis.com/css2?family=Fjord+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
 
-.Homecontainer {
-  height: 450%;
-  background-color: #E3E9FF;
-  margin: 0;
-  padding: 55px;
+
+h3, h4, p {
+    font-family: 'Manrope', sans-serif;
 }
 
 #grid-container2 {
     display: grid;
-    grid-template-columns: 1fr; /* 2 equal columns */
-    grid-template-rows: 1fr ; /* 3 equal rows */
-    margin: 20px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+   
 }
 
 #grid-container1 {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 equal columns */
-    grid-template-rows: auto; /* 3 equal rows */
-    gap: 2px; /* Space between rows and columns */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 2px;
 }
 
 .sign-up-button-div {
     display: flex;
     justify-content: center;
 }
-  
+
 .box {
-  background-color: #E3E9FF;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 30px 10px 0px 0px;
-  
+    /* background-color: #ffffff; */
+    display: flex;
+    flex-direction: column;
+    margin: 30px 10px 0px 0px;
 }
 
 .pageBreakLine {
-  border: 0;
-  width: 195%;
-  height: 0%;
-  border: 1px solid #0022ff; /* Adjust color and thickness as needed */
-  margin: 10px 10px 10px 25px; /* Adjust the spacing around the line */
+    border: 0;
+    width: 200%;
+    height: 0%;
+    border: 1px solid #fd9b23b0;
+    margin: 10px 10px 10px 10px;
 }
 
 #box6 ul li {
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .Homecontainer h1 {
-  font-size: 35px;
-  color: rgb(0, 0, 0);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-weight: bold;
+    margin-top: 3%;
+    font-size: 35px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-family: 'Manrope', sans-serif;
 }
 
 .Homecontainer h2 {
-  font-size: 20px;
+    font-size: 20px;
 }
 
 .box h2 {
-  font-size: 30px;
-  color: rgb(62, 0, 128);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 25px;
+    font-family: 'Manrope', sans-serif;
 }
 
 .Homecontainer h3 {
-  margin-top: 20px;
-  font-size: 20px;
-
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+    font-size: 20px;
+    margin-bottom: 5%;
 }
 
 #simplified-goal {
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  font-weight: 600;
-  font-size: 20px;
-  color: rgb(1, 35, 85);
+    font-family: 'Manrope', sans-serif;
+    font-size: 25px;
 }
 
 .Homecontainer p {
-  margin: 5px;
+    margin: 5px;
 }
 
 #box1 {
-  background-color: white;
-  align-items: center;
-  border-radius: 50px;
-  min-height: 500px;
+    /* background-color: #ffffff; */
+    align-items: center;
+    border-radius: 50px;
+    height: auto;
+    width: 99%;
 }
 
 #box2 {
-  min-height: 500px;
+    height: auto;
+    margin-left: 10px;
+    width: 1%;
 }
 
 #box3 {
@@ -99,63 +95,48 @@
     justify-content: flex-start;
     align-items: flex-start;
     margin: 0;
-  }
+}
+
+#box3 h3 {
+    font-size: 18px;
+    margin-bottom: auto;
+}
 
 #box3 p {
     text-align: justify;
 }
 
 .box4 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
 }
 
 #box4-1 {
-  border: none;
-  height: 300px;
+    border: none;
+    height: 300px;
 }
 
-#img1 {
-  width: 50%;
-  height: auto;
+#img2, #img3, #img4 {
+    width: 50%;
+    height: auto;
+    transition: transform 0.3s ease;
 }
 
-#img2 {
-  width: 50%;
-  height: auto;
+#img2:hover, #img3:hover, #img4:hover {
+    transform: scale(1.2);
 }
 
-#img1 {
-  transition: transform 0.3s ease;
+#img4 {
+    border-radius: 20px;
+    margin-bottom: 10px;
+    transform: scale(1.1);
 }
 
-#img1:hover {
-  transform: scale(1.2);
-}
-
-#img2 {
-  transition: transform 0.3s ease;
-}
-
-#img2:hover {
-  transform: scale(1.2);
-}
-
-#img3 {
-  transition: transform 0.3s ease;
-  width: 50%;
-  height: auto;
-}
-
-#img3:hover {
-  transform: scale(1.2);
-}
-
-#box2, #box5 {
-  text-align: center;
+ #box5 {
+    text-align: center;
 }
 
 #box6 {
@@ -163,76 +144,100 @@
 }
 
 #box5 {
-  background-color: white;
-  align-items: center;
-  border-radius: 50px;
-  min-height: 500px;
-  margin-left: 10px;
+    /* background-color: #ffffff; */
+    align-items: center;
+    border-radius: 50px;
+    height: auto;
+    justify-content: center;
 }
 
-#img4 {
-  transition: transform 0.3s ease;
-  width: 50%;
-  
+.homepage-buttons, .sign-up-button {
+    border-radius: 5px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    text-decoration: none;
 }
-
-#img4:hover {
-  transform: scale(1.2);
-}
-
 
 .homepage-buttons {
-  background-color: #0084ff;
-  border-radius: 20px;
-  width: 35%;
-  display: flex;
-  justify-content: flex-start;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transitions for transform, shadow, and background color */
-}
-
-.homepage-buttons span {
-  background-color: aquamarine;
-  width: 86%;
-  border-radius: 20px;
-  height: 100%;
-  padding: 3px 3px 3px 0px;
-  text-align: center;
-  transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition for transform and background color */
+    background-color: #fd9b23b0;
+    width: 20%;
 }
 
 .homepage-buttons:hover {
-  display: flex;
-  justify-content: flex-end;
-  text-align: start;
-  filter: drop-shadow(5px 5px 2px rgb(0, 119, 255));
-  transform: scale(1.1);
-  background-color: #0066cc; /* Slight color change on hover for smooth transition */
+    background-color: #fd9b23b0;
 }
 
 .sign-up-button {
-    
-    border-radius: 20px;
-    background-color: green;
+    background-color: #fd9b23b0;
     width: 10%;
-    text-align: center;
-    padding: 5px;
-    margin: 10px;
-    color: rgb(255, 255, 255);
-    transition: transform 0.3s ease, filter 0.3s ease, background-color 0.3s ease, border 0.3s ease; /* Smooth transitions for all effects */
-}
-
-.sign-up-button:hover {
-  filter: drop-shadow(15px 0px 15px rgb(4, 255, 0));
-  border: 3px solid black;
-  transform: scale(1.05); /* Smooth scaling */
-  background-color: #4CAF50; /* Slight background color change */
 }
 
 #box6 ul li span {
-  font-weight: 700;
-  color: rgb(0, 0, 0);
+    font-weight: bold;
 }
 
+#grid-container2 h3 {
+    font-size: 25px;
+    margin: auto;
+}
+
+#grid-container2 p {
+    text-align: center;
+}
+
+.Homecontainer {
+    height: auto;
+    width: 100%;
+    background-color: #ffffff;
+    margin: -20px;
+    padding: 55px;
+    box-sizing: border-box;
+}
+
+.home_img{
+    margin-top: 3%;
+    /* border-radius: 20px; */
+    width: 100%;
+    height: auto;
+}
+
+.image-container {
+    position: relative; /* Set the container to relative positioning */
+    display: inline-block; /* Keep the container size according to image */
+}
+
+.home_img {
+    width: 100%; /* Adjust as needed */
+    height: auto;
+    display: block;
+}
+
+.overlay-content {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Perfect centering */
+    color: black; /* Ensure text is readable */
+     /* Optional: Adds a dark overlay */
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.overlay-content h1{
+    font-family: 'Prata', serif;
+    font-size: 25px;
+}
+.overlay-content h2{
+    font-family: 'Prata', serif;
+    font-size: 30px;
+}
+
+body{
+  background-color: white;
+}
 

@@ -5,6 +5,7 @@ import ContactDetails from '../components/ContactDetails';
 import OrderSummary from '../components/OrderSummary';
 import "../style/Order.css";
 import md5 from 'crypto-js/md5';
+import Header from '../components/Header';
 
 const Order = () => {
   const [isBillingValid, setIsBillingValid] = useState(false);
@@ -109,10 +110,16 @@ const Order = () => {
   };
 
   return (
-    <div className="Order">
+    <div>
+      <Header/>
+    <div className="order">
+      <div>
       <BillingAddress handleFormSubmit={handleFormSubmit} setBillingDetails={setBillingDetails} />
-      <ContactDetails handleFormSubmit={handleFormSubmit} setContactDetails={setContactDetails} />
-      <OrderSummary handlePlaceOrder={handlePlaceOrder} setCartData={setCartData} />
+      </div>
+      <div><ContactDetails handleFormSubmit={handleFormSubmit} setContactDetails={setContactDetails} /></div>
+      <div><OrderSummary handlePlaceOrder={handlePlaceOrder} setCartData={setCartData} /></div>
+      
+    </div>
     </div>
   );
 };

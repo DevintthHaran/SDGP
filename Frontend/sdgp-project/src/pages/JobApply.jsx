@@ -35,10 +35,10 @@ function JobApply() {
                 <header className="JobApplying-header">
                     <img src={NowHiring} alt="Job Hiring" />
                     <h1>Apply for counselor Job</h1>
-                    <h3 id="job-application-message">Scroll down to apply for counselor job</h3>
+                    {/* <h3 id="job-application-message">Scroll down to apply for counselor job</h3> */}
                     <h2>Join Our Team of Expert Counselors</h2>
-                    <p id="job-application-q">🟢 Are you passionate about guiding students, graduates, and professionals toward successful career paths?</p>
-                    <p id="job-application-a">- Become a part of Professional Odyssey, Sri Lanka’s premier career guidance platform.</p>
+                    <p id="job-application-q">Are you passionate about guiding students, graduates, and professionals toward successful career paths?</p>
+                    <p id="job-application-a">Become a part of Professional Odyssey, Sri Lanka’s premier career guidance platform.</p>
                     <h3>Who Can Apply?</h3>
                     <p>We welcome applications from qualified individuals who have:</p>
                     <ul>
@@ -75,17 +75,17 @@ function JobApply() {
                     <h2>Counselor Job Application</h2>
 
                     <div className="input-group">
-                        <div className="input-field">
+                        <div className="input-field1">
                             <label>First Name</label>
                             <input type="text" placeholder="Your name" required />
                         </div>
-                        <div className="input-field">
+                        <div className="input-field1">
                             <label>Last Name</label>
                             <input type="text" placeholder="Your last name" required />
                         </div>
                     </div>
 
-                    <div className="input-field">
+                    <div className="input-field1">
                         <label>Email Address</label>
                         <input type="email" placeholder="Your E-mail address" required />
                     </div>

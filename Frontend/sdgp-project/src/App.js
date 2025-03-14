@@ -20,6 +20,7 @@ import Experience from './pages/Experience';
 import Order from './pages/Order';
 import Admin from './pages/Admin';
 import Signup from './pages/Signup';
+import Subscription from './pages/Subscription'
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path='/order' element={<Order />}/>
         <Route path='/admin' element={<Admin/>}/>
         <Route path='/signup' element={<Signup/>}/>
+        <Route path='/subscription' element={<Subscription/>}/>
       </Routes>
     </Router>
   );

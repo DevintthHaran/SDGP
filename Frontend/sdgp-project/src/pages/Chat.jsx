@@ -149,6 +149,8 @@ function Chat() {
   const handleClear = () => {
     setChatHistory([]);
     setUserInput("");
+    setInitial(true);
+    setQuestion(true);    
   };
 
   return (

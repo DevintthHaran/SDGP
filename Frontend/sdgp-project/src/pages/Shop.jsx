@@ -33,7 +33,7 @@ const Shop = () => {
         "PeopleSmart by Mel Silberman Ph.d is a practical guide to improving your interpersonal effectiveness in both professional and personal relationships.",
     },
     {
-      name: "Conversation -ally Speaking",
+      name: "Conversationally Speaking",
       price: 8184.98,
       image: ConversationallySpeaking,
       description:

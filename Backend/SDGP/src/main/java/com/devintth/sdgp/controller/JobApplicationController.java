@@ -1,57 +1,37 @@
 package com.devintth.sdgp.controller;
 
 import com.devintth.sdgp.model.JobApplication;
-import com.devintth.sdgp.services.JobApplicationService;
+import com.devintth.sdgp.repository.JobApplicationRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 
-import java.io.File;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/job-applications")
+@RequestMapping("/api/job-apply")
 public class JobApplicationController {
-    private final JobApplicationService service;
 
-    public JobApplicationController(JobApplicationService service) {
-        this.service = service;
-    }
+    @Autowired
+    private JobApplicationRepository repository;
 
-    @PostMapping("/submit")
-    public String submitApplication(
+    @PostMapping
+    public ResponseEntity<String> submitJobApplication(
         @RequestParam String firstName,
         @RequestParam String lastName,
         @RequestParam String email,
-        @RequestParam String[] appliedPositions,
-        @RequestParam("cv") MultipartFile cv
-    ) throws IOException {
-        // Save CV to server
-        String uploadDir = "uploads/";
-        File uploadFile = new File(uploadDir + cv.getOriginalFilename());
-        cv.transferTo(uploadFile);
-
-        // Save application to MongoDB
-        JobApplication application = new JobApplication();
-        application.setFirstName(firstName);
-        application.setLastName(lastName);
-        application.setEmail(email);
-        application.setAppliedPositions(appliedPositions);
-        application.setCvFileName(cv.getOriginalFilename());
-        application.setCvFilePath(uploadFile.getAbsolutePath());
-
-        service.saveApplication(application);
-        return "Application submitted successfully!";
-    }
-
-    @PostMapping("/accept/{id}")
-    public String acceptApplication(@PathVariable String id) {
-        service.acceptApplication(id);
-        return "Application accepted!";
-    }
-
-    @DeleteMapping("/reject/{id}")
-    public String rejectApplication(@PathVariable String id) {
-        service.rejectApplication(id);
-        return "Application rejected!";
+        @RequestParam String contactNumber,
+        @RequestParam String position,
+        @RequestParam("file") MultipartFile file
+    ) {
+        try {
+            JobApplication application = new JobApplication(firstName, lastName, email, contactNumber, position, file.getOriginalFilename());
+            repository.save(application);
+            return ResponseEntity.ok("Application submitted successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to submit application.");
+        }
     }
 }

@@ -37,12 +37,12 @@
 
 .category-image {
   width: 100%;
-  height: 100px;
+  height: 225px;
   border-radius: 8px;
 }
 
 .category-title {
-  margin: 20px 0 15px;
+  margin: 0px 0 15px;
   font-size: 25px;
   font-family: 'Manrope';
 }

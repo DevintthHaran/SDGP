@@ -4,68 +4,88 @@ import NowHiring from '../Images/NowHiring.png';
 import Header from '../components/Header.jsx';
 
 function JobApply() {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [contactNumber, setContactNumber] = useState('');
+    const [position, setPosition] = useState('');
     const [file, setFile] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
-    const [contactNumber, setContactNumber] = useState('');
-    const [contactError, setContactError] = useState('');
-    const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState('');
+    const [contactError, setContactError] = useState('');
+
+    const validateForm = () => {
+        let valid = true;
+        if (!firstName || !lastName || !email || !contactNumber || !position || !file) {
+            setErrorMessage('All fields are required.');
+            valid = false;
+        } else {
+            setErrorMessage('');
+        }
+
+        if (!/^\d{10}$/.test(contactNumber)) {
+            setContactError('Invalid contact number. Must be 10 digits.');
+            valid = false;
+        } else {
+            setContactError('');
+        }
+
+        if (!/^[^\s@]+@[^\s@]+$/.test(email)) {
+            setEmailError('Invalid email format.');
+            valid = false;
+        } else {
+            setEmailError('');
+        }
+
+        return valid;
+    };
 
     const handleFileChange = (e) => {
-        const uploadedFile = e.target.files[0];
-        const allowedFormats = ['pdf', 'docx', 'txt'];
-        const fileExtension = uploadedFile?.name.split('.').pop().toLowerCase();
-
-        if (uploadedFile && uploadedFile.size <= 10 * 1024 * 1024 && allowedFormats.includes(fileExtension)) {
-            setFile(uploadedFile);
-            setErrorMessage('');
-        } else {
-            setFile(null);
-            setErrorMessage('Invalid file format or size. Please upload PDF, DOCX, or TXT (max 10MB).');
+        const selectedFile = e.target.files[0];
+        if (selectedFile) {
+            setFile(selectedFile);
         }
     };
 
-    const handleContactChange = (e) => {
-        const value = e.target.value;
-        setContactNumber(value);
-        if (/^\d{10}$/.test(value)) {
-            setContactError('');
-        } else {
-            setContactError('Enter a valid 10-digit phone number.');
-        }
-    };
-
-    const handleEmailChange = (e) => {
-        const value = e.target.value;
-        setEmail(value);
-        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-            setEmailError('');
-        } else {
-            setEmailError('Enter a valid email address.');
-        }
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!file) {
-            setErrorMessage('Please upload a valid CV (PDF, DOCX, or TXT less than 10MB).');
-            return;
+        if (!validateForm()) return;
+
+        const formData = new FormData();
+        formData.append('firstName', firstName);
+        formData.append('lastName', lastName);
+        formData.append('email', email);
+        formData.append('contactNumber', contactNumber);
+        formData.append('position', position);
+        formData.append('file', file);
+
+        try {
+            const response = await fetch('http://localhost:8080/api/job-apply', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to submit application.');
+            }
+
+            alert('Form submitted successfully!');
+            setFirstName('');
+            setLastName('');
+            setEmail('');
+            setContactNumber('');
+            setPosition('');
+            setFile(null);
+        } catch (error) {
+            console.error('Error:', error);
+            setErrorMessage('Submission failed. Please try again.');
         }
-        if (!/^\d{10}$/.test(contactNumber)) {
-            setContactError('Enter a valid 10-digit phone number.');
-            return;
-        }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            setEmailError('Enter a valid email address.');
-            return;
-        }
-        alert('Form submitted successfully!');
-        // Add API call logic here
     };
 
     return (
         <div className='JobApplication'>
             <Header />
+            
             <div className="JobApplication-container">
                 <header className="JobApplying-header">
                     <img src={NowHiring} alt="Job Hiring" />
@@ -112,11 +132,23 @@ function JobApply() {
                     <div className="input-group">
                         <div className="input-field">
                             <label>First Name</label>
-                            <input type="text" placeholder="Your name" required />
+                            <input 
+                                type="text" 
+                                placeholder="Your name" 
+                                value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
+                                required 
+                            />
                         </div>
                         <div className="input-field">
                             <label>Last Name</label>
-                            <input type="text" placeholder="Your last name" required />
+                            <input 
+                                type="text" 
+                                placeholder="Your last name" 
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
+                                required 
+                            />
                         </div>
                     </div>
 
@@ -126,7 +158,7 @@ function JobApply() {
                             type="email"
                             placeholder="Your E-mail address"
                             value={email}
-                            onChange={handleEmailChange}
+                            onChange={(e) => setEmail(e.target.value)}
                             required
                         />
                         {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
@@ -138,7 +170,7 @@ function JobApply() {
                             type="tel"
                             placeholder="Your 10-digit phone number"
                             value={contactNumber}
-                            onChange={handleContactChange}
+                            onChange={(e) => setContactNumber(e.target.value)}
                             required
                         />
                         {contactError && <p style={{ color: 'red' }}>{contactError}</p>}
@@ -146,7 +178,12 @@ function JobApply() {
 
                     <div className="input-field">
                         <label>Position Applying For</label>
-                        <select name="position" required>
+                        <select 
+                            name="position"
+                            value={position}
+                            onChange={(e) => setPosition(e.target.value)}
+                            required
+                        >
                             <option value="">Select Position</option>
                             <option value="School Student Pathway Selection">School Student Pathway Selection</option>
                             <option value="Career Advisor In All Fields">Career Advisor In All Fields</option>
@@ -173,7 +210,6 @@ function JobApply() {
                         >
                             <span>{file ? file.name : 'Click to upload'}</span>
                         </div>
-                        <p>PDF DOCX TXT &lt; 10 MB</p>
                         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
                     </div>
 
@@ -182,6 +218,6 @@ function JobApply() {
             </div>
         </div>
     );
-};
+}
 
 export default JobApply;

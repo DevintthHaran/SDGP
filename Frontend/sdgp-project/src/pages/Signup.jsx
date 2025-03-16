@@ -6,7 +6,7 @@ const Signup = () => {
 
   const [activeForm, setActiveForm] = useState("login");
   return (
-    <div>
+    <div class="signup-page">
       <Header />
     <div className="log-container">
       <div className="log-buttons">

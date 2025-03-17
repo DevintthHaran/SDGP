@@ -1,41 +1,118 @@
-.signup form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background: #f9f9f9;
-  }
-  
-  .signup form div {
-    margin-bottom: 15px;
-  }
 
-  .signup form label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
-  }
-  
-  .signup form input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .signup button {
-    padding: 10px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .signup button:hover {
-    background: #0056b3;
-  }
-  
+
+.log-container {
+  width: 320px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 10%;
+  margin-left: 40%;
+  height: auto;
+}
+
+/* Buttons */
+.log-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.log-buttons button {
+  width: 48%;
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+  background-color: #ddd;
+  color: #333;
+}
+
+.log-buttons button:hover {
+  opacity: 0.8;
+}
+
+/* Active button effect */
+.log-buttons button.active-btn {
+  background-color: #FF9D23; /* Active: Orange */
+  color: white;
+}
+
+.log-buttons button:not(.active-btn) {
+  background-color: white; /* Inactive: Teal */
+  color: #FF9D23;
+}
+
+/* Forms */
+.log-form-container {
+  position: relative;
+  height: auto;
+}
+
+.log-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.log-form h2 {
+  margin-bottom: 10px;
+}
+
+.log-form input {
+  width: 90%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.log-form button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #FF9D23;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.log-form button:hover {
+  background-color: #4F959D;
+}
+.signup-page {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  animation: slider 10s linear infinite;
+}
+
+/* Background Animation */
+@keyframes slider {
+  0% { background-image: url('../Images/1.jpg'); }
+  30% { background-image: url('../Images/2.jpg'); }
+  60% { background-image: url('../Images/3.jpg'); }
+  100% { background-image: url('../Images/4.jpg'); }
+}
+
+.signup-page .log-container {
+  width: 320px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 10%;
+  height: auto;
+}
+

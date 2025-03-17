@@ -1,14 +1,14 @@
 /* Admin Dashboard Container */
 .Admin {
-    background-color: #E3E9FF;
-    font-family: Arial, sans-serif;
+    background-color: #FFFFFF;
+    font-family: 'manrope';
     height: 100vh;
+    margin-top: 5%;
 }
 
 .admin-dashboard {
     padding: 20px;
-    background-color: #c4d1fe;
-    min-width: 1500px; /* Limits width */
+    background-color: #FFFFFF; /* Limits width */
     margin: 50px 20px 0 20px; /* Centers the content */
   }
   

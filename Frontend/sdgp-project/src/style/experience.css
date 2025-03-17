@@ -1,0 +1,243 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+
+
+.container {
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Fade-in animation */
+.experience-section {
+  padding: 65px 0 100px;
+  background-color: #fdf8f7;
+  position: relative;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Experience Items */
+.experience-items {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.experience-item {
+  flex: 0 0 48%;
+  max-width: 48%;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.experience-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Progress Bar Animation */
+.progress-line {
+  width: 100%;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.progress-line span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #ffa07a, #ff6347);
+  width: 0;
+  border-radius: 4px;
+  animation: fillProgress 1.5s ease-out forwards;
+}
+
+@keyframes fillProgress {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--progress-width);
+  }
+}
+
+/* Text Styling */
+.experience-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Professional Career Report Styling */
+.career-report {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  box-shadow: 
+    0 15px 25px rgba(0, 0, 0, 0.08), 
+    0 5px 10px rgba(0, 0, 0, 0.04);
+  padding: 40px;
+  margin-top: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.career-report::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+}
+
+.career-report h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.career-report h3::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+}
+
+.career-report p {
+  font-size: 1.1rem;
+  color: #34495e;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  font-weight: 300;
+}
+
+.career-areas {
+  margin-top: 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 20px;
+}
+
+.career-area {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.career-area:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.career-area h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.career-area h4::before {
+  content: '•';
+  color: #fd9b23b0;
+  margin-right: 10px;
+  font-size: 1.5rem;
+}
+
+.career-area p {
+  font-size: 1rem;
+  color: #34495e;
+  margin-left: 25px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.section_title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section_title p {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.section_title h2 {
+  font-size: 2.5rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.smiley-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.smiley {
+  font-size: 150px;
+  display: inline-block;
+  animation: bounce 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20px);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .career-report {
+    padding: 25px;
+  }
+
+  .career-report h3 {
+    font-size: 1.5rem;
+  }
+
+  .career-report p,
+  .career-area p {
+    font-size: 0.95rem;
+  }
+
+  .experience-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ProfileImage from "../Images/Career gui.png"; // Default profile image
 import Select from "react-select";
+import ProfileImage from "../Images/Career gui.png"; // Default profile image
 import SriLankanLangIcon from "../Images/Sri lankan.png";
 import EnglishLangIcon from "../Images/USA.png";
 import PersonalDetails from "../components/PersonalDetails";
@@ -8,6 +8,7 @@ import AddressDetails from "../components/AddressDetails";
 import SocialDetails from "../components/SocialDetails";
 import GeneralDetails from "../components/GeneralDetails";
 import ProfileView from "../components/ProfileView";
+import Header from "../components/Header";
 import "../style/Profile.css";
 
 function Profile() {
@@ -85,125 +86,79 @@ function Profile() {
   };
 
   return (
-    <div className="profile">
-    
-    <div className={`container theme-${theme}-box`}>
-      <div className="profile-container">
-        {/* Left Sidebar */}
-        <div className="sidebar">
-          <div className="profile-header">
-            <img
-              src={tempProfileData.profilePicture}
-              alt="profile"
-              className="profile-image"
-            />
-            <h6>CodeDiggy</h6>
-          </div>
-          <div className="profile-actions">
-            <input
-              type="file"
-              className="hidden-file-input"
-              id="file-input"
-              onChange={handleProfilePictureChange}
-            />
-            <label htmlFor="file-input" className="custom-cursor">
-              Change
-            </label>
-            <button
-              className="delete-btn"
-              onClick={() =>
-                setTempProfileData((prevData) => ({
-                  ...prevData,
-                  profilePicture: ProfileImage,
-                }))
-              }
-            >
-              Delete
+    <div>
+      <Header />
+      <div className={`profile-container theme-${theme}`}>
+        {/* Sidebar */}
+        <aside className="profile-sidebar">
+          <div className="profile-card-1">
+            <img src={tempProfileData.profilePicture} alt="Profile" className="profile-image" />
+            <h4>CodeDiggy</h4>
+            <label htmlFor="file-input" className="change-btn">Change</label>
+            <input type="file" id="file-input" className="hidden-file-input" onChange={handleProfilePictureChange} />
+            <button className="delete-btn" onClick={() => setTempProfileData({ ...tempProfileData, profilePicture: ProfileImage })}>
+              Remove
             </button>
           </div>
-          <div className="settings-section">
-            <h5>Account Setting</h5>
+          
+          {/* Settings */}
+          <div className="profile-settings">
+            <h5>Account Settings</h5>
             <h6>Language</h6>
             <Select
               options={languages}
               defaultValue={languages[0]}
               formatOptionLabel={(option) => (
-                <div>
+                <div className="language-option">
                   <img src={option.img} alt={option.label} className="lang-icon" />
                   <span>{option.label}</span>
                 </div>
               )}
             />
-            <h6>Themes</h6>
-            <div className="themes-container">
+
+            <h6>Theme</h6>
+            <div className="theme-options">
               {[1, 2, 3].map((num) => (
-                <div
-                  key={num}
-                  className={`theme-box theme-${num}-box ${theme === num ? "selected" : ""}`}
-                  onClick={() => setTheme(num)}
-                ></div>
+                <div key={num} className={`theme-box theme-${num} ${theme === num ? "active" : ""}`} onClick={() => setTheme(num)} />
               ))}
             </div>
           </div>
-        </div>
-  
-        {/* Right Section */}
-        <div className="content">
+        </aside>
+
+        {/* Main Content */}
+        <main className="profile-content">
           {/* Tabs */}
-          <div className="profile-tabs">
+          <nav className="profile-tabs">
             {tabs.map((tab, index) => (
-              <div
-                key={index}
-                className={`tab ${activeTab === index ? "active-tab" : ""}`}
-                onClick={() => setActiveTab(index)}
-              >
+              <button key={index} className={`tab-btn ${activeTab === index ? "active" : ""}`} onClick={() => setActiveTab(index)}>
                 {tab.name}
-              </div>
+              </button>
             ))}
-          </div>
-  
-          {/* Active Form Section */}
-          <div className="form-section">
-            {React.cloneElement(tabs[activeTab].component, {
-              updateProfileData,
-              profileData: tempProfileData,
-            })}
-          </div>
-  
-          {/* Edit, Cancel, Submit Buttons */}
-          <div className="button-group">
+          </nav>
+
+          {/* Form Section */}
+          <section className="profile-form">
+            {React.cloneElement(tabs[activeTab].component, { updateProfileData, profileData: tempProfileData })}
+          </section>
+
+          {/* Buttons */}
+          <div className="profile-actions">
             {editEnabled ? (
               <>
-                <button className="cancel-btn" onClick={handleCancel}>
-                  CANCEL
-                </button>
-                <button className="submit-profile-btn" onClick={handleSubmit}>
-                  SUBMIT
-                </button>
+                <button className="cancel-btn" onClick={handleCancel}>Cancel</button>
+                <button className="submit-btn" onClick={handleSubmit}>Save Changes</button>
               </>
             ) : (
-              <button
-                className="edit-profile-btn"
-                onClick={() => {
-                  setEditEnabled(true);
-                  setTempProfileData({ ...profileData });
-                }}
-              >
-                EDIT
-              </button>
+              <button className="edit-btn" onClick={() => setEditEnabled(true)}>Edit Profile</button>
             )}
           </div>
-        </div>
+        </main>
       </div>
-  
+
       {/* Profile Summary */}
       {submittedProfileData && <ProfileView profileData={submittedProfileData} />}
     </div>
-    </div>
-    
   );
-  
-  
 }
 
 export default Profile;

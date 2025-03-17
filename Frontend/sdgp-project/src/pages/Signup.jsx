@@ -1,26 +1,49 @@
-import React from 'react';
+import React,{useState} from 'react';
 import '../style/Signup.css';
+import Header from '../components/Header';
 
 const Signup = () => {
+
+  const [activeForm, setActiveForm] = useState("login");
   return (
-    <div className='signup'>
-    <div style={{ padding: '20px' }}>
-      <h2>Signup</h2>
-      <form>
-        <div>
-          <label>Name:</label>
-          <input type="text" placeholder="Enter your name" required />
-        </div>
-        <div>
-          <label>Email:</label>
-          <input type="email" placeholder="Enter your email" required />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input type="password" placeholder="Enter your password" required />
-        </div>
-        <button type="submit" style={{ marginTop: '10px' }}>Signup</button>
-      </form>
+    <div class="signup-page">
+      <Header />
+    <div className="log-container">
+      <div className="log-buttons">
+        <button
+          className={activeForm === "login" ? "active-btn" : ""}
+          onClick={() => setActiveForm("login")}
+        >
+          Login
+        </button>
+        <button
+          className={activeForm === "signup" ? "active-btn" : ""}
+          onClick={() => setActiveForm("signup")}
+        >
+          Sign Up
+        </button>
+      </div>
+
+      <div className="log-form-container">
+        {activeForm === "login" && (
+          <form className="log-form">
+            <h2>Login</h2>
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+            <button type="submit">Login</button>
+          </form>
+        )}
+
+        {activeForm === "signup" && (
+          <form className="log-form">
+            <h2>Sign Up</h2>
+            <input type="text" placeholder="Full Name" required />
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+            <button type="submit">Sign Up</button>
+          </form>
+        )}
+      </div>
     </div>
     </div>
   );

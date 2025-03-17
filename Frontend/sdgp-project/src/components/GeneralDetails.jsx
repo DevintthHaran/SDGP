@@ -1,7 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import InputField from "./inputField";
 
 function GeneralDetails({ updateProfileData, profileData }) {
+  const [errors, setErrors] = useState({ username: '', email: '' });
+
+  const validateField = (field, value) => {
+    switch (field) {
+      case 'username':
+        return value.trim().length > 0 ? '' : 'Username is required';
+      case 'email':
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? '' : 'Invalid email format';
+      default:
+        return '';
+    }
+  };
+
+  const handleChange = (field) => (value) => {
+    const error = validateField(field, value);
+    setErrors(prev => ({ ...prev, [field]: error }));
+    if (!error) {
+      updateProfileData("general", field, value);
+    }
+  };
+
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
       <div style={{ flex: "1", padding: "10px" }}>
@@ -10,15 +31,14 @@ function GeneralDetails({ updateProfileData, profileData }) {
           type="text"
           id="username"
           value={profileData.general.username}
-          changeFunction={(value) =>
-            updateProfileData("general", "username", value)
-          }
+          changeFunction={handleChange("username")}
           placeholder="username"
+          error={errors.username}
           style={{
             width: "100%",
             padding: "8px",
             borderRadius: "5px",
-            border: "1px solid #ccc",
+            border: errors.username ? "1px solid red" : "1px solid #ccc",
             marginBottom: "10px",
           }}
         />
@@ -29,15 +49,14 @@ function GeneralDetails({ updateProfileData, profileData }) {
           type="email"
           id="email"
           value={profileData.general.email}
-          changeFunction={(value) =>
-            updateProfileData("general", "email", value)
-          }
+          changeFunction={handleChange("email")}
           placeholder="email"
+          error={errors.email}
           style={{
             width: "100%",
             padding: "8px",
             borderRadius: "5px",
-            border: "1px solid #ccc",
+            border: errors.email ? "1px solid red" : "1px solid #ccc",
             marginBottom: "10px",
           }}
         />

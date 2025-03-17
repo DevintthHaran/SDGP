@@ -7,6 +7,7 @@ import Science from "../Images/Science.png";
 import Business from "../Images/Business.png";
 import OLevel from "../Images/O Level.png";
 import ALevel from "../Images/A Level.png";
+import Header from "../components/Header";
 
 const categories = [
   {
@@ -40,19 +41,22 @@ const Meeting = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="category-container">
-      {categories.map((category, index) => (
-        <div className="category-box" key={index}>
-          <h3 className="category-title">{category.title}</h3>
-          <img src={category.image} alt={category.title} className="category-image" />
-          <button
-            className="schedule-button"
-            onClick={() => navigate(category.link)}
-          >
-            Schedule Meeting
-          </button>
-        </div>
-      ))}
+    <div>
+      <Header />
+      <div className="category-container">
+        {categories.map((category, index) => (
+          <div className="category-box" key={index}>
+            <h3 className="category-title">{category.title}</h3>
+            <img src={category.image} alt={category.title} className="category-image" />
+            <button
+              className="schedule-button"
+              onClick={() => navigate(category.link)}
+            >
+              Schedule Meeting
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

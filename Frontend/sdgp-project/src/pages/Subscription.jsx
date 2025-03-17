@@ -1,7 +1,8 @@
 /* global payhere */
 import React, { useState, useEffect } from "react";
 import md5 from "crypto-js/md5";
-import "../style/Subscription.css"; // Optional CSS for styling
+import "../style/Subscription.css"; 
+import Header from "../components/Header";
 
 const Subscription = () => {
   const plans = [
@@ -140,6 +141,8 @@ const Subscription = () => {
   };
 
   return (
+    <div>
+      <Header/>
     <div className="subscription-page">
       <h1>Choose Your Plan</h1>
       <div className="plans-container">
@@ -163,6 +166,7 @@ const Subscription = () => {
       <div className="accessibility-status">
         <h2>Total Accessibility: {accessible}</h2>
       </div>
+    </div>
     </div>
   );
 };

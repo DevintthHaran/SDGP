@@ -1,36 +1,73 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import '../style/JobApply.css';
 import NowHiring from '../Images/NowHiring.png';
 import Header from '../components/Header.jsx';
 
-function JobApply() {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [contactNumber, setContactNumber] = useState('');
-    const [position, setPosition] = useState('');
-    const [file, setFile] = useState(null);
+const JobApply = () => {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        contactNumber: '',
+        position: '',
+        fileUrl: '', // Store the file URL here
+    });
     const [errorMessage, setErrorMessage] = useState('');
     const [emailError, setEmailError] = useState('');
     const [contactError, setContactError] = useState('');
 
+    // Handle change in form fields
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+
+    // Handle file upload to Cloudinary
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+        if (selectedFile) {
+            // Prepare form data for file upload to Cloudinary
+            const formDataToUpload = new FormData();
+            formDataToUpload.append('file', selectedFile);
+            formDataToUpload.append('upload_preset', 'cv_preset'); // Use the preset created in Cloudinary
+
+            // Upload file to Cloudinary
+            axios.post('https://api.cloudinary.com/v1_1/dq1znqlu6/upload', formDataToUpload)
+                .then((response) => {
+                    setFormData({
+                        ...formData,
+                        fileUrl: response.data.secure_url, // Store the file URL from Cloudinary
+                    });
+                })
+                .catch((error) => {
+                    console.error("File upload error:", error);
+                    setErrorMessage("File upload failed. Please try again.");
+                });
+        }
+    };
+
+    // Form validation
     const validateForm = () => {
         let valid = true;
-        if (!firstName || !lastName || !email || !contactNumber || !position || !file) {
+        if (!formData.firstName || !formData.lastName || !formData.email || !formData.contactNumber || !formData.position || !formData.fileUrl) {
             setErrorMessage('All fields are required.');
             valid = false;
         } else {
             setErrorMessage('');
         }
 
-        if (!/^\d{10}$/.test(contactNumber)) {
+        if (!/^\d{10}$/.test(formData.contactNumber)) {
             setContactError('Invalid contact number. Must be 10 digits.');
             valid = false;
         } else {
             setContactError('');
         }
 
-        if (!/^[^\s@]+@[^\s@]+$/.test(email)) {
+        if (!/^[^\s@]+@[^\s@]+$/.test(formData.email)) {
             setEmailError('Invalid email format.');
             valid = false;
         } else {
@@ -40,56 +77,50 @@ function JobApply() {
         return valid;
     };
 
-    const handleFileChange = (e) => {
-        const selectedFile = e.target.files[0];
-        if (selectedFile) {
-            setFile(selectedFile);
-        }
-    };
-
+    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         if (!validateForm()) return;
 
-        const formData = new FormData();
-        formData.append('firstName', firstName);
-        formData.append('lastName', lastName);
-        formData.append('email', email);
-        formData.append('contactNumber', contactNumber);
-        formData.append('position', position);
-        formData.append('file', file);
+        const applicationData = new FormData();
+        applicationData.append("firstName", formData.firstName);
+        applicationData.append("lastName", formData.lastName);
+        applicationData.append("email", formData.email);
+        applicationData.append("contactNumber", formData.contactNumber);
+        applicationData.append("position", formData.position);
+        applicationData.append("fileUrl", formData.fileUrl); // Send the file URL to the backend
 
         try {
-            const response = await fetch('http://localhost:8080/api/job-apply', {
-                method: 'POST',
-                body: formData,
+            const response = await axios.post("http://localhost:8080/api/job-apply", applicationData, {
+                headers: { "Content-Type": "multipart/form-data" },
             });
 
-            if (!response.ok) {
-                throw new Error('Failed to submit application.');
+            if (response.status === 200) {
+                alert("Job application submitted successfully!");
+                setFormData({
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    contactNumber: '',
+                    position: '',
+                    fileUrl: '', // Reset the file URL
+                });
             }
-
-            alert('Form submitted successfully!');
-            setFirstName('');
-            setLastName('');
-            setEmail('');
-            setContactNumber('');
-            setPosition('');
-            setFile(null);
         } catch (error) {
-            console.error('Error:', error);
-            setErrorMessage('Submission failed. Please try again.');
+            console.error("Submission error:", error);
+            alert("Failed to submit application.");
         }
     };
 
     return (
-        <div className='JobApplication'>
+        <div className="JobApplication">
             <Header />
-            
+
             <div className="JobApplication-container">
                 <header className="JobApplying-header">
                     <img src={NowHiring} alt="Job Hiring" />
-                    <h1>Apply for counselor Job</h1>
+                    <h1>Apply for Counselor Job</h1>
                     <h3 id="job-application-message">Scroll down to apply for counselor job</h3>
                     <h2>Join Our Team of Expert Counselors</h2>
                     <p id="job-application-q">🟢 Are you passionate about guiding students, graduates, and professionals toward successful career paths?</p>
@@ -135,8 +166,9 @@ function JobApply() {
                             <input 
                                 type="text" 
                                 placeholder="Your name" 
-                                value={firstName}
-                                onChange={(e) => setFirstName(e.target.value)}
+                                name="firstName"
+                                value={formData.firstName}
+                                onChange={handleChange}
                                 required 
                             />
                         </div>
@@ -145,8 +177,9 @@ function JobApply() {
                             <input 
                                 type="text" 
                                 placeholder="Your last name" 
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
+                                name="lastName"
+                                value={formData.lastName}
+                                onChange={handleChange}
                                 required 
                             />
                         </div>
@@ -157,8 +190,9 @@ function JobApply() {
                         <input
                             type="email"
                             placeholder="Your E-mail address"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
                             required
                         />
                         {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
@@ -169,8 +203,9 @@ function JobApply() {
                         <input
                             type="tel"
                             placeholder="Your 10-digit phone number"
-                            value={contactNumber}
-                            onChange={(e) => setContactNumber(e.target.value)}
+                            name="contactNumber"
+                            value={formData.contactNumber}
+                            onChange={handleChange}
                             required
                         />
                         {contactError && <p style={{ color: 'red' }}>{contactError}</p>}
@@ -180,8 +215,8 @@ function JobApply() {
                         <label>Position Applying For</label>
                         <select 
                             name="position"
-                            value={position}
-                            onChange={(e) => setPosition(e.target.value)}
+                            value={formData.position}
+                            onChange={handleChange}
                             required
                         >
                             <option value="">Select Position</option>
@@ -208,16 +243,20 @@ function JobApply() {
                             className="upload-box"
                             onClick={() => document.getElementById('fileInput').click()}
                         >
-                            <span>{file ? file.name : 'Click to upload'}</span>
+                            <p>Click to upload your file</p>
                         </div>
-                        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+                        {formData.fileUrl && <p>File Uploaded Successfully</p>}
                     </div>
 
-                    <button type="submit" className="submit-button">Submit</button>
+                    {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+
+                    <div className="submit-btn">
+                        <button type="submit">Apply Now</button>
+                    </div>
                 </form>
             </div>
         </div>
     );
-}
+};
 
 export default JobApply;

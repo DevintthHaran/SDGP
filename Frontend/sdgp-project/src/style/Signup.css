@@ -1,14 +1,34 @@
+/* Main container to hold both image and form */
+.mainex-container {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 60px); /* Adjust based on your header height */
+  margin-top: 60px; /* Adjust based on your header height */
+}
 
+/* Image container on the left */
+.imagex-container {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
 
+.side-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the container without distortion */
+}
+
+/* Form container on the right */
 .log-container {
-  width: 320px;
+  width: 50%;
   padding: 20px;
   background: #fff;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   text-align: center;
-  margin-top: 10%;
-  margin-left: 40%;
+  margin: auto; /* Center the form vertically and horizontally */
+  max-width: 320px; /* Match the width in the screenshot */
   height: auto;
 }
 
@@ -37,12 +57,12 @@
 
 /* Active button effect */
 .log-buttons button.active-btn {
-  background-color: #FF9D23; /* Active: Orange */
+  background-color: #FF9D23; /* Orange, matching the screenshot */
   color: white;
 }
 
 .log-buttons button:not(.active-btn) {
-  background-color: white; /* Inactive: Teal */
+  background-color: white;
   color: #FF9D23;
 }
 
@@ -60,6 +80,8 @@
 
 .log-form h2 {
   margin-bottom: 10px;
+  font-size: 24px; /* Match the font size in the screenshot */
+  font-weight: bold;
 }
 
 .log-form input {
@@ -68,6 +90,7 @@
   margin: 5px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 14px;
 }
 
 .log-form button {
@@ -75,7 +98,7 @@
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #FF9D23;
+  background-color: #FF9D23; /* Orange, matching the screenshot */
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -83,36 +106,33 @@
 }
 
 .log-form button:hover {
-  background-color: #4F959D;
+  background-color: #e68a00; /* Slightly darker orange on hover */
 }
+
+/* Ensure the signup page takes full height */
 .signup-page {
   margin: 0;
   padding: 0;
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-size: cover;
-  background-position: center;
-  animation: slider 10s linear infinite;
+  flex-direction: column;
+  background-color: #f5f5f5; /* Light background to match the professional feel */
 }
 
-/* Background Animation */
-@keyframes slider {
-  0% { background-image: url('../Images/1.jpg'); }
-  30% { background-image: url('../Images/2.jpg'); }
-  60% { background-image: url('../Images/3.jpg'); }
-  100% { background-image: url('../Images/4.jpg'); }
-}
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
 
-.signup-page .log-container {
-  width: 320px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  text-align: center;
-  margin-top: 10%;
-  height: auto;
-}
+  .image-container {
+    width: 100%;
+    height: 40vh; /* Reduce height on smaller screens */
+  }
 
+  .log-container {
+    width: 90%;
+    max-width: none;
+    margin: 20px auto;
+  }
+}

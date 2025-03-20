@@ -1,45 +1,53 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from "react";
+import "../style/Booking.css"; // External CSS file
+import Header from '../components/Header.jsx';
 
 const ITMeeting = () => {
-  const redirectToGoogleBooking = () => {
-    // Save a flag to indicate the user is about to leave for booking
-    localStorage.setItem('isBooking', 'true');
-    // Replace this URL with your actual Google Calendar booking page URL
-    const googleBookingLink = "";
-    window.open(googleBookingLink, "_blank");
-  };
+  const [people, setPeople] = useState([]);
 
-  // Check if the booking flag is set when the component mounts
   useEffect(() => {
-    const isBooking = localStorage.getItem('isBooking');
-
-    if (isBooking) {
-      // Show success message if the user was in the booking flow
-      //alert("Successful booking!");
-      // Remove the flag after showing the alert
-      localStorage.removeItem('isBooking');
-    }
+    fetch("http://localhost:8080/counselors/it")
+      .then((response) => response.json())
+      .then((data) => setPeople(data))
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h2>Schedule an IT Meeting</h2>
-      <button onClick={redirectToGoogleBooking} style={buttonStyle}>
-        Book a Meeting
-      </button>
+    <div>
+      <Header/>
+    <div className="booking-container">
+      <div className="booking-content">
+        <h2 className="booking-header">Available Career Guidance Sessions</h2>
+        <ul className="booking-list">
+          {people.length > 0 ? (
+            people.map((person, index) => (
+              <li key={index} className="booking-card">
+                <div className="booking-card-content">
+                  <h3 className="booking-card-name">
+                    {person.firstName} {person.lastName}
+                  </h3>
+                  <p className="booking-card-description">
+                    Book a session with {person.firstName} for career guidance.
+                  </p>
+                  <a
+                    href={person.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="booking-button"
+                  >
+                    Book Now
+                  </a>
+                </div>
+              </li>
+            ))
+          ) : (
+            <p className="loading-text">Loading...</p>
+          )}
+        </ul>
+      </div>
+    </div>
     </div>
   );
-};
-
-// Optional: Inline style for the button
-const buttonStyle = {
-  backgroundColor: '#007BFF',
-  color: '#fff',
-  padding: '10px 20px',
-  fontSize: '16px',
-  border: 'none',
-  borderRadius: '5px',
-  cursor: 'pointer',
 };
 
 export default ITMeeting;

@@ -12,10 +12,13 @@ const JobApply = () => {
         contactNumber: '',
         position: '',
         fileUrl: '', // Store the file URL here
+        status: 'Pending',  // Default value for status
+        googleMeetLink: 'Not Assigned',  // Default value for Google Meet link
     });
     const [errorMessage, setErrorMessage] = useState('');
     const [emailError, setEmailError] = useState('');
     const [contactError, setContactError] = useState('');
+    const [isUploading, setIsUploading] = useState(false); // Add this line
 
     // Handle change in form fields
     const handleChange = (e) => {
@@ -27,26 +30,27 @@ const JobApply = () => {
     };
 
     // Handle file upload to Cloudinary
-    const handleFileChange = (e) => {
+    const handleFileChange = async (e) => {
         const selectedFile = e.target.files[0];
         if (selectedFile) {
-            // Prepare form data for file upload to Cloudinary
+            setIsUploading(true); // Set uploading state to true
             const formDataToUpload = new FormData();
             formDataToUpload.append('file', selectedFile);
             formDataToUpload.append('upload_preset', 'cv_preset'); // Use the preset created in Cloudinary
 
             // Upload file to Cloudinary
-            axios.post('https://api.cloudinary.com/v1_1/dq1znqlu6/upload', formDataToUpload)
-                .then((response) => {
-                    setFormData({
-                        ...formData,
-                        fileUrl: response.data.secure_url, // Store the file URL from Cloudinary
-                    });
-                })
-                .catch((error) => {
-                    console.error("File upload error:", error);
-                    setErrorMessage("File upload failed. Please try again.");
+            try {
+                const response = await axios.post('https://api.cloudinary.com/v1_1/dq1znqlu6/upload', formDataToUpload);
+                setFormData({
+                    ...formData,
+                    fileUrl: response.data.secure_url, // Store the file URL from Cloudinary
                 });
+            } catch (error) {
+                console.error("File upload error:", error);
+                setErrorMessage("File upload failed. Please try again.");
+            } finally {
+                setIsUploading(false); // Set uploading state to false after upload
+            }
         }
     };
 
@@ -80,22 +84,25 @@ const JobApply = () => {
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         if (!validateForm()) return;
-
-        const applicationData = new FormData();
-        applicationData.append("firstName", formData.firstName);
-        applicationData.append("lastName", formData.lastName);
-        applicationData.append("email", formData.email);
-        applicationData.append("contactNumber", formData.contactNumber);
-        applicationData.append("position", formData.position);
-        applicationData.append("fileUrl", formData.fileUrl); // Send the file URL to the backend
-
+    
+        const applicationData = {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            contactNumber: formData.contactNumber,
+            position: formData.position,
+            fileUrl: formData.fileUrl, // Just send as a string
+            status: formData.status,  // Default value for status
+            googleMeetLink: formData.googleMeetLink,  // Default value for Google Meet link
+        };
+    
         try {
-            const response = await axios.post("http://localhost:8080/api/job-apply", applicationData, {
-                headers: { "Content-Type": "multipart/form-data" },
+            const response = await axios.post("http://localhost:8080/job-apply", applicationData, {
+                headers: { "Content-Type": "application/json" }, // JSON request
             });
-
+    
             if (response.status === 200) {
                 alert("Job application submitted successfully!");
                 setFormData({
@@ -104,7 +111,9 @@ const JobApply = () => {
                     email: '',
                     contactNumber: '',
                     position: '',
-                    fileUrl: '', // Reset the file URL
+                    fileUrl: '',
+                    status: 'Pending',  // Default value for status
+                    googleMeetLink: 'Not Assigned',  // Default value for Google Meet link
                 });
             }
         } catch (error) {
@@ -112,6 +121,7 @@ const JobApply = () => {
             alert("Failed to submit application.");
         }
     };
+    
 
     return (
         <div className="JobApplication">
@@ -225,34 +235,24 @@ const JobApply = () => {
                             <option value="Career Advisor For IT Field">Career Advisor For IT Field</option>
                             <option value="Career Advisor For Commerce Field">Career Advisor For Commerce Field</option>
                             <option value="Career Advisor For Science Field">Career Advisor For Science Field</option>
-                            <option value="Career Advisor For Maths Field">Career Advisor For Maths Field</option>
-                            <option value="Career Advisor For Arts Field">Career Advisor For Arts Field</option>
+                            <option value="Career Advisor For Law">Career Advisor For Law</option>
                         </select>
                     </div>
 
-                    <div className="file-upload">
-                        <label>Upload Cover Letter and CV</label>
-                        <input
-                            type="file"
-                            accept=".pdf, .docx, .txt"
-                            id="fileInput"
-                            onChange={handleFileChange}
-                            style={{ display: 'none' }}
+                    <div className="input-field">
+                        <label>Upload CV</label>
+                        <input 
+                            type="file" 
+                            accept=".pdf, .doc, .docx" 
+                            onChange={handleFileChange} 
+                            required 
                         />
-                        <div
-                            className="upload-box"
-                            onClick={() => document.getElementById('fileInput').click()}
-                        >
-                            <p>Click to upload your file</p>
-                        </div>
-                        {formData.fileUrl && <p>File Uploaded Successfully</p>}
+                        {isUploading && <p>Uploading file...</p>} {/* Display message during upload */}
                     </div>
 
                     {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
 
-                    <div className="submit-btn">
-                        <button type="submit">Apply Now</button>
-                    </div>
+                    <button type="submit" disabled={isUploading}>Submit Application</button>
                 </form>
             </div>
         </div>

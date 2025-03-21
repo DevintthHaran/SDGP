@@ -1,37 +1,32 @@
 package com.devintth.sdgp.controller;
 
 import com.devintth.sdgp.model.JobApplication;
-import com.devintth.sdgp.repository.JobApplicationRepository;
+import com.devintth.sdgp.service.JobApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
-
-import java.io.IOException;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/job-apply")
+@RequestMapping("/job-apply")
+@CrossOrigin(origins = "http://localhost:3000")
 public class JobApplicationController {
 
     @Autowired
-    private JobApplicationRepository repository;
+    private JobApplicationService jobApplicationService;
 
     @PostMapping
-    public ResponseEntity<String> submitJobApplication(
-        @RequestParam String firstName,
-        @RequestParam String lastName,
-        @RequestParam String email,
-        @RequestParam String contactNumber,
-        @RequestParam String position,
-        @RequestParam("file") MultipartFile file
-    ) {
+    public ResponseEntity<Object> submitJobApplication(@RequestBody JobApplication jobApplication) {
         try {
-            JobApplication application = new JobApplication(firstName, lastName, email, contactNumber, position, file.getOriginalFilename());
-            repository.save(application);
-            return ResponseEntity.ok("Application submitted successfully.");
+            // Save the application data
+            JobApplication savedJobApplication = jobApplicationService.saveJobApplication(jobApplication);
+
+            // Return a success response with the saved job application
+            return ResponseEntity.status(HttpStatus.CREATED).body(savedJobApplication);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to submit application.");
+            // Handle error and return an appropriate response
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error occurred while submitting the job application: " + e.getMessage());
         }
     }
 }

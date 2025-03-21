@@ -3,17 +3,36 @@ package com.devintth.sdgp.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "Counselors")  // Ensure this matches your collection name in MongoDB
+@Document(collection = "counselors")
 public class Counselor {
-
+    
     @Id
-    private String id;
+    private String id;  // MongoDB generates a unique ID
     private String firstName;
     private String lastName;
     private String email;
     private String contactNumber;
     private String position;
-    private String filePath;
+    private String fileUrl;  // The URL of the uploaded CV
+    private String status;  // Status of the candidate (Pending, Approved, Rejected)
+    private String googleMeetLink;  // Link for the Google Meet interview
+    private String counselorId;  // Assigned only if approved, unique ID for the counselor
+
+    // Default constructor
+    public Counselor() {}
+
+    // Constructor to initialize the counselor object
+    public Counselor(String firstName, String lastName, String email, String contactNumber, 
+                     String position, String fileUrl, String status, String googleMeetLink) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.contactNumber = contactNumber;
+        this.position = position;
+        this.fileUrl = fileUrl;
+        this.status = status;
+        this.googleMeetLink = googleMeetLink;
+    }
 
     // Getters and Setters
     public String getId() {
@@ -64,11 +83,51 @@ public class Counselor {
         this.position = position;
     }
 
-    public String getFilePath() {
-        return filePath;
+    public String getFileUrl() {
+        return fileUrl;
     }
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getGoogleMeetLink() {
+        return googleMeetLink;
+    }
+
+    public void setGoogleMeetLink(String googleMeetLink) {
+        this.googleMeetLink = googleMeetLink;
+    }
+
+    public String getCounselorId() {
+        return counselorId;
+    }
+
+    public void setCounselorId(String counselorId) {
+        this.counselorId = counselorId;
+    }
+
+    @Override
+    public String toString() {
+        return "Counselor{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", contactNumber='" + contactNumber + '\'' +
+                ", position='" + position + '\'' +
+                ", fileUrl='" + fileUrl + '\'' +
+                ", status='" + status + '\'' +
+                ", googleMeetLink='" + googleMeetLink + '\'' +
+                ", counselorId='" + counselorId + '\'' +
+                '}';
     }
 }

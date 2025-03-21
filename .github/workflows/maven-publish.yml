@@ -26,7 +26,8 @@ jobs:
         java-version: '17'
         distribution: 'microsoft'
 
-
+    - name: Set execute permission for mvnw
+      run: chmod +x Backend/SDGP/mvnw
 
     - name: Build with Maven
       run: |

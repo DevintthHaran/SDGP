@@ -4,6 +4,7 @@ import Lottie from "lottie-react";
 import animationData from "../Images/characterAnimation.json"; // Replace with your Lottie JSON file
 import "../style/Feedback.css";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Feedback = () => {
   const [formData, setFormData] = useState({
@@ -117,6 +118,7 @@ const Feedback = () => {
         <button  className="feedback-button" type="submit">Submit Feedback</button>
       </form>
     </div>
+    <Footer/>
     </div>
   );
 };

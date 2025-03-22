@@ -1,123 +1,15 @@
-/* General Styles
 
-
-.setting1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  margin-top: 3%;
-}
-
-.settings-page {
-  width: 100%;
-  max-width: 1200px;
-}
-
-.header {
-  text-align: center;
-}
-
-.main-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 30px;
-  margin-top: 10px;
-}
-
-/* Left Column 
-.left-column {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.settings-section {
-  margin-bottom: 20px;
-}
-
-
-/* Notification Settings 
-.notification-options {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.notification-options label {
-  font-size: 1rem;
-}
-
-.button {
-  
-  background-color: #fd9b23b0;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-  width: auto;
-  height: 50px;
-  margin-bottom: 2%;
-  margin-right: 2%;
-  min-width: 150px;
-  padding: 10px;
-}
-
-.button:hover {
-  background-color: #818c78;
-}
-
-/* Right Column 
-.right-column {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Dropdown Styles 
-.select {
-  padding: 8px;
-  margin: 10px 0;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 100%;
-  max-width: 200px;
-}
-
-/* Save Button 
-.save-button {
-  margin-top: 20px;
-  padding: 12px 20px;
-  background-color: #5C7285;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 200px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-.save-button:hover {
-  background-color: #818c78;
-} */
-
-/*--------------------------------------------*/
-/*--------------------------------------------*/
-/* Professional Settings Page - Main Structure */
+/* Settings Page */
 .settings-page {
   width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 120px); /* Adjust based on your header/footer height */
-  background: #f5f8fa;
+  background: #e1eff8;
   padding: 0;
   box-sizing: border-box;
-  color: #2c3e50;
+  color: #000;
 }
 
 /* Header Styling */
@@ -394,15 +286,15 @@ body.dark .custom-checkbox {
 }
 
 .button-secondary {
-  color: #4a5568;
+  color: #4a5568 ;
 }
 
 .button-secondary::before {
-  background: rgba(203, 213, 224, 0.3);
+  background: rgba(133, 149, 166, 0.3);
 }
 
 .button-secondary:hover::before {
-  background: rgba(203, 213, 224, 0.5);
+  background: rgba(112, 125, 138, 0.5);
 }
 
 .button-danger {
@@ -430,7 +322,7 @@ body.dark .custom-checkbox {
   max-width: 150px;
   height: 45px;
   border: none;
-  box-shadow: 0 4px 6px rgba(253, 155, 35, 0.15);
+  box-shadow: 0 4px 6px rgba(245, 164, 65, 0.15);
   letter-spacing: 0.02em;
   text-transform: uppercase;
   font-size: 0.85rem;
@@ -479,7 +371,7 @@ body.dark .custom-checkbox {
 
 /* FAQ Section */
 .faq-section {
-  background-color: #ffffff;
+  background-color: #d2d3d3;
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -520,7 +412,7 @@ body.dark .custom-checkbox {
 /* Terms & Privacy Sections */
 .terms-section,
 .privacy-section {
-  background-color: #ffffff;
+  background-color: #d2d3d3;
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -546,7 +438,7 @@ body.dark .custom-checkbox {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #ffffff;
+  background-color: #addae4;
   padding: 1rem 2rem;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   display: flex;

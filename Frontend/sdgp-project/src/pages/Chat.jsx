@@ -156,7 +156,6 @@ function Chat() {
 
   return (
     <div>
-      <Header />
       <div className="chat-component">
         <button className="chat-button" onClick={toggleInput}>
           {showInput ? "Close Chat" : "Ask a Question"}
@@ -239,7 +238,6 @@ function Chat() {
           </div>
         )}
       </div>
-      <Footer/>
     </div>
   );
 }

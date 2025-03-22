@@ -10,6 +10,7 @@ import SocialDetails from "../components/SocialDetails";
 import GeneralDetails from "../components/GeneralDetails";
 import ProfileView from "../components/ProfileView";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "../style/Profile.css";
 
 function Profile() {
@@ -193,6 +194,7 @@ function Profile() {
       </div>
 
       {submittedProfileData && <ProfileView profileData={submittedProfileData} />}
+      <Footer/>
       
     </div>
   );

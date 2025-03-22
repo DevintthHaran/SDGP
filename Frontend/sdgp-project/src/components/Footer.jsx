@@ -25,14 +25,14 @@ const Footer = () => {
             <p className="footer-text">
               Empowering professionals to reach new heights in their careers through expert guidance, innovative tools, and personalized development strategies.
             </p>
-            <div className="social-icons">
-              <button aria-label="LinkedIn" className="social-btn">
+            <div className="footer-social-icons">
+              <button aria-label="LinkedIn" className="footer-social-btn">
                 <FontAwesomeIcon icon={faLinkedin} />
               </button>
-              <button aria-label="Twitter" className="social-btn">
+              <button aria-label="Twitter" className="footer-social-btn">
                 <FontAwesomeIcon icon={faTwitter} />
               </button>
-              <button aria-label="Facebook" className="social-btn">
+              <button aria-label="Facebook" className="footer-social-btn">
                 <FontAwesomeIcon icon={faFacebook} />
               </button>
             </div>

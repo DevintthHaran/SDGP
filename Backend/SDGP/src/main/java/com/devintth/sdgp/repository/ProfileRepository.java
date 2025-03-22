@@ -1,7 +1,5 @@
 package com.devintth.sdgp.repository;
 
-
-
 import com.devintth.sdgp.entity.Profile;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

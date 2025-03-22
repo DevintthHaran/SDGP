@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../style/Chat.css";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 function Chat() {
   const [userInput, setUserInput] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
@@ -238,6 +239,7 @@ function Chat() {
           </div>
         )}
       </div>
+      <Footer/>
     </div>
   );
 }

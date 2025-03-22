@@ -6,6 +6,7 @@ import AssessmentQuestions from '../components/AssessmentQuestions';
 import ResultsPage from '../components/ResultsPage';
 import '../style/Skill.css';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const SkillAssessment = () => {
   const [step, setStep] = useState(0);
@@ -38,6 +39,7 @@ const SkillAssessment = () => {
         {step === 3 && <ResultsPage results={results} />}
 
       </div>
+      <Footer />
     </div>
   );
 };

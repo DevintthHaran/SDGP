@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../style/Admin.css";
 import Header from '../components/Header.jsx';
-// import Footer from '../components/Footer.jsx';
+import Footer from "../components/Footer.jsx";
 
 const Admin = () => {
   const [candidates, setCandidates] = useState([
@@ -61,7 +61,7 @@ const Admin = () => {
                 <p>Select a candidate to view details</p>
                 </div>
             </div>
-            {/* <Footer /> */}
+            { <Footer /> }
             </div>
     </div>
   );

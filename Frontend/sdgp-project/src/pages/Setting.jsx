@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import "../style/setting.css";
 import Header from "../components/Header";
@@ -132,8 +133,8 @@ const Setting = () => {
             <section className="settings-section">
               <h2>Account Settings</h2>
               <div className="button-group">
-                <button className="button button-secondary"><span>Edit Profile</span></button>
-                <button className="button button-secondary"><span>Change Password</span></button>
+                <button className="button button-secondary"> <Link to="/profile" style={{ textDecoration: "none", color: "inherit" }}><span>Edit Profile</span></Link></button>
+                <button className="button button-secondary"> <Link to="/signup" style={{ textDecoration: "none", color: "inherit" }}><span>Change Password</span></Link></button>
                 <button onClick={handleDeleteAccount} className="button button-danger"><span>Delete Account</span></button>
               </div>
             </section>
@@ -162,7 +163,7 @@ const Setting = () => {
                     onChange={handleChange}
                     className="custom-checkbox"
                   />
-                  <label>Resume Feedback Notifications</label>
+                  <label>Feedback Notifications</label>
                 </div>
               </div>
               <div className="settings-item">
@@ -202,8 +203,10 @@ const Setting = () => {
                   onChange={handleChange}
                 >
                   <option value="IT">IT</option>
-                  <option value="Healthcare">Healthcare</option>
+                  <option value="Science">Science</option>
                   <option value="Business">Business</option>
+                  <option value="OrdinaryLevel">Odinary Level</option>
+                  <option value="AdvancedLevel">Advanced Level</option>
                 </select>
               </div>
               <div className="settings-item">
@@ -214,9 +217,8 @@ const Setting = () => {
                   onChange={handleChange}
                 >
                   <option value="English">English</option>
-                  <option value="Spanish">Spanish</option>
-                  <option value="French">French</option>
-                  <option value="German">German</option>
+                  <option value="Sinhala">Sinhala</option>
+                  
                 </select>
               </div>
               <div className="settings-item">
@@ -239,9 +241,9 @@ const Setting = () => {
                 <button onClick={() => setShowFAQs(!showFAQs)} className="button button-secondary">
                   <span>FAQs</span>
                 </button>
-                <button className="button button-secondary"><span>Contact Support</span></button>
-                <button className="button button-secondary"><span>Report a Problem</span></button>
-                <button className="button button-secondary"><span>Feedback & Suggestions</span></button>
+                <button className="button button-secondary"> <Link to="/contactus" style={{ textDecoration: "none", color: "inherit" }}><span>Contact Support</span></Link></button>
+                <button className="button button-secondary"> <Link to="/contact" style={{ textDecoration: "none", color: "inherit" }}><span>Report a Problem</span></Link></button>
+                <button className="button button-secondary"> <Link to="/feedback" style={{ textDecoration: "none", color: "inherit" }}><span>Feedback & Suggestions</span></Link></button>
               </div>
             </section>
 

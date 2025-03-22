@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/api/counselors")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -16,18 +15,24 @@ public class CounselorController {
     @Autowired
     private CounselorService counselorService;
 
+    // Fetch only pending counselors
     @GetMapping
-    public List<Counselor> getAllCounselors() {
-        return counselorService.getAllCounselors();
+    public List<Counselor> getPendingCounselors(@RequestParam(required = false) String status) {
+        if ("Pending".equalsIgnoreCase(status)) {
+            return counselorService.getPendingCounselors();
+        }
+        return List.of(); // Return empty list if status filter is incorrect
     }
 
+    // Approve a counselor
     @PutMapping("/{id}")
-    public Counselor updateCounselorStatus(@PathVariable String id, @RequestBody Counselor counselor) {
-        return counselorService.updateCounselorStatus(id, counselor);
+    public Counselor approveCounselor(@PathVariable String id) {
+        return counselorService.approveCounselor(id);
     }
 
+    // Reject (delete) a counselor
     @DeleteMapping("/{id}")
-    public void deleteCounselor(@PathVariable String id) {
-        counselorService.deleteCounselor(id);
+    public void rejectCounselor(@PathVariable String id) {
+        counselorService.rejectCounselor(id);
     }
 }

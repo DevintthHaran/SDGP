@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../style/setting.css";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Setting = () => {
   const [settings, setSettings] = useState({
@@ -165,6 +166,7 @@ const Setting = () => {
           </main>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

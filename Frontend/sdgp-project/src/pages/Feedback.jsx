@@ -13,7 +13,7 @@ const Feedback = () => {
     feedbackType: "",
     name: "",
     email: "",
-    comment: "",
+    message: "",
     rating: 0,
   });
 
@@ -49,7 +49,7 @@ const Feedback = () => {
         feedbackType: "",
         name: "",
         email: "",
-        comment: "",
+        message: "",
         rating: 0,
       });
 
@@ -118,9 +118,9 @@ const Feedback = () => {
           />
 
           <textarea
-            value={formData.comment}
+            value={formData.message}
             onChange={handleChange}
-            name="comment"
+            name="message"
             rows={4}
             placeholder="Drop your valuable feedback..."
             required

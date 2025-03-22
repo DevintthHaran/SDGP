@@ -36,9 +36,6 @@ Your privacy is important to us. This Privacy Policy explains how we collect, us
 By using our platform, you agree to this policy.
 `;
 
-
-
-
 const Setting = () => {
   const [settings, setSettings] = useState({
     notifications: true,
@@ -52,14 +49,19 @@ const Setting = () => {
     theme: localStorage.getItem("theme") || "Light",
   });
 
-  const [showFAQs, setShowFAQs] = useState(false); // Track if FAQs are visible
-  const [showTerms, setShowTerms] = useState(false); // Track if Terms and Conditions are visible
+  const [showFAQs, setShowFAQs] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
-
+  const [showCookieBanner, setShowCookieBanner] = useState(!Cookies.get("cookiesAccepted"));
+  const [cookiePreferences, setCookiePreferences] = useState({
+    analytics: Cookies.get("analytics") === "true",
+    marketing: Cookies.get("marketing") === "true",
+    essential: true, // Essential cookies are always enabled
+  });
 
   useEffect(() => {
-    document.body.className = settings.theme.toLowerCase(); // Apply class to body
-    localStorage.setItem("theme", settings.theme); // Save theme to localStorage
+    document.body.className = settings.theme.toLowerCase();
+    localStorage.setItem("theme", settings.theme);
   }, [settings.theme]);
 
   const handleChange = (e) => {
@@ -85,14 +87,14 @@ const Setting = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          credentials: "include", // To handle cookies (if needed)
+          credentials: "include",
         });
 
         if (response.ok) {
           alert("Account deleted successfully!");
-          localStorage.clear(); // Remove user data from local storage
+          localStorage.clear();
           sessionStorage.clear();
-          window.location.href = "/login"; // Redirect to login page
+          window.location.href = "/login";
         } else {
           alert("Failed to delete the account.");
         }
@@ -102,203 +104,232 @@ const Setting = () => {
       }
     }
   };
+
   const handleCookieChange = (e) => {
     const { name, checked } = e.target;
     setCookiePreferences((prev) => ({
       ...prev,
       [name]: checked,
     }));
-    Cookies.set(name, checked, { expires: 365 }); // Save preferences for 1 year
+    Cookies.set(name, checked, { expires: 365 });
   };
-  const [showCookieBanner, setShowCookieBanner] = useState(!Cookies.get("cookiesAccepted"));
 
   const acceptCookies = () => {
     Cookies.set("cookiesAccepted", "true", { expires: 365 });
     setShowCookieBanner(false);
   };
 
-  const [cookiePreferences, setCookiePreferences] = useState({
-    analytics: Cookies.get("analytics") === "true",
-    marketing: Cookies.get("marketing") === "true",
-    essential: true, // Essential cookies are always enabled
-  });
-
   return (
     <>
-     
+      <Header />
       <div className="settings-page">
         <header className="header">
           <h1>Settings</h1>
         </header>
         <main className="main-content">
-          {/* Account Settings */}
-          <section className="settings-section">
-            <h2>Account Settings</h2>
-            <button>Edit Profile</button>
-            <button>Change Password</button>
-            <button onClick={handleDeleteAccount} className="delete-button">Delete Account</button>
-          </section>
-
-          {/* Notification Settings */}
-          <section className="settings-section">
-            <h2>Notification Settings</h2>
-            <label>
-              <input
-                type="checkbox"
-                name="careerAlerts"
-                checked={settings.careerAlerts}
-                onChange={handleChange}
-              />
-              Career Alerts & Job Updates
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="resumeFeedback"
-                checked={settings.resumeFeedback}
-                onChange={handleChange}
-              />
-              Resume Feedback Notifications
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="eventReminders"
-                checked={settings.eventReminders}
-                onChange={handleChange}
-              />
-              Event & Webinar Reminders
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="emailPreferences"
-                checked={settings.emailPreferences}
-                onChange={handleChange}
-              />
-              Email Preferences (Subscribe/Unsubscribe)
-            </label>
-          </section>
-
-          {/* Application Preferences */}
-          <section className="settings-section">
-            <h2>Application Preferences</h2>
-            <label>
-              Preferred Career Fields
-              <select
-                name="preferredCareerField"
-                value={settings.preferredCareerField}
-                onChange={handleChange}
-              >
-                <option value="IT">IT</option>
-                <option value="Healthcare">Healthcare</option>
-                <option value="Business">Business</option>
-              </select>
-            </label>
-            <label>
-              Language & Region
-              <select
-                name="language"
-                value={settings.language}
-                onChange={handleChange}
-              >
-                <option value="English">English</option>
-                <option value="Spanish">Spanish</option>
-                <option value="French">French</option>
-                <option value="German">German</option>
-              </select>
-            </label>
-            <label>
-              Theme Mode
-              <select
-                name="theme"
-                value={settings.theme}
-                onChange={handleChange}
-              >
-                <option value="Light">Light</option>
-                <option value="Dark">Dark</option>
-              </select>
-            </label>
-          </section>
-
-          {/* Help & Support */}
-          <section className="settings-section">
-            <h2>Help & Support</h2>
-            <button onClick={() => setShowFAQs(!showFAQs)}>FAQs</button>
-            <button>Contact Support</button>
-            <button>Report a Problem</button>
-            <button>Feedback & Suggestions</button>
-          </section>
-
-        {/* Show FAQs when button is clicked */}
-        {showFAQs && (
-          <section className="faq-section">
-            <h2>Frequently Asked Questions</h2>
-            {FAQs.map((faq, index) => (
-              <div key={index} className="faq-item">
-                <h3>{faq.question}</h3>
-                <p>{faq.answer}</p>
+          <div className="settings-container">
+            {/* Account Settings */}
+            <section className="settings-section">
+              <h2>Account Settings</h2>
+              <div className="button-group">
+                <button className="button button-secondary"><span>Edit Profile</span></button>
+                <button className="button button-secondary"><span>Change Password</span></button>
+                <button onClick={handleDeleteAccount} className="button button-danger"><span>Delete Account</span></button>
               </div>
-            ))}
-          </section>
-        )}
+            </section>
 
-          {/* Legal & Policies */}
-          <section className="settings-section">
-            <h2>Legal & Policies</h2>
-            <button onClick={() => setShowTerms(!showTerms)}>Terms of Service</button>
-            <button onClick={() => setShowPrivacy(!showPrivacy)} >Privacy Policy</button>
-            <button>Cookie Preferences
-            <label>
-              <input
-                type="checkbox"
-                name="analytics"
-                checked={cookiePreferences.analytics}
-                 onChange={handleCookieChange}
-              />
-              Enable Analytics Cookies
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="marketing"
-                checked={cookiePreferences.marketing}
-                onChange={handleCookieChange}
-              />
-              Enable Marketing Cookies
-            </label>
-            <p>Essential cookies are always enabled to ensure the platform works properly.</p>
+            {/* Notification Settings */}
+            <section className="settings-section">
+              <h2>Notification Settings</h2>
+              <div className="settings-item">
+                <div className="checkbox-container">
+                  <input
+                    type="checkbox"
+                    name="careerAlerts"
+                    checked={settings.careerAlerts}
+                    onChange={handleChange}
+                    className="custom-checkbox"
+                  />
+                  <label>Career Alerts & Job Updates</label>
+                </div>
+              </div>
+              <div className="settings-item">
+                <div className="checkbox-container">
+                  <input
+                    type="checkbox"
+                    name="resumeFeedback"
+                    checked={settings.resumeFeedback}
+                    onChange={handleChange}
+                    className="custom-checkbox"
+                  />
+                  <label>Resume Feedback Notifications</label>
+                </div>
+              </div>
+              <div className="settings-item">
+                <div className="checkbox-container">
+                  <input
+                    type="checkbox"
+                    name="eventReminders"
+                    checked={settings.eventReminders}
+                    onChange={handleChange}
+                    className="custom-checkbox"
+                  />
+                  <label>Event & Webinar Reminders</label>
+                </div>
+              </div>
+              <div className="settings-item">
+                <div className="checkbox-container">
+                  <input
+                    type="checkbox"
+                    name="emailPreferences"
+                    checked={settings.emailPreferences}
+                    onChange={handleChange}
+                    className="custom-checkbox"
+                  />
+                  <label>Email Preferences (Subscribe/Unsubscribe)</label>
+                </div>
+              </div>
+            </section>
 
+            {/* Application Preferences */}
+            <section className="settings-section">
+              <h2>Application Preferences</h2>
+              <div className="settings-item">
+                <label>Preferred Career Fields</label>
+                <select
+                  name="preferredCareerField"
+                  value={settings.preferredCareerField}
+                  onChange={handleChange}
+                >
+                  <option value="IT">IT</option>
+                  <option value="Healthcare">Healthcare</option>
+                  <option value="Business">Business</option>
+                </select>
+              </div>
+              <div className="settings-item">
+                <label>Language & Region</label>
+                <select
+                  name="language"
+                  value={settings.language}
+                  onChange={handleChange}
+                >
+                  <option value="English">English</option>
+                  <option value="Spanish">Spanish</option>
+                  <option value="French">French</option>
+                  <option value="German">German</option>
+                </select>
+              </div>
+              <div className="settings-item">
+                <label>Theme Mode</label>
+                <select
+                  name="theme"
+                  value={settings.theme}
+                  onChange={handleChange}
+                >
+                  <option value="Light">Light</option>
+                  <option value="Dark">Dark</option>
+                </select>
+              </div>
+            </section>
+
+            {/* Help & Support */}
+            <section className="settings-section">
+              <h2>Help & Support</h2>
+              <div className="button-group">
+                <button onClick={() => setShowFAQs(!showFAQs)} className="button button-secondary">
+                  <span>FAQs</span>
+                </button>
+                <button className="button button-secondary"><span>Contact Support</span></button>
+                <button className="button button-secondary"><span>Report a Problem</span></button>
+                <button className="button button-secondary"><span>Feedback & Suggestions</span></button>
+              </div>
+            </section>
+
+            {/* Show FAQs when button is clicked */}
+            {showFAQs && (
+              <section className="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                {FAQs.map((faq, index) => (
+                  <div key={index} className="faq-item">
+                    <h3 className="faq-question">{faq.question}</h3>
+                    <p className="faq-answer">{faq.answer}</p>
+                  </div>
+                ))}
+              </section>
+            )}
+
+            {/* Legal & Policies */}
+            <section className="settings-section">
+              <h2>Legal & Policies</h2>
+              <div className="button-group">
+                <button onClick={() => setShowTerms(!showTerms)} className="button button-secondary">
+                  <span>Terms of Service</span>
+                </button>
+                <button onClick={() => setShowPrivacy(!showPrivacy)} className="button button-secondary">
+                  <span>Privacy Policy</span>
+                </button>
+              </div>
+              
+              <div className="section-divider"></div>
+              <h3>Cookie Preferences</h3>
+              <div className="settings-item">
+                <div className="checkbox-container">
+                  <input
+                    type="checkbox"
+                    name="analytics"
+                    checked={cookiePreferences.analytics}
+                    onChange={handleCookieChange}
+                    className="custom-checkbox"
+                  />
+                  <label>Enable Analytics Cookies</label>
+                </div>
+              </div>
+              <div className="settings-item">
+                <div className="checkbox-container">
+                  <input
+                    type="checkbox"
+                    name="marketing"
+                    checked={cookiePreferences.marketing}
+                    onChange={handleCookieChange}
+                    className="custom-checkbox"
+                  />
+                  <label>Enable Marketing Cookies</label>
+                </div>
+              </div>
+              <p className="description">Essential cookies are always enabled to ensure the platform works properly.</p>
+            </section>
+
+            {showTerms && (
+              <section className="terms-section">
+                <h2>Terms of Service</h2>
+                <p>{termsofService}</p>
+              </section>
+            )}
+
+            {showPrivacy && (
+              <section className="privacy-section">
+                <h2>Privacy Policy</h2>
+                <p>{privacyPolicy}</p>
+              </section>
+            )}
+
+            <button className="save-button" onClick={handleSave}>
+              <span>Save Settings</span>
             </button>
-          </section>
-
-          {showCookieBanner && (
-            <div className="cookie-banner">
-              <p>We use cookies to improve your experience. You can manage your preferences in settings.</p>
-              <button onClick={acceptCookies}>Accept</button>
-            </div>
-          )}
-
-          {showTerms && (
-            <section className="terms-section">
-              <h2>Terms of Service</h2>
-              <p>{termsofService}</p>
-            </section>
-          )}
-
-          {showPrivacy && (
-            <section className="privacy-section">
-              <h2>Privacy Policy</h2>
-              <p>{privacyPolicy}</p>
-            </section>
-          )}
-
-          <button className="save-button" onClick={handleSave}>
-            Save Settings
-          </button>
+          </div>
         </main>
       </div>
-     <Footer/> 
+
+      {showCookieBanner && (
+        <div className="cookie-banner">
+          <p className="cookie-text">We use cookies to improve your experience. You can manage your preferences in settings.</p>
+          <div className="cookie-actions">
+            <button onClick={acceptCookies} className="cookie-accept"><span>Accept</span></button>
+          </div>
+        </div>
+      )}
+      
+      <Footer />
     </>
   );
 };

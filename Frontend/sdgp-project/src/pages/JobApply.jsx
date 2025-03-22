@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../style/JobApply.css';
 import NowHiring from '../Images/NowHiring.png';
 import Header from '../components/Header.jsx';
+import Footer from '../components/Footer.jsx';
 
 function JobApply() {
     const [file, setFile] = useState(null);
@@ -29,6 +30,7 @@ function JobApply() {
     };
 
     return (
+        <div>
         <div className='JobApplication'>
             <Header />
             <div className="JobApplication-container">
@@ -134,6 +136,9 @@ function JobApply() {
                     <button type="submit" className="submit-button">Submit</button>
                 </form>
             </div>
+        </div>
+        <Footer />
+
         </div>
     );
 };

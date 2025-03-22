@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import Lottie from "lottie-react";
-import animationData from "../assets/characterAnimation.json";
+import animationData from "../Images/characterAnimation.json";
 import  submitFeedback  from "../services/api"; 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-import "./Feedback.css";
+import "../style/Feedback.css";
 
 const Feedback = () => {
   const [formData, setFormData] = useState({
@@ -67,6 +67,7 @@ const Feedback = () => {
   return (
     <div>
       <Header />
+      <div className="feedback">
       <div className="container">
         <form onSubmit={handleSubmit}>
           <h1>Feedback Form</h1>
@@ -151,6 +152,7 @@ const Feedback = () => {
         </form>
       </div>
       <Footer />
+    </div>
     </div>
   );
 };

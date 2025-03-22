@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FaEye, FaEyeSlash, FaTwitter, FaFacebook } from 'react-icons/fa';
-import image from '../Images/Signup.jpeg';
-import '../style/Signup.css';
+import image from '../Images/login.jpeg';
+import '../style/Login.css';
 
-
-const Signup = () => {
+const Login = () => {
     const [formData, setFormData] = useState({
-        userName: '',
         userEmailId: '',
         userPassword: ''
     });
@@ -24,35 +22,32 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8080/api/users/signup', formData);
-            navigate('/login');
-        } catch (err) {
-            setError(err.response?.data || 'Registration failed');
+            const response = await axios.post('http://localhost:8080/api/users/signin', formData);
+            if (response.status === 200) {
+                alert(response.data.message);
+                navigate("/dashboard");
+            }
+        } catch (error) {
+            setError(error.response?.data?.message || "Login failed!");
         }
     };
 
     return (
-      <div className="signup">
-        <div className="signup-page">
+        <div className="login">
+        <div className="login-page">
             <div className="main-container">
                 {/* Left Side: Image Section */}
                 <div className="image-container">
-                    <img src={image} alt="Signup" />
-                    <h2>Welcome Page</h2>
-                    <p>Sign in to continue access</p>
+                    <img src={image} alt="Login" />
+                    <h2>Welcome Back</h2>
+                    <p>Login to continue access</p>
                 </div>
 
                 {/* Right Side: Form Section */}
                 <div className="form-container">
-                    <h2>Sign Up</h2>
+                    <h2>Login</h2>
                     {error && <div className="error-message">{error}</div>}
                     <form onSubmit={handleSubmit}>
-                        <input
-                            type="text"
-                            placeholder="User Name"
-                            required
-                            onChange={(e) => setFormData({...formData, userName: e.target.value})}
-                        />
                         <input
                             type="email"
                             placeholder="Email"
@@ -70,15 +65,15 @@ const Signup = () => {
                                 {showPassword ? <FaEyeSlash /> : <FaEye />}
                             </span>
                         </div>
-                        <button type="submit">Sign Up</button>
+                        <button type="submit">Login</button>
                     </form>
 
                     <div className="social-login">
-                        <button className="twitter-login"><FaTwitter /> Sign in with Twitter</button>
-                        <button className="facebook-login"><FaFacebook /> Sign in with Facebook</button>
+                        <button className="twitter-login"><FaTwitter /> Login with Twitter</button>
+                        <button className="facebook-login"><FaFacebook /> Login with Facebook</button>
                     </div>
 
-                    <p>Already have an account? <a href="/login">Login</a></p>
+                    <p>Don't have an account? <a href="/signup">Sign Up</a></p>
                 </div>
             </div>
         </div>
@@ -86,4 +81,4 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+export default Login;

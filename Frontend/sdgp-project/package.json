@@ -12,6 +12,7 @@
     "@mui/material": "^6.3.0",
     "@react-three/drei": "^10.0.4",
     "@react-three/fiber": "^9.1.0",
+    "axios": "^1.8.4",
     "bootstrap": "^5.3.3",
     "boxicons": "^2.1.4",
     "cra-template": "1.2.0",

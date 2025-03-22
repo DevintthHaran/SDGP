@@ -1,65 +1,92 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faLinkedin, 
+  faTwitter, 
+  faFacebook 
+} from '@fortawesome/free-brands-svg-icons';
+import {
+  faMapMarkerAlt,
+  faPhone,
+  faEnvelope
+} from '@fortawesome/free-solid-svg-icons';
+//import './Footer.css';
 import '../style/Footer.css';
-import logo from '../Images/logo.jpg';
-
 
 const Footer = () => {
   return (
-    <div className="Footer">
-        <footer className="Footer-footer">
-        <div className="Footer-container">
-            <div className="Footer-row">
-            <div id="Footer-footer-col-1" className="Footer-footer-col">
-                <img className="Footer-logo" src={logo} alt="logo" />
-                <h3>Empowering Your Life Journey to Success!</h3>
+    <footer className="footer">
+      <div className="footer-container">
+        {/* Main Footer Content */}
+        <div className="footer-grid">
+          {/* Company Info */}
+          <div>
+            <h3 className="footer-title">Professional Odyssey</h3>
+            <p className="footer-text">
+              Empowering professionals to reach new heights in their careers through expert guidance, innovative tools, and personalized development strategies.
+            </p>
+            <div className="social-icons">
+              <button aria-label="LinkedIn" className="social-btn">
+                <FontAwesomeIcon icon={faLinkedin} />
+              </button>
+              <button aria-label="Twitter" className="social-btn">
+                <FontAwesomeIcon icon={faTwitter} />
+              </button>
+              <button aria-label="Facebook" className="social-btn">
+                <FontAwesomeIcon icon={faFacebook} />
+              </button>
             </div>
-            <div className="Footer-footer-col">
-                <h4>About</h4>
-                <ul>
-                <li><a href="./pages/Home.jsx">Home</a></li>
-                <li><a href="./pages/Shop.jsx">Shop</a></li>
-                <li><a href="./pages/">Counseling</a></li>
-                <li><a href="./pages/">Skill Assessment</a></li>
-                <li><a href="./pages/">Interview simulation</a></li>
-                <li><a href="./pages/">Job Market Trend</a></li>
-                <li><a href="./pages/">Career Report</a></li>
-                <li><a href="./pages/">Profile</a></li>
-                </ul>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="footer-title">Quick Links</h3>
+            <ul className="footer-list">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Our Services</a></li>
+              <li><a href="#">Career Opportunities</a></li>
+              <li><a href="#">Success Stories</a></li>
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h3 className="footer-title">Resources</h3>
+            <ul className="footer-list">
+              <li><a href="#">Career Guide</a></li>
+              <li><a href="#">Industry Insights</a></li>
+              <li><a href="#">Professional Development</a></li>
+              <li><a href="#">Events & Webinars</a></li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="footer-title">Contact Us</h3>
+            <div className="contact-info">
+              <p><FontAwesomeIcon icon={faMapMarkerAlt} className="icon" /> 123 Business Avenue, Suite 200, New York, NY 10001</p>
+              <p><FontAwesomeIcon icon={faPhone} className="icon" /> <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+              <p><FontAwesomeIcon icon={faEnvelope} className="icon" /> <a href="mailto:contact@professional-odyssey.com">contact@professional-odyssey.com</a></p>
             </div>
-            <div className="Footer-footer-col">
-                <h4>Contact Us</h4>
-                <ul>
-                <li><a href="../">About us</a></li>
-                <li><a href="../">Contact Us</a></li>
-                <li>57, Ramakrishna Road,<br />Colombo 06, Sri Lanka,</li>
-                <li>+94 766 760 760</li>
-                <li><a href="mailto:professional.odyssey.lk@gmail.com">professional.odyssey.lk@gmail.com</a></li>
-                </ul>
-            </div>
-            <div className="Footer-footer-col">
-                <h4>Addition</h4>
-                <p className="Footer-button-description">If you are interested in receiving up-to-date notifications</p>
-                <button className="Footer-footer-button" onClick={() => window.location.href = '../pages/.jsx'}>Subscribe now</button>
-                <p className="Footer-button-description">Your feedback helps us grow</p>
-                <button className="Footer-footer-button" onClick={() => window.location.href = './Feedback.jsx'}>Send Feedback</button>
-                <p className="Footer-button-description">Apply for Counseling Job</p>
-                <button className="Footer-footer-button" onClick={() => window.location.href = '../pages/Job.jsx'}>Click here</button>
-                <button className="Footer-footer-button" onClick={() => window.location.href = '../pages/Signup.jsx'}>Sign-up</button>
-            </div>
-            </div>
-            <hr className="Footer-footer-hr" />
-            <div id="Footer-footer-col-hr">
-            <h4>Follow Us</h4>
-            <div className="Footer-social-links">
-                <a href="https://web.facebook.com/iitsl/" target="_blank" rel="noopener noreferrer"><img src="https://img.icons8.com/?size=100&id=118487&format=png&color=FFFFFF" alt="Facebook icon" /></a>
-                <a href="https://www.instagram.com/iitlife/" target="_blank" rel="noopener noreferrer"><img src="https://img.icons8.com/?size=100&id=85154&format=png&color=FFFFFF" alt="Instagram icon" /></a>
-                <a href="https://www.linkedin.com/in/professional-odyssey-206a82352/" target="_blank" rel="noopener noreferrer"> <img src="https://img.icons8.com/?size=100&id=85044&format=png&color=FFFFFF" alt="LinkedIn icon" /></a>
-            </div>
-            <p>&copy; 2025 Informatics Institute of Technology. All rights reserved.</p>
-            </div>
+          </div>
         </div>
-        </footer>
+
+        {/* Newsletter Subscription */}
+        <div className="newsletter">
+          <h4>Subscribe to Our Newsletter</h4>
+          <p>Stay updated with the latest career insights and opportunities</p>
+          <form onSubmit={(e) => e.preventDefault()} className="newsletter-form">
+            <input type="email" placeholder="Enter your email" aria-label="Email subscription" />
+            <button type="submit">Subscribe</button>
+          </form>
         </div>
+
+        {/* Copyright */}
+        <div className="footer-bottom">
+          <p>© {new Date().getFullYear()} Professional Odyssey. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
   );
 };
 

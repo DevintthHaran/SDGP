@@ -23,6 +23,7 @@ import Signup from './pages/Signup';
 import Subscription from './pages/Subscription';
 import Simulation from './pages/Simulation';
 import NotFound from './pages/NotFound';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -50,6 +51,8 @@ function App() {
         <Route path='/subscription' element={<Subscription/>}/>
         <Route path='/simulation' element={<Simulation/>}/>
         <Route path='*' element={<NotFound/>}/>
+        <Route path='/login' element={<Login/>}/>
+        
       </Routes>
     </Router>
   );

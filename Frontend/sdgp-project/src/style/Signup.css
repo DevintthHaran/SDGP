@@ -1,140 +1,163 @@
-/* Main container to hold both image and form */
-.mainex-container {
+/* Main Signup Page */
+.signup .signup-page {
   display: flex;
-  width: 100%;
-  height: calc(100vh - 60px); /* Adjust based on your header height */
-  margin-top: 60px; /* Adjust based on your header height */
-  margin-bottom:5px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #f7dbb4, #FF9D23);
 }
 
-/* Image container on the left */
-.imagex-container {
-  width: 50%;
-  height: 100%;
+/* Main Container */
+.signup .main-container {
+  display: flex;
+  width: 900px;
+  background: white;
+  border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.side-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensures the image covers the container without distortion */
-  margin-top:15px;
-}
-
-/* Form container on the right */
-.log-container {
-  width: 50%;
-  padding: 20px;
-  background: #fff;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+/* Left Side: Image Section */
+.signup .image-container {
+  width: 40%;
+  background: linear-gradient(135deg, #f7dbb4, #FF9D23);
+  color: rgb(13, 1, 1);
   text-align: center;
-  margin: auto; /* Center the form vertically and horizontally */
-  max-width: 320px; /* Match the width in the screenshot */
-  height: auto;
+  padding: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* Buttons */
-.log-buttons {
-  display: flex;
-  justify-content: space-between;
+.signup .image-container img {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto 20px;
+}
+
+.signup .image-container h2 {
+  font-size: 28px;
   margin-bottom: 10px;
 }
 
-.log-buttons button {
-  width: 48%;
-  padding: 10px;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: 0.3s;
-  background-color: #ddd;
-  color: #333;
-}
-
-.log-buttons button:hover {
+.signup .image-container p {
+  font-size: 21px;
   opacity: 0.8;
 }
 
-/* Active button effect */
-.log-buttons button.active-btn {
-  background-color: #FF9D23; /* Orange, matching the screenshot */
-  color: white;
-}
-
-.log-buttons button:not(.active-btn) {
-  background-color: white;
-  color: #FF9D23;
-}
-
-/* Forms */
-.log-form-container {
-  position: relative;
-  height: auto;
-}
-
-.log-form {
+/* Right Side: Form Section */
+.signup .form-container {
+  width: 60%;
+  padding: 40px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
 
-.log-form h2 {
-  margin-bottom: 10px;
-  font-size: 24px; /* Match the font size in the screenshot */
-  font-weight: bold;
+.signup .form-container h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+  color: #333;
 }
 
-.log-form input {
-  width: 90%;
-  padding: 10px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-.log-form button {
+/* Input Fields */
+.signup input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Password Input & Toggle */
+.signup .password-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.signup .toggle-password {
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+  color: #888;
+}
+
+/* Submit Button */
+.signup button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #b67418, #FF9D23);
+  color: white;
+  font-size: 18px;
   border: none;
   border-radius: 5px;
-  background-color: #FF9D23; /* Orange, matching the screenshot */
-  color: white;
-  font-size: 16px;
   cursor: pointer;
-  transition: 0.3s;
+  margin-top: 10px;
+  transition: 0.3s ease;
 }
 
-.log-form button:hover {
-  background-color: #e68a00; /* Slightly darker orange on hover */
+.signup button:hover {
+  background: linear-gradient(90deg,  #FF9D23 ,#b67418);
 }
 
-/* Ensure the signup page takes full height */
-.signup-page {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
+/* Social Login Buttons */
+.signup .social-login {
+  margin-top: 20px;
+}
+
+.signup .social-login{
+  margin-top: 20px;
+}
+
+.signup .social-login button {
   display: flex;
-  flex-direction: column;
-  background-color: #f5f5f5; /* Light background to match the professional feel */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-bottom: 10px;
 }
 
-/* Responsive design for smaller screens */
-@media (max-width: 768px) {
-  .main-container {
-    flex-direction: column;
-  }
-
-  .image-container {
-    width: 100%;
-    height: 40vh; /* Reduce height on smaller screens */
-  }
-
-  .log-container {
-    width: 90%;
-    max-width: none;
-    margin: 20px auto;
-  }
+.signup .twitter-login {
+  background: #1DA1F2;
+  color: white;
 }
+
+.signup .facebook-login {
+  background: #3b5998;
+  color: white;
+}
+
+.signup .social-login button svg {
+  margin-right: 10px;
+}
+
+/* Link to Login */
+.signup p {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.signup p a {
+  color: #f89d1c;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.signup p a:hover {
+  text-decoration: underline;
+}
+
+.signup .error-message {
+  color: red;
+  margin-bottom: 10px;
+  text-align: center;
+}
+

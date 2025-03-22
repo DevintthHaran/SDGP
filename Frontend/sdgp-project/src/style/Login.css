@@ -1,0 +1,159 @@
+/* Main Login Page */
+.login .login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f7dbb4, #FF9D23);
+}
+
+/* Main Container */
+.login .main-container {
+    display: flex;
+    width: 900px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Left Side: Image Section */
+.login .image-container {
+    width: 40%;
+    background: linear-gradient(135deg,#f7dbb4, #FF9D23);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login .image-container img {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto 20px;
+}
+
+.login .image-container h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.login .image-container p {
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+/* Right Side: Form Section */
+.login .form-container {
+    width: 60%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login .form-container h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Input Fields */
+.login input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Password Input & Toggle */
+.login .password-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.login .toggle-password {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    color: #888;
+}
+
+/* Submit Button */
+.login button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg,  #b67418, #FF9D23);
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s ease;
+}
+
+.login button:hover {
+    background: linear-gradient(90deg,  #FF9D23,#b67418);
+}
+
+/* Social Login Buttons */
+.login .social-login {
+    margin-top: 20px;
+}
+
+.login .social-login button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.login .twitter-login {
+    background: #1DA1F2;
+    color: white;
+}
+
+.login .facebook-login {
+    background: #3b5998;
+    color: white;
+}
+
+.login .social-login button svg {
+    margin-right: 10px;
+}
+
+/* Link to Signup */
+.login p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.login p a {
+    color: #f89d1c;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login p a:hover {
+    text-decoration: underline;
+}
+
+.login .error-message {
+    color: red;
+    margin-bottom: 10px;
+    text-align: center;
+}
+

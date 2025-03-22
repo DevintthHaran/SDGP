@@ -47,8 +47,19 @@ const Setting = () => {
     accountPrivacy: "Public",
     preferredCareerField: "IT",
     language: "English",
-    theme: "Light",
+    theme:localStorage.getItem("theme") || "Light",
   });
+
+  const [showFAQs, setShowFAQs] = useState(false); // Track if FAQs are visible
+  const [showTerms, setShowTerms] = useState(false); // Track if Terms and Conditions are visible
+  const [showPrivacy, setShowPrivacy] = useState(false);
+
+
+  useEffect(() => {
+    document.body.className = settings.theme.toLowerCase(); // Apply class to body
+    localStorage.setItem("theme", settings.theme); // Save theme to localStorage
+  }, [settings.theme]);
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -63,144 +74,230 @@ const Setting = () => {
     console.log(settings);
   };
 
+  const handleDeleteAccount = async () => {
+    const confirmDelete = window.confirm("Are you sure you want to delete your account? This action cannot be undone.");
+
+    if (confirmDelete) {
+      try {
+        const response = await fetch("http://localhost:8080/api/users/delete", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include", // To handle cookies (if needed)
+        });
+
+        if (response.ok) {
+          alert("Account deleted successfully!");
+          localStorage.clear(); // Remove user data from local storage
+          sessionStorage.clear();
+          window.location.href = "/login"; // Redirect to login page
+        } else {
+          alert("Failed to delete the account.");
+        }
+      } catch (error) {
+        console.error("Error deleting account:", error);
+        alert("Something went wrong. Please try again later.");
+      }
+    }
+  };
+  const handleCookieChange = (e) => {
+    const { name, checked } = e.target;
+    setCookiePreferences((prev) => ({
+      ...prev,
+      [name]: checked,
+    }));
+    Cookies.set(name, checked, { expires: 365 }); // Save preferences for 1 year
+  };
+  const [showCookieBanner, setShowCookieBanner] = useState(!Cookies.get("cookiesAccepted"));
+
+  const acceptCookies = () => {
+    Cookies.set("cookiesAccepted", "true", { expires: 365 });
+    setShowCookieBanner(false);
+  };
+
+  const [cookiePreferences, setCookiePreferences] = useState({
+    analytics: Cookies.get("analytics") === "true",
+    marketing: Cookies.get("marketing") === "true",
+    essential: true, // Essential cookies are always enabled
+  });
+
   return (
     <>
-      <Header />
-      <div className="setting1">
-        <div className="settings-page">
-          <main className="main-content">
-            <div className="left-column">
-              {/* Account Settings */}
-              <section className="settings-section">
-                <h2>Account Settings</h2>
-                <div className="button-group">
-                  <button className="button">Edit Profile</button>
-                  <button className="button">Change Password</button>
-                  <button className="button">Manage Linked Accounts</button>
-                  <button className="button">Delete Account</button>
-                </div>
-              </section>
+     
+      <div className="settings-page">
+        <header className="header">
+          <h1>Settings</h1>
+        </header>
+        <main className="main-content">
+          {/* Account Settings */}
+          <section className="settings-section">
+            <h2>Account Settings</h2>
+            <button>Edit Profile</button>
+            <button>Change Password</button>
+            <button onClick={handleDeleteAccount} className="delete-button">Delete Account</button>
+          </section>
 
-              {/* Notification Settings */}
-              <section className="settings-section">
-                <h2>Notification Settings</h2>
-                <div className="notification-options">
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="careerAlerts"
-                      checked={settings.careerAlerts}
-                      onChange={handleChange}
-                    />
-                    Career Alerts & Job Updates
-                  </label>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="resumeFeedback"
-                      checked={settings.resumeFeedback}
-                      onChange={handleChange}
-                    />
-                    Resume Feedback Notifications
-                  </label>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="eventReminders"
-                      checked={settings.eventReminders}
-                      onChange={handleChange}
-                    />
-                    Event & Webinar Reminders
-                  </label>
-                  <label>
-                    <input
-                      type="checkbox"
-                      name="emailPreferences"
-                      checked={settings.emailPreferences}
-                      onChange={handleChange}
-                    />
-                    Email Preferences (Subscribe/Unsubscribe)
-                  </label>
-                </div>
-              </section>
+          {/* Notification Settings */}
+          <section className="settings-section">
+            <h2>Notification Settings</h2>
+            <label>
+              <input
+                type="checkbox"
+                name="careerAlerts"
+                checked={settings.careerAlerts}
+                onChange={handleChange}
+              />
+              Career Alerts & Job Updates
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="resumeFeedback"
+                checked={settings.resumeFeedback}
+                onChange={handleChange}
+              />
+              Resume Feedback Notifications
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="eventReminders"
+                checked={settings.eventReminders}
+                onChange={handleChange}
+              />
+              Event & Webinar Reminders
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="emailPreferences"
+                checked={settings.emailPreferences}
+                onChange={handleChange}
+              />
+              Email Preferences (Subscribe/Unsubscribe)
+            </label>
+          </section>
+
+          {/* Application Preferences */}
+          <section className="settings-section">
+            <h2>Application Preferences</h2>
+            <label>
+              Preferred Career Fields
+              <select
+                name="preferredCareerField"
+                value={settings.preferredCareerField}
+                onChange={handleChange}
+              >
+                <option value="IT">IT</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Business">Business</option>
+              </select>
+            </label>
+            <label>
+              Language & Region
+              <select
+                name="language"
+                value={settings.language}
+                onChange={handleChange}
+              >
+                <option value="English">English</option>
+                <option value="Spanish">Spanish</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+              </select>
+            </label>
+            <label>
+              Theme Mode
+              <select
+                name="theme"
+                value={settings.theme}
+                onChange={handleChange}
+              >
+                <option value="Light">Light</option>
+                <option value="Dark">Dark</option>
+              </select>
+            </label>
+          </section>
+
+          {/* Help & Support */}
+          <section className="settings-section">
+            <h2>Help & Support</h2>
+            <button onClick={() => setShowFAQs(!showFAQs)}>FAQs</button>
+            <button>Contact Support</button>
+            <button>Report a Problem</button>
+            <button>Feedback & Suggestions</button>
+          </section>
+
+        {/* Show FAQs when button is clicked */}
+        {showFAQs && (
+          <section className="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            {FAQs.map((faq, index) => (
+              <div key={index} className="faq-item">
+                <h3>{faq.question}</h3>
+                <p>{faq.answer}</p>
+              </div>
+            ))}
+          </section>
+        )}
+
+          {/* Legal & Policies */}
+          <section className="settings-section">
+            <h2>Legal & Policies</h2>
+            <button onClick={() => setShowTerms(!showTerms)}>Terms of Service</button>
+            <button onClick={() => setShowPrivacy(!showPrivacy)} >Privacy Policy</button>
+            <button>Cookie Preferences
+            <label>
+              <input
+                type="checkbox"
+                name="analytics"
+                checked={cookiePreferences.analytics}
+                 onChange={handleCookieChange}
+              />
+              Enable Analytics Cookies
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="marketing"
+                checked={cookiePreferences.marketing}
+                onChange={handleCookieChange}
+              />
+              Enable Marketing Cookies
+            </label>
+            <p>Essential cookies are always enabled to ensure the platform works properly.</p>
+
+            </button>
+          </section>
+
+          {showCookieBanner && (
+            <div className="cookie-banner">
+              <p>We use cookies to improve your experience. You can manage your preferences in settings.</p>
+              <button onClick={acceptCookies}>Accept</button>
             </div>
+          )}
 
-            <div className="right-column">
-              {/* Application Preferences */}
-              <section className="settings-section">
-                <h2>Application Preferences</h2>
-                <label>
-                  Preferred Career Fields
-                  <select
-                    className="select"
-                    name="preferredCareerField"
-                    value={settings.preferredCareerField}
-                    onChange={handleChange}
-                  >
-                    <option value="IT">IT</option>
-                    <option value="Healthcare">Healthcare</option>
-                    <option value="Business">Business</option>
-                  </select>
-                </label>
-                <br/>
-                <label>
-                  Language & Region
-                  <select
-                    className="select"
-                    name="language"
-                    value={settings.language}
-                    onChange={handleChange}
-                  >
-                    <option value="English">English</option>
-                    <option value="Spanish">Spanish</option>
-                    <option value="French">French</option>
-                    <option value="German">German</option>
-                  </select>
-                </label>
-                <br/>
-                <label>
-                  Theme Mode
-                  <select
-                    className="select"
-                    name="theme"
-                    value={settings.theme}
-                    onChange={handleChange}
-                  >
-                    <option value="Light">Light</option>
-                    <option value="Dark">Dark</option>
-                  </select>
-                </label>
-              </section>
+          {showTerms && (
+            <section className="terms-section">
+              <h2>Terms of Service</h2>
+              <p>{termsofService}</p>
+            </section>
+          )}
 
-              {/* Help & Support */}
-              <section className="settings-section">
-                <h2>Help & Support</h2>
-                <div className="button-group">
-                  <button className="button">FAQs</button>
-                  <button className="button">Contact Support</button>
-                  <button className="button">Report a Problem</button>
-                  <button className="button">Feedback & Suggestions</button>
-                </div>
-              </section>
+          {showPrivacy && (
+            <section className="privacy-section">
+              <h2>Privacy Policy</h2>
+              <p>{privacyPolicy}</p>
+            </section>
+          )}
 
-              {/* Legal & Policies */}
-              <section className="settings-section">
-                <h2>Legal & Policies</h2>
-                <div className="button-group">
-                  <button className="button">Terms of Service</button>
-                  <button className="button">Privacy Policy</button>
-                  <button className="button">Cookie Preferences</button>
-                </div>
-              </section>
-
-              <button className="save-button" onClick={handleSave}>
-                Save Settings
-              </button>
-            </div>
-          </main>
-        </div>
+          <button className="save-button" onClick={handleSave}>
+            Save Settings
+          </button>
+        </main>
       </div>
-      <Footer />
+      
     </>
   );
 };

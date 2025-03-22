@@ -4,6 +4,7 @@ import Assessment from '../components/Assessment';
 import Results from '../components/Results';
 import '../style/Career.css';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function CareerAssessment() {
   const [showIntro, setShowIntro] = useState(true);
@@ -38,6 +39,7 @@ function CareerAssessment() {
         {showResults && <Results restartAssessment={restartAssessment} answers={answers} />}
 
       </div>
+      <Footer/>
     </div>
   );
 }

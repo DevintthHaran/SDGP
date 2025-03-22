@@ -11,6 +11,7 @@ import PeopleSmart from "../Images/Personal Intelligence.jpg";
 import ConversationallySpeaking from "../Images/Conversationally Speaking.jpg";
 import FineArtSmallTalk from "../Images/The Fine Art of Small Talk.jpg";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Shop = () => {
   const [cartOpen, setCartOpen] = useState(false); // Controls cart visibility
@@ -95,6 +96,7 @@ const Shop = () => {
         buyNow={buyNow}
       />
       <ProductList products={products} addToCart={addToCart} />
+      <Footer />
     </div>
   );
 };

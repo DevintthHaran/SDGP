@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "../style/experience.css";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
+
 
 const Experience = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -109,6 +111,7 @@ const Experience = () => {
         </div>
       </div>
     </section>
+    <Footer/>
     </div>
   );
 };

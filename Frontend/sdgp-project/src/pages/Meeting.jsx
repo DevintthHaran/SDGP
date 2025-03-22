@@ -8,6 +8,7 @@ import Business from "../Images/Business.png";
 import OLevel from "../Images/O Level.png";
 import ALevel from "../Images/A Level.png";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const categories = [
   {
@@ -57,6 +58,7 @@ const Meeting = () => {
           </div>
         ))}
       </div>
+      <Footer/>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import '../style/Signup.css';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import image from '../Images/1.1.jpg';
 
 const Signup = () => {
@@ -78,6 +79,7 @@ const Signup = () => {
           </div>
         </motion.div>
       </div>
+      <Footer />
     </div>
   );
 };

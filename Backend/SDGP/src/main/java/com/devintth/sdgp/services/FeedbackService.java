@@ -1,7 +1,7 @@
-//package com.feedback.service;
-package com.devintth.sdgp.services;
-import com.feedback.model.Feedback;
-import com.feedback.repository.FeedbackRepository;
+package com.devintth.sdgp.service;
+
+import com.devintth.sdgp.model.Feedback;
+import com.devintth.sdgp.repository.FeedbackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

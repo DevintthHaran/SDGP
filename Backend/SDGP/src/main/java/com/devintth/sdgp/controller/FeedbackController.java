@@ -1,7 +1,7 @@
 package com.devintth.sdgp.controller;
 
 import com.devintth.sdgp.model.Feedback;
-import com.devintth.sdgp.service.FeedbackService;
+import com.devintth.sdgp.services.FeedbackService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

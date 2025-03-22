@@ -1,4 +1,4 @@
-package com.devintth.sdgp.service;
+package com.devintth.sdgp.services;
 
 import com.devintth.sdgp.model.Feedback;
 import com.devintth.sdgp.repository.FeedbackRepository;

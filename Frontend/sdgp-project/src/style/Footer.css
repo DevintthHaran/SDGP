@@ -48,11 +48,11 @@
     color: white;
   }
   
-  .social-icons {
+  .footer-social-icons {
     margin-top: 15px;
   }
   
-  .social-btn {
+ .footer-social-btn {
     background: none;
     border: none;
     color: #bbb;
@@ -62,7 +62,7 @@
     transition: color 0.3s;
   }
   
-  .social-btn:hover {
+  .footer-social-btn:hover {
     color: white;
   }
   

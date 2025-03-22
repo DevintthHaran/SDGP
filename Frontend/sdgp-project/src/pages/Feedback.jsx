@@ -69,7 +69,7 @@ const Feedback = () => {
       <Header />
       <div className="feedback">
       <div className="container">
-        <form onSubmit={handleSubmit}>
+        <form className="feedback-form"onSubmit={handleSubmit}>
           <h1>Feedback Form</h1>
 
           {error && (
@@ -97,7 +97,7 @@ const Feedback = () => {
             <option value="Product Quality">Product Quality</option>
           </select>
 
-          <input
+          <input className="feedback-input"
             value={formData.name}
             onChange={handleChange}
             type="text"
@@ -107,7 +107,7 @@ const Feedback = () => {
             disabled={isLoading}
           />
 
-          <input
+          <input className="feedback-input"
             value={formData.email}
             onChange={handleChange}
             type="email"
@@ -146,7 +146,7 @@ const Feedback = () => {
             </div>
           </div>
 
-          <button type="submit" disabled={isLoading}>
+          <button type="submit" className="feedback-btn" disabled={isLoading}>
             {isLoading ? "Submitting..." : "Submit Feedback"}
           </button>
         </form>

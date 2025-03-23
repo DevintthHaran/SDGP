@@ -87,13 +87,13 @@ const JobApply = () => {
         }
 
         // Validate email format
-        if (!/^[^\s@]+@[^\s@]+$/.test(formData.email)) {
-            setEmailError('Invalid email format.');
+        if (!/^[^\s@]+@gmail\.com$/.test(formData.email)) {
+            setEmailError('Email must be a Gmail address.');
             valid = false;
         } else {
             setEmailError('');
         }
-
+        
         return valid;
     };
 

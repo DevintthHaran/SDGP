@@ -247,7 +247,7 @@ const JobApply = () => {
                     </div>
 
                     {/* Contact number field with validation */}
-                    <div className="input-field">
+                    <div className="input-field1">
                         <label>Contact Number</label>
                         <input
                             type="tel"
@@ -261,7 +261,7 @@ const JobApply = () => {
                     </div>
 
                     {/* Dropdown for selecting the position */}
-                    <div className="input-field">
+                    <div className="input-field1">
                         <label>Position Applying For</label>
                         <select 
                             name="position"
@@ -270,18 +270,19 @@ const JobApply = () => {
                             required
                         >
                             <option value="">Select Position</option>
-                            <option value="School Student Pathway Selection">School Student Pathway Selection</option>
-                            <option value="Career Advisor In All Fields">Career Advisor In All Fields</option>
-                            <option value="Career Advisor For IT Field">Career Advisor For IT Field</option>
-                            <option value="Career Advisor For Commerce Field">Career Advisor For Commerce Field</option>
-                            <option value="Career Advisor For Science Field">Career Advisor For Science Field</option>
-                            <option value="Career Advisor For Law">Career Advisor For Law</option>
+                            <option value="Science">Science</option>
+                            <option value="IT">IT</option>
+                            <option value="Business">Business</option>
+                            <option value="O Level">O Level</option>
+                            <option value="A Level">A Level</option>
+                            <option value="Career Advisor For all/any fields">Career Advisor For all/any fields</option>
                         </select>
                     </div>
 
                     {/* CV upload field with file restrictions */}
-                    <div className="input-field">
-                        <label>Upload CV (More than one page CV won't be reviewed)</label>
+                    <div   className="upload-box">
+                        <p>More than one page CV won't be reviewed</p>
+                        <label >Upload CV </label>
                         <input 
                             type="file" 
                             accept=".pdf, .doc, .docx" 
@@ -295,7 +296,7 @@ const JobApply = () => {
                     {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
 
                     {/* Submit button */}
-                    <button type="submit" disabled={isUploading}>Submit Application</button>
+                    <div className="submit-container"><button class="submit-button" type="submit" disabled={isUploading}>Submit Application</button></div>
                 </form>
             </div>
         </div>

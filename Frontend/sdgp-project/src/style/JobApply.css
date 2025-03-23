@@ -11,11 +11,10 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1350px;
     background: #ffffff;
     padding: 30px;
     border-radius: 10px;
-    
     margin-top: 20px;
 }
 
@@ -23,10 +22,14 @@
     width: 50%;
     padding-right: 20px;
     font-family: 'Manrope', sans-serif;
+    background-color: #cfdfe8;
+    border: 2px solid black;
+    padding: 50px;
+    border-radius: 10px;
 }
 
 .JobApplying-header img {
-    width: 100%;
+    width: 40%;
     max-width: 350px;
     display: block;
     margin-bottom: 20px;
@@ -34,15 +37,17 @@
 
 .CounselorJobForm {
     width: 50%;
+    height: 650px;
     display: flex;
     flex-direction: column;
     gap: 30px;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
-    height: auto;
     margin-left: 2%;
     font-family: 'Manrope', sans-serif;
+    border: 8px solid #5C7285;
+    background-color:#cfdfe8;
 }
 
 .input-group {
@@ -100,7 +105,7 @@
 }
 
 .upload-box {
-    width: 100%;
+    width: 95%;
     padding: 10px;
     border: 2px dashed #aaa;
     border-radius: 5px;
@@ -109,6 +114,7 @@
 
 .submit-button {
     background-color: #fd9b23b0;
+    width: 50%;
     color: white;
     padding: 10px;
     border: none;
@@ -121,6 +127,11 @@
 
 .submit-button:hover{
     background-color: #5C7285;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: center;
 }
 
 @media (max-width: 768px) {

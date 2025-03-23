@@ -24,7 +24,11 @@ import Subscription from './pages/Subscription';
 import Simulation from './pages/Simulation';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
+
 import ProtectedRoute from "./components/ProtectedRoute";
+
+import CareerTrend from './pages/CareerTrend';
+
 
 function App() {
   return (
@@ -53,6 +57,7 @@ function App() {
         <Route path='/simulation' element={<ProtectedRoute><Simulation/></ProtectedRoute>}/>
         <Route path='*' element={<NotFound/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/careertrend' element={<CareerTrend/>}/>
         
       </Routes>
     </Router>

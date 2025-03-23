@@ -15,6 +15,6 @@ public class CounselorService {
     private CounselorRepository counselorRepository;
 
     public List<CounselorProjection> getApprovedCounselorsByPosition(String position) {
-        return counselorRepository.findByPositionAndStatus(position, "approved");
+        return counselorRepository.findByPositionAndStatus(position, "Approved");
     }
 }

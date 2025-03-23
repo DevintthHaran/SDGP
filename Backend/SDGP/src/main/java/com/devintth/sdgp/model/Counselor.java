@@ -3,7 +3,7 @@ package com.devintth.sdgp.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "Counselor") // Connects to the "Counselor" collection
+@Document(collection = "counselors") // Connects to the "Counselor" collection
 public class Counselor {
 
     @Id

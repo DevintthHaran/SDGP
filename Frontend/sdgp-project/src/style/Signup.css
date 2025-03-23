@@ -5,6 +5,7 @@
   align-items: center;
   height: 100vh;
   background: linear-gradient(135deg, #cefaff, #2fbabf);
+}
 
 /* Main Container */
 .signup .main-container {
@@ -103,7 +104,7 @@
 
   background: linear-gradient(90deg, #f0deaa, #f9e400);
 
-
+}
 
 /* Link to Login */
 .signup p {

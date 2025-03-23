@@ -4,12 +4,15 @@
     font-family: 'manrope';
     height: 100vh;
     margin-top: 5%;
+    
+
 }
 
 .admin-dashboard {
     padding: 20px;
     background-color: #FFFFFF; /* Limits width */
     margin: 50px 20px 0 20px; /* Centers the content */
+    margin-bottom: 25%;
   }
   
   /* Titles */
@@ -32,7 +35,7 @@
   
   .stat-box {
     flex: 1;
-    background: white;
+    background: rgb(255, 255, 255);
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -58,13 +61,13 @@
     justify-content: center;
     align-items: flex-start;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1450px;
   }
   
   /* Candidates List - Left Side (75%) */
   .candidates-container {
     flex: 0.75;
-    background: white;
+    background: #e2e4e4;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -73,7 +76,7 @@
   /* Candidate Details - Right Side (25%) */
   .candidate-details {
     flex: 0.25;
-    background: white;
+    background: #d3e4e4;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

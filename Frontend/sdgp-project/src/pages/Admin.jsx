@@ -12,7 +12,7 @@ const Admin = () => {
     const fetchCandidates = async () => {
       try {
         console.log("Fetching pending candidates from backend...");
-        const response = await fetch("http://localhost:8080/api/counselors?status=Pending");
+        const response = await fetch("http://localhost:8080/api/admin?status=Pending");
         const data = await response.json();
         console.log("Fetched candidates: ", data);
         setCandidates(data);
@@ -33,7 +33,7 @@ const Admin = () => {
     setCandidates(updatedCandidates);
 
     try {
-      const response = await fetch(`http://localhost:8080/api/counselors/${id}`, {
+      const response = await fetch(`http://localhost:8080/api/admin/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: "Approved", counselorId: `CNSLR-${id}` })
@@ -51,7 +51,7 @@ const Admin = () => {
     setCandidates(prev => prev.filter(candidate => candidate.id !== id));
 
     try {
-      await fetch(`http://localhost:8080/api/counselors/${id}`, { method: "DELETE" });
+      await fetch(`http://localhost:8080/api/admin/${id}`, { method: "DELETE" });
       console.log(`Candidate with id ${id} deleted`);
     } catch (error) {
       console.error("Error deleting candidate:", error);
@@ -111,7 +111,6 @@ const Admin = () => {
             )}
           </div>
 
-
           <div className="candidate-details">
             <h3>Candidate Details</h3>
             {selectedCandidate ? (
@@ -129,7 +128,7 @@ const Admin = () => {
           </div>
         </div>
       </div>
-
+      <Footer />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import md5 from "crypto-js/md5";
 import "../style/Subscription.css"; 
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Subscription = () => {
   const plans = [
@@ -192,6 +193,7 @@ const Subscription = () => {
         <h2>Total Accessibility: {accessible}</h2>
       </div>
     </div>
+    <Footer/>
     </div>
   );
 };

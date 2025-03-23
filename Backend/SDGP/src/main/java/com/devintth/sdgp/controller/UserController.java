@@ -22,11 +22,13 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity<User> signup(@Valid @RequestBody User user){
-        try{
-            return ResponseEntity.ok(userService.signUp(user));
-        } catch (Exception e){
-            return ResponseEntity.badRequest().body((User) Map.of("message", "Email already in use"));}
+    public ResponseEntity<?> signup(@Valid @RequestBody User user) {
+        try {
+            return ResponseEntity.ok(userService.signUp(user));  // Successful signup
+        } catch (RuntimeException e) {
+            // Return error message as Map in response body
+            return ResponseEntity.badRequest().body(Map.of("message", "Email already exists"));
+        }
     }
 
     @PostMapping("/signin")

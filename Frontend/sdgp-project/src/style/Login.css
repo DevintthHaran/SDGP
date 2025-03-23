@@ -14,7 +14,7 @@
     background: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.2);
 }
 
 /* Left Side: Image Section */
@@ -89,7 +89,7 @@
     width: 100%;
     padding: 12px;
     background: linear-gradient(90deg,  #b67418, #FF9D23);
-    color: white;
+    color: rgb(11, 1, 1);
     font-size: 18px;
     border: none;
     border-radius: 5px;
@@ -99,41 +99,10 @@
 }
 
 .login button:hover {
-    background: linear-gradient(90deg,  #FF9D23,#b67418);
+    background: linear-gradient(90deg, #FF9D23, #8a5203);
 }
 
-/* Social Login Buttons */
-.login .social-login {
-    margin-top: 20px;
-}
 
-.login .social-login button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s ease;
-    margin-bottom: 10px;
-}
-
-.login .twitter-login {
-    background: #1DA1F2;
-    color: white;
-}
-
-.login .facebook-login {
-    background: #3b5998;
-    color: white;
-}
-
-.login .social-login button svg {
-    margin-right: 10px;
-}
 
 /* Link to Signup */
 .login p {

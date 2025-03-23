@@ -24,6 +24,7 @@ import Subscription from './pages/Subscription';
 import Simulation from './pages/Simulation';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
+import CareerTrend from './pages/CareerTrend';
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
         <Route path='/simulation' element={<Simulation/>}/>
         <Route path='*' element={<NotFound/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/careertrend' element={<CareerTrend/>}/>
         
       </Routes>
     </Router>

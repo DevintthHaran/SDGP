@@ -88,3 +88,133 @@
 .navbar:hover .logo-img {
     transform: scale(1.05); /* Slightly scale the logo */
 }
+
+/* Hamburger menu */
+.hamburger {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    width: 30px;
+    height: 24px;
+    z-index: 1010;
+    outline: none;
+  }
+  
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #ECF0F1;
+    border-radius: 3px;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .hamburger span:nth-child(1) {
+    top: 0;
+  }
+  
+  .hamburger span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .hamburger span:nth-child(3) {
+    bottom: 0;
+  }
+  
+  /* Hamburger animation when active */
+  .hamburger.active span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active span:nth-child(3) {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 1024px) {
+    .navbar ul li {
+      margin-left: 15px;
+    }
+    
+    .navbar ul li a {
+      font-size: 13px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .navbar {
+      padding: 10px 15px;
+    }
+    
+    .hamburger {
+      display: block;
+    }
+    
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100vh;
+      background: #3f7a81;
+      padding: 80px 0 30px 0;
+      transition: right 0.3s ease;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+    
+    .nav-links.active {
+      right: 0;
+    }
+    
+    .nav-links li {
+      margin: 0;
+      width: 100%;
+      text-align: center;
+      padding: 15px 0;
+    }
+    
+    .nav-links li a {
+      font-size: 16px;
+      display: block;
+      padding: 5px 20px;
+    }
+    
+    .nav-links li a::after {
+      display: none;
+    }
+    
+    .logo-and-text h2 {
+      font-size: 20px;
+    }
+    
+    .logo-img {
+      height: 40px;
+      width: 40px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .nav-links {
+      width: 85%;
+    }
+    
+    .logo-and-text h2 {
+      font-size: 18px;
+    }
+  }
+  

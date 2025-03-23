@@ -17,6 +17,7 @@ public class Admin {
     private String status; // Status of the counselor (e.g., "pending", "verified")
     private String fileUrl;
     
+    
 
     // Getters and Setters
     public String getId() {

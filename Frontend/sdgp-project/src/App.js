@@ -24,12 +24,14 @@ import Subscription from './pages/Subscription';
 import Simulation from './pages/Simulation';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
+import Splash from './pages/Splash';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Home />} />
+      <Route path='/' element={<Splash />} />
+        <Route path='/Home' element={<Home />} />
         <Route path='/shop' element={<Shop />} />
         <Route path="/skill" element={<SkillAssessment />} />
         <Route path='/meeting' element={<Meeting />} />

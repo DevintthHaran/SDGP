@@ -24,7 +24,7 @@ public class JobApplication  {
     private String fileUrl;  
 
     private String status;
-    private String googleMeetLink;
+    private String link;
 
     // Getter and Setter for id
     public String getId() {
@@ -99,12 +99,12 @@ public class JobApplication  {
     }
 
     // Getter and Setter for googleMeetLink
-    public String getGoogleMeetLink() {
-        return googleMeetLink;
+    public String glink() {
+        return link;
     }
 
-    public void setGoogleMeetLink(String googleMeetLink) {
-        this.googleMeetLink = googleMeetLink;
+    public void setGoogleMeetLink(String link) {
+        this.link = link;
     }
 }
 

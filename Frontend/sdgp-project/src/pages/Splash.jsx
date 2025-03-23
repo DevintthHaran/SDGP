@@ -7,11 +7,19 @@ const Splash = () => {
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowSplash(false);
-    }, 3000); // Adjust duration (in ms) as needed
+    // Check if the splash screen has already been shown
+    const hasSeenSplash = localStorage.getItem("hasSeenSplash");
 
-    return () => clearTimeout(timer);
+    if (hasSeenSplash) {
+      setShowSplash(false);
+    } else {
+      const timer = setTimeout(() => {
+        setShowSplash(false);
+        localStorage.setItem("hasSeenSplash", "true"); // Set flag to prevent splash on future visits
+      }, 3000); // Adjust duration (in ms) as needed
+
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   return (
@@ -19,7 +27,7 @@ const Splash = () => {
       {showSplash ? (
         <div className="splash-screen">
           <div className="app-logo-sign">
-            <img className="splash-logo" src={logo} alt="logo" />
+            <div></div>
             <h1>Professional Odyssey</h1>
           </div>
           <div>
@@ -37,7 +45,7 @@ const Splash = () => {
           </div>
         </div>
       ) : (
-        <main className="main-content">
+        <main className="main-content1">
           <Home />
         </main>
       )}
@@ -46,4 +54,3 @@ const Splash = () => {
 };
 
 export default Splash;
-

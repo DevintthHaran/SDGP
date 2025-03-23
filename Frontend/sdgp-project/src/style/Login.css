@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #f7dbb4, #FF9D23);
+    background: linear-gradient(135deg, #cefaff, #2fbabf);
 }
 
 /* Main Container */
@@ -20,7 +20,7 @@
 /* Left Side: Image Section */
 .login .image-container {
     width: 40%;
-    background: linear-gradient(135deg,#f7dbb4, #FF9D23);
+    background: linear-gradient(135deg, #cefaff, #2fbabf);
     color: rgb(0, 0, 0);
     text-align: center;
     padding: 90px;
@@ -88,7 +88,7 @@
 .login button {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(90deg,  #b67418, #FF9D23);
+    background: linear-gradient(135deg, #cefaff, #2fbabf);
     color: white;
     font-size: 18px;
     border: none;
@@ -99,7 +99,7 @@
 }
 
 .login button:hover {
-    background: linear-gradient(90deg,  #FF9D23,#b67418);
+    background: linear-gradient(90deg, #f0deaa, #f9e400);
 }
 
 /* Social Login Buttons */

@@ -1,18 +1,18 @@
 .splash-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #7480ea; /* Change to your preferred background color */
-    color: rgb(0, 0, 0);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    opacity: 1;
-    animation: fadeOut 3s forwards;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2fbabf; /* Change to your preferred background color */
+  color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  opacity: 1;
+  animation: fadeOut 3s forwards;
   }
   
   .header {
@@ -24,29 +24,30 @@
 
   .app-logo-sign {
     display: flex;
+    justify-content: center;
+  }
+
+  .logodiv {
+    display: flex;
+    align-items: center;
   }
   
   .splash-logo {
-    animation: fadeIn 2s ease-in-out;
+    animation: fadeIn 3s ease-in-out;
     width: 65px; /* Adjust logo size */
-    height: auto;
+    height: 65px;
     margin-bottom: 30px;
     border-radius: 50%;
     margin-right: 2px;
   }
   
-  .header h1 {
+  .app-logo-sign h1 {
     font-weight: bold;
     color: black;
-    animation: fadeIn 2s ease-in-out;
+    animation: fadeIn 3s ease-in-out ;
     margin-bottom: 0;
   }
-  
-  
-  .main-content {
-    padding: 20px;
-  }
-  
+
   :root {
     --bar-gap: 400px; /* Customizable gap between bars */
     --bar-width: 30px; /* Default bar width */

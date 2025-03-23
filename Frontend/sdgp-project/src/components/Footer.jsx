@@ -1,16 +1,4 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faLinkedin, 
-  faTwitter, 
-  faFacebook 
-} from '@fortawesome/free-brands-svg-icons';
-import {
-  faMapMarkerAlt,
-  faPhone,
-  faEnvelope
-} from '@fortawesome/free-solid-svg-icons';
-//import './Footer.css';
 import '../style/Footer.css';
 
 const Footer = () => {
@@ -25,27 +13,21 @@ const Footer = () => {
             <p className="footer-text">
               Empowering professionals to reach new heights in their careers through expert guidance, innovative tools, and personalized development strategies.
             </p>
-            <div className="footer-social-icons">
-              <button aria-label="LinkedIn" className="footer-social-btn">
-                <FontAwesomeIcon icon={faLinkedin} />
-              </button>
-              <button aria-label="Twitter" className="footer-social-btn">
-                <FontAwesomeIcon icon={faTwitter} />
-              </button>
-              <button aria-label="Facebook" className="footer-social-btn">
-                <FontAwesomeIcon icon={faFacebook} />
-              </button>
-            </div>
           </div>
 
           {/* Quick Links */}
           <div>
             <h3 className="footer-title">Quick Links</h3>
             <ul className="footer-list">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Our Services</a></li>
-              <li><a href="#">Career Opportunities</a></li>
-              <li><a href="#">Success Stories</a></li>
+              <li><a href="/Home">Home</a></li>
+              <li><a href="/shop">Shop</a></li>
+              <li><a href="/meeting">Counseling</a></li>
+              <li><a href="/skill">Skill Assessment</a></li>
+              <li><a href="/simulation">Interview Simulation</a></li>
+              <li><a href="/job">Job Market Trend</a></li>
+              <li><a href="/career">Career Report</a></li>
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="/feedback">Feedback</a></li>
             </ul>
           </div>
 
@@ -53,36 +35,43 @@ const Footer = () => {
           <div>
             <h3 className="footer-title">Resources</h3>
             <ul className="footer-list">
-              <li><a href="#">Career Guide</a></li>
-              <li><a href="#">Industry Insights</a></li>
-              <li><a href="#">Professional Development</a></li>
-              <li><a href="#">Events & Webinars</a></li>
+                <li><a href="../">About us</a></li>
+                <li><a href="../">Contact Us</a></li>
+                <li><a href="mailto:professional.odyssey.lk@gmail.com">professional.odyssey.lk@gmail.com</a></li>
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div>
-            <h3 className="footer-title">Contact Us</h3>
-            <div className="contact-info">
-              <p><FontAwesomeIcon icon={faMapMarkerAlt} className="icon" /> 123 Business Avenue, Suite 200, New York, NY 10001</p>
-              <p><FontAwesomeIcon icon={faPhone} className="icon" /> <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
-              <p><FontAwesomeIcon icon={faEnvelope} className="icon" /> <a href="mailto:contact@professional-odyssey.com">contact@professional-odyssey.com</a></p>
-            </div>
+          <div >
+          <div className="footer-list" >
+            <h3 className="footer-title" >Addition</h3>
+            <p className="Footer-button-description">If you are interested in receiving up-to-date notifications</p>
+            <button className="Footer-footer-button" onClick={() => window.location.href = '../pages/feedback.jsx'}>Subscribe now</button>
+            <p className="Footer-button-description">Your feedback helps us grow</p>
+            <button className="Footer-footer-button" onClick={() => window.location.href = '..pages/'}>Send Feedback</button>
+            <p className="Footer-button-description">Apply for Counseling Job</p>
+            <button className="Footer-footer-button" onClick={() => window.location.href = '../pages/job.jsx'}>Click here</button>
+            <button className="Footer-footer-button" onClick={() => window.location.href = '../pages/signup.jsx'}>Sign-up</button>
           </div>
         </div>
-
-        {/* Newsletter Subscription */}
-        <div className="newsletter">
-          <h4>Subscribe to Our Newsletter</h4>
-          <p>Stay updated with the latest career insights and opportunities</p>
-          <form onSubmit={(e) => e.preventDefault()} className="newsletter-form">
-            <input type="email" placeholder="Enter your email" aria-label="Email subscription" />
-            <button type="submit">Subscribe</button>
-          </form>
+        
         </div>
+
+        
 
         {/* Copyright */}
         <div className="footer-bottom">
+          <h4>Follow Us</h4>
+          <div className="Footer-social-links">
+            <a href="https://web.facebook.com/iitsl/" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.icons8.com/?size=100&id=118487&format=png&color=FFFFFF" alt="Facebook - Professional Odyssey" />
+            </a>
+            <a href="https://www.instagram.com/iitlife/" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.icons8.com/?size=100&id=85154&format=png&color=FFFFFF" alt="Instagram - Professional Odyssey" />
+            </a>
+            <a href="https://www.linkedin.com/in/professional-odyssey-206a82352/" target="_blank" rel="noopener noreferrer">
+              <img src="https://img.icons8.com/?size=100&id=85044&format=png&color=FFFFFF" alt="LinkedIn - Professional Odyssey" />
+            </a>
+          </div>
           <p>© {new Date().getFullYear()} Professional Odyssey. All rights reserved.</p>
         </div>
       </div>

@@ -23,7 +23,7 @@ const ResultsPage = ({ results }) => {
           <li key={index}>{career}</li>
         ))}
       </ul>
-      <button onClick={() => window.location.reload()}>Restart Assessment</button>
+      <button onClick={() => window.location.href = "/report"}>Generate Career Report</button>
     </div>
   );
 };

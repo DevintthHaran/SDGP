@@ -1,4 +1,5 @@
 package com.devintth.sdgp.services;
+
 import com.devintth.sdgp.model.Counselor;
 import com.devintth.sdgp.repository.CounselorProjection;
 import com.devintth.sdgp.repository.CounselorRepository;
@@ -17,4 +18,3 @@ public class CounselorService {
         return counselorRepository.findByPositionAndStatus(position, "approved");
     }
 }
-

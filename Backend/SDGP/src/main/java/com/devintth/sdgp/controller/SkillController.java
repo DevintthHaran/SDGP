@@ -19,9 +19,13 @@ public class SkillController {
         this.SkillService = SkillService;
     }
     @GetMapping("/generate-skill-question")
-    public String generateQuestion(@RequestParam String Category,@RequestParam String question,@RequestParam String answer) {
-        return SkillService.nextSkillQuestion(Category,question,answer);
+    public String generateQuestion(@RequestParam String Category, @RequestParam String question, @RequestParam String answer) {
+        System.out.println("Category: " + Category);
+        System.out.println("Previous Question: " + question);
+        System.out.println("User Answer: " + answer);
+        return SkillService.nextSkillQuestion(Category, question, answer);
     }
+
     @GetMapping("/generate-skill-mcq")
     public List<String> generateMCQ(@RequestParam String question) {
         return SkillService.skillMCQChoices(question);

@@ -38,6 +38,7 @@ function Home() {
                         <h2>What We Offer</h2>
                         <h3>Personalized Career Guidance</h3>
                         <p>Explore career paths tailored to your unique strengths, interests, and aspirations.</p>
+
                         <a className="homepage-buttons" href="../Home/Home.html">Check out now</a>
                         <h3>One on One Counseling</h3>
                         <p>Connect with expert career counselors to make informed decisions about your future.</p>
@@ -57,6 +58,7 @@ function Home() {
                         <h3>Comprehensive Skill Analysis</h3>
                         <p>Gain a detailed breakdown of your skills, highlighting strengths and areas for improvement.</p>
                         <a className="homepage-buttons" href="../Home/Home.html">Check out now</a>
+
                     </div>
                     <div className="box" id="box4">
                         <div className="box4" id="box4-1">

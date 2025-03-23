@@ -32,7 +32,7 @@ public class QuestionService {
     public String fetchQuestion(String role) {
         String prompt = "Ask a direct interview question for a " + role + " role, without any extra text or formatting.";
         String requestBody = String.format(
-                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a professional interviewer.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
+                "{\"model\": \"gpt-3.5-turbo\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a professional interviewer.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
                 prompt
         );
 
@@ -73,7 +73,7 @@ public class QuestionService {
         String randomCategory = categories[random.nextInt(categories.length)];
         String prompt = "Generate a different interview question for a "+ role + "role from the" +randomCategory+ "category. Keep the question direct without extra text.";
         String requestBody = String.format(
-                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a professional interviewer conducting realistic job interviews. Your task is to generate **one interview question at a time** based on the following categories:" +
+                "{\"model\": \"gpt-3.5-turbo\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a professional interviewer conducting realistic job interviews. Your task is to generate **one interview question at a time** based on the following categories:" +
                         " " +
                         "1. Technical Skills  " +
                         "2. IQ Test  " +
@@ -125,11 +125,11 @@ public class QuestionService {
     }
 
     public String fetchfeedback(String question,String answer) {
-        String prompt = "Evaluate the following answer based on the given interview question. Provide a short, professional feedback without any extra text or formatting."
+        String prompt = "Imagine you are an experienced interviewer with a strong background in evaluating job candidates. You are reviewing the following answer to an interview question. Provide concise, professional feedback. Your tone should be respectful, clear, and constructive, with an emphasis on offering helpful suggestions. Avoid any unnecessary formalities, but be polite and to the point. Think of this as a real interview where your goal is to guide the candidate with valuable insights."
                 + "Question: " + question
                 + ", Answer: " + answer;
         String requestBody = String.format(
-                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are an experienced interviewer providing concise feedback on candidates' answers.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
+                "{\"model\": \"gpt-3.5-turbo\", \"messages\": [{\"role\": \"system\", \"content\": \"You are an experienced interviewer providing concise feedback on candidates' answers.\"}, {\"role\": \"user\", \"content\": \"%s\"}], \"max_tokens\": 100}",
                 prompt
         );
 

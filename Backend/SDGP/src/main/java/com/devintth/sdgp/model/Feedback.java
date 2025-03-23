@@ -13,15 +13,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-//@Entity
-//@Table(name="customer_feedback")
 @Document(collection="customer_feedback")
-
-
-
 public class Feedback {
     @Id
-   // @GeneratedValue(strategy= GenerationType.IDENTITY)
     private String id;
     private String feedbackType;
     private String name;
@@ -29,6 +23,29 @@ public class Feedback {
     private String message;
     private int rating;
 
+    // Getter for message
+    public String getMessage() {
+        return this.message;
+    }
 
+    // Getter for feedbackType
+    public String getFeedbackType() {
+        return this.feedbackType;
+    }
 
+    // Getter for name
+    public String getName() {
+        return this.name;
+    }
+
+    // Getter for email
+    public String getEmail() {
+        return this.email;
+    }
+
+    // Getter for rating
+    public int getRating() {
+        return this.rating;
+    }
 }
+

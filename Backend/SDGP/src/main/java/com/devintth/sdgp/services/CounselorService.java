@@ -1,7 +1,7 @@
 package com.devintth.sdgp.services;
 
-import com.devintth.sdgp.model.Counselor;
-import com.devintth.sdgp.repository.CounselorRepository;
+import com.devintth.sdgp.model.Admin;
+import com.devintth.sdgp.repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -11,18 +11,18 @@ import java.util.Optional;
 public class CounselorService {
 
     @Autowired
-    private CounselorRepository counselorRepository;
+    private AdminRepository counselorRepository;
 
     // Fetch only pending counselors
-    public List<Counselor> getPendingCounselors() {
+    public List<Admin> getPendingCounselors() {
         return counselorRepository.findByStatus("Pending");
     }
 
     // Approve a counselor (update status & assign counselor ID)
-    public Counselor approveCounselor(String id) {
-        Optional<Counselor> counselorOpt = counselorRepository.findById(id);
+    public Admin approveCounselor(String id) {
+        Optional<Admin> counselorOpt = counselorRepository.findById(id);
         if (counselorOpt.isPresent()) {
-            Counselor counselor = counselorOpt.get();
+            Admin counselor = counselorOpt.get();
             counselor.setStatus("Approved");
             counselor.setCounselorId("CNSLR-" + id); // Assign counselor ID
             return counselorRepository.save(counselor);

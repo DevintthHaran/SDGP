@@ -1,6 +1,6 @@
 package com.devintth.sdgp.controller;
 
-import com.devintth.sdgp.model.Counselor;
+import com.devintth.sdgp.model.Admin;
 import com.devintth.sdgp.services.CounselorService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +11,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/counselors")
 @CrossOrigin(origins = "http://localhost:3000")
-public class CounselorController {
+public class AdminController {
 
     @Autowired
     private CounselorService counselorService;
 
     // Fetch only pending counselors
     @GetMapping
-    public List<Counselor> getPendingCounselors(@RequestParam(required = false) String status) {
+    public List<Admin> getPendingCounselors(@RequestParam(required = false) String status) {
         if ("Pending".equalsIgnoreCase(status)) {
             return counselorService.getPendingCounselors();
         }
@@ -27,7 +27,7 @@ public class CounselorController {
 
     // Approve a counselor
     @PutMapping("/{id}")
-    public Counselor approveCounselor(@PathVariable String id) {
+    public Admin approveCounselor(@PathVariable String id) {
         return counselorService.approveCounselor(id);
     }
 

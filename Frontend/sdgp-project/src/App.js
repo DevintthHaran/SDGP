@@ -57,7 +57,7 @@ function App() {
         <Route path='/simulation' element={<ProtectedRoute><Simulation/></ProtectedRoute>}/>
         <Route path='*' element={<NotFound/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/careertrend' element={<CareerTrend/>}/>
+        <Route path='/careertrend' element={<ProtectedRoute><CareerTrend/></ProtectedRoute>}/>
         
       </Routes>
     </Router>

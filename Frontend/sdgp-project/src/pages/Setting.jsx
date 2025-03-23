@@ -122,6 +122,7 @@ const Setting = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token"); // Remove token
+    localStorage.removeItem("activeSubscriptions");
     window.location.href = "/"; // Redirect to login page
   };
 

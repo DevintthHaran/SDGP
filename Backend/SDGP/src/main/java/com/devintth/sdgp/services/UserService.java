@@ -12,6 +12,9 @@ public class UserService {
     private UserRepository userRepository;
 
     public User signUp(User user) {
+        if (userRepository.findByUserEmailId(user.getUserEmailId()) != null) {
+            throw new RuntimeException("Email already exists");
+        }
         return userRepository.save(user);
     }
 

@@ -32,7 +32,7 @@ public class CareerReportService {
 
         // Prepare input for OpenAI
         StringBuilder userContent = new StringBuilder();
-        userContent.append("Summarize the user's career/skill assessment test responses based on the following questions and answers in a clear and concise manner, in a way that directly addresses the user:    ");
+        userContent.append("Summarize the user's career/skill assessment test responses based on the following questions and answers in a clear and concise manner, in a way that directly addresses the user, make sentences within 100 tokens:    ");
 
         for (int i = 0; i < questions.size(); i++) {
             userContent.append("Q").append(i + 1).append(": ").append(questions.get(i)).append(" ");
@@ -41,8 +41,8 @@ public class CareerReportService {
 
         // Construct JSON request body
         String requestBody = String.format(
-                "{ \"model\": \"gpt-4o-mini\", \"messages\": [" +
-                        "{\"role\": \"system\", \"content\": \"You are an AI career advisor providing a direct, concise, and fully complete summary of the user's career/skill assessment. Speak directly to the user using 'you'. Ensure all sentences are complete and do not get cut off. Keep the response brief, informative, and focused on the user's strengths, improvement areas, and career recommendations. Avoid unnecessary formatting or excessive details.\"}," +
+                "{ \"model\": \"gpt-3.5-turbo\", \"messages\": [" +
+                        "{\"role\": \"system\", \"content\": \"You are an AI career advisor providing a direct, concise, and fully complete summary of the user's career/skill assessment. Speak directly to the user using 'you'. Ensure all sentences are complete and do not get cut off the max_token is 100 so finsih the sentence within that. Keep the response brief, informative, and focused on the user's strengths, improvement areas, and career recommendations. Avoid unnecessary formatting or excessive details.\"}," +
                         "{\"role\": \"user\", \"content\": \"%s\"} " +
                         "], \"max_tokens\": 100 }",
                 userContent.toString()
@@ -90,7 +90,7 @@ public class CareerReportService {
 
         // Construct JSON request body
         String requestBody = String.format(
-                "{ \"model\": \"gpt-4o-mini\", \"messages\": [" +
+                "{ \"model\": \"gpt-3.5-turbo\", \"messages\": [" +
                         "{\"role\": \"system\", \"content\": \"You are an AI career advisor. Your task is to extract the key responsibilities the user is suited for based on their career/skill assessment responses. Only return a comma-separated list of responsibilities without any introduction, extra text, or formatting. Example: Software Development, Code Review, Unit Testing, Collaboration.\"}," +
                         "{\"role\": \"user\", \"content\": \"%s\"} " +
                         "], \"max_tokens\": 50 }",
@@ -138,7 +138,7 @@ public class CareerReportService {
 
         // Construct JSON request body
         String requestBody = String.format(
-                "{ \"model\": \"gpt-4o-mini\", \"messages\": [" +
+                "{ \"model\": \"gpt-3.5-turbo\", \"messages\": [" +
                         "{\"role\": \"system\", \"content\": \"You are an AI career advisor. Your task is to extract the potential career growth the user is suited for based on their career/skill assessment responses. Only return a comma-separated list of responsibilities without any introduction, extra text, or formatting. Example: Senior Software Engineer, Software Architect, Engineering Manager.\"}," +
                         "{\"role\": \"user\", \"content\": \"%s\"} " +
                         "], \"max_tokens\": 50 }",
@@ -186,7 +186,7 @@ public class CareerReportService {
 
         // Construct JSON request body
         String requestBody = String.format(
-                "{ \"model\": \"gpt-4o-mini\", \"messages\": [" +
+                "{ \"model\": \"gpt-3.5-turbo\", \"messages\": [" +
                         "{\"role\": \"system\", \"content\": \"You are an AI career advisor. Your task is to analyze the user's skill and career assessment responses and generate percentage ratings (0-100) for the following categories: Skill, Strength, Weakness, Values, Interests, and Personality Traits. Only return six comma-separated integers in order without any explanation, extra text, or formatting. Example output: 90,50,30,80,70,75.\"}," +
                         "{\"role\": \"user\", \"content\": \"%s\"} " +
                         "], \"max_tokens\": 20 }", // Ensuring a short response to avoid extra text

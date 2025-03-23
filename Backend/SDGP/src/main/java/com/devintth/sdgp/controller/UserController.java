@@ -42,6 +42,29 @@ public class UserController {
         }
     }
 
+    @GetMapping("/accessibility/{email}")
+    public ResponseEntity<?> getAccessibility(@PathVariable String email) {
+        User user = userService.findByEmail(email);
+        if (user != null) {
+            return ResponseEntity.ok(Map.of("accessible", user.getAccessible()));
+        } else {
+            return ResponseEntity.status(404).body(Map.of("message", "User not found"));
+        }
+    }
+
+    @PutMapping("/accessibility")
+    public ResponseEntity<?> updateAccessibility(@RequestBody Map<String, Object> request) {
+        String email = (String) request.get("email");
+        int accessible = (int) request.get("accessible");
+
+        boolean updated = userService.updateAccessibility(email, accessible);
+        if (updated) {
+            return ResponseEntity.ok(Map.of("message", "Accessibility updated successfully"));
+        } else {
+            return ResponseEntity.status(404).body(Map.of("message", "User not found"));
+        }
+    }
+
+
+
 }
-
-

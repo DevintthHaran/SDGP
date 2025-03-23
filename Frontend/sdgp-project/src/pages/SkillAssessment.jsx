@@ -25,7 +25,7 @@ const SkillAssessment = () => {
       weaknesses: ['Data Analysis'],
       careers: ['Data Analyst', 'Project Manager'],
     });
-    setStep(3);
+    setStep(2);
   };
 
   return (
@@ -34,9 +34,8 @@ const SkillAssessment = () => {
       <div className="SkillAssessment">
 
         {step === 0 && <WelcomeSection onStart={handleStart} />}
-        {step === 1 && <SkillCategories onNext={handleCategorySelect} />}
-        {step === 2 && <AssessmentQuestions categories={categories} onComplete={handleComplete} />}
-        {step === 3 && <ResultsPage results={results} />}
+        {step === 1 && <AssessmentQuestions categories={categories} onComplete={handleComplete} />}
+        {step === 2 && <ResultsPage results={results} />}
 
       </div>
       <Footer />

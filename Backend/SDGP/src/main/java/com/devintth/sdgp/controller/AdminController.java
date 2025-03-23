@@ -1,7 +1,7 @@
 package com.devintth.sdgp.controller;
 
 import com.devintth.sdgp.model.Admin;
-import com.devintth.sdgp.services.CounselorService;
+import com.devintth.sdgp.services.AdminService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import java.util.List;
 public class AdminController {
 
     @Autowired
-    private CounselorService counselorService;
+    private AdminService counselorService;
 
     // Fetch only pending counselors
     @GetMapping

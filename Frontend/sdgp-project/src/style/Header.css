@@ -1,32 +1,35 @@
 .navbar {
-    background-color: rgb(129, 145, 234);
-    padding: 10px 15px;
+    background-color: #4F959D; /* Dark blue for a professional look */
+    padding: 10px 20px;
     position: fixed;
-    width: 100%;
+    width: 97.8%;
     top: 0;
-    z-index: 1;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
     left: 0;
     transition: background-color 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .logo-and-text {
     display: flex;
-    justify-content: flex-start;
+    align-items: center;
 }
 
 .logo-and-text h2 {
-    margin-top: 4px;
+    margin: 0 0 0 10px;
+    font-size: 24px;
+    color: #ECF0F1; /* Light grey for contrast */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
 }
 
 .logo-img {
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    margin-left: 20px;
-    transition: transform 0.3s ease; /* Keep logo scaling transition */
+    transition: transform 0.3s ease;
 }
 
 .navbar ul {
@@ -38,54 +41,43 @@
 }
 
 .navbar ul li {
-    margin-left: 20px;
-    display: inline-flex;
-    position: relative;
+    margin-left: 25px;
 }
 
 .navbar ul li a {
     text-decoration: none;
-    font-size: 13px;
-    color: rgb(1, 20, 99);
-    font-weight: bold;
-    transition: color 0.4s ease-in-out;
-    display: inline-flex;
-    align-items: center;
-    padding: 5px 0; /* Add some vertical padding for a cleaner hover effect */
+    font-size: 14px;
+    color: #ECF0F1; /* Light grey for contrast */
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+    padding: 5px 0;
+    position: relative;
 }
 
 .navbar ul li a:hover {
-    color: rgb(255, 255, 255);
-    border-bottom: 2px solid rgb(255, 255, 255); /* Underline effect on hover */
-}
-
-.navbar ul li a:active {
-    color: rgb(0, 0, 0); /* Green color for active state */
-    border-bottom: 2px solid rgb(0, 170, 255); /* Green underline when clicked */
+    color: #fd9b23b0; /* Teal for hover effect */
 }
 
 .navbar ul li a::after {
     content: '';
     display: block;
     height: 2px;
-    background-color: rgb(255, 255, 255); /* White line after hover */
+    background-color: #fd9b23b0; /* Teal underline */
     transform: scaleX(0);
     transition: transform 0.3s ease-in-out;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
 .navbar ul li a:hover::after {
-    transform: scaleX(1); /* Show the white line after hover */
-}
-
-.navbar ul li a:active::after {
-    transform: scaleX(1); /* Keep the white line visible when clicked */
-    background-color: rgb(0, 128, 0); /* Green color after click */
+    transform: scaleX(1); /* Show the underline on hover */
 }
 
 .navbar ul li a img {
     width: 20px;
     height: 20px;
-    margin: 0 10px;
     transition: transform 0.3s ease;
 }
 

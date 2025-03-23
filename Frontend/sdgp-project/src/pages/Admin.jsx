@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import "../style/Admin.css";
 import Header from '../components/Header.jsx';
 
+import Footer from "../components/Footer.jsx";
+
 const Admin = () => {
   const [candidates, setCandidates] = useState([]);
   const [selectedCandidate, setSelectedCandidate] = useState(null);
@@ -109,6 +111,7 @@ const Admin = () => {
             )}
           </div>
 
+
           <div className="candidate-details">
             <h3>Candidate Details</h3>
             {selectedCandidate ? (
@@ -126,6 +129,7 @@ const Admin = () => {
           </div>
         </div>
       </div>
+
     </div>
   );
 };

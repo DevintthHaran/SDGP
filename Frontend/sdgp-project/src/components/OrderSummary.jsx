@@ -18,9 +18,9 @@ const OrderSummary = ({ handlePlaceOrder, setCartData }) => {
   }
 
   return (
-    <div className="order">
+    <div className="order-container">
       <fieldset id="finalset">
-        <legend>Order Summary</legend>
+        <legend className='order-legend'>Order Summary</legend>
         <div>
           {cartData.map((item, index) => (
             <div key={index} className="order-item">
@@ -32,11 +32,10 @@ const OrderSummary = ({ handlePlaceOrder, setCartData }) => {
           ))}
         </div>
         <div className="stock">
-          <div>Total Rs.</div>
-          <div>{totalAmount}</div>
+          <div>Total Rs. {totalAmount}</div>
         </div>
-        <button onClick={handlePlaceOrder} id="PlaceOrder">Place Order</button>
-        <button onClick={() => window.location.href = '/shop'} id="Exit">Exit</button>
+        <button className='submit' onClick={handlePlaceOrder} id="PlaceOrder">Place Order</button>
+        <button className="reset" onClick={() => window.location.href = '/shop'} id="Exit">Exit</button>
       </fieldset>
     </div>
   );

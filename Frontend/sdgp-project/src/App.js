@@ -1,73 +1,58 @@
-import React from 'react';
+import logo from './logo.svg';
+import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Splash from './pages/Splash';
-import Home from './pages/Home'; // Import the HomePage
-import Shop from './pages/Shop';         // Import the Shop page
-import Order from './pages/Order';
-import Subscription from './pages/Subscription';
-import Meeting from './pages/Meeting';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import Profile from './pages/Profile';
-import Question from './pages/Question';
-import Chat from './pages/Chat';
-
-import JobApply from './pages/JobApply';
-import Admin from './pages/Admin';
-
-import Setting from './pages/Setting';
-import Feedback from './pages/Feedback';
-
+import Home from './pages/Home';
+import Shop from './pages/Shop';
 import SkillAssessment from './pages/SkillAssessment';
-import CareerAssessment from './pages/CareerAssessment';
-
-
-//Import Specific  Catergory Meeting Pages
+import Meeting from './pages/Meeting';
 import ITMeeting from './pages/ITMeeting';
 import ScienceMeeting from './pages/ScienceMeeting';
 import BusinessMeeting from './pages/BusinessMeeting';
 import OLevelMeeting from './pages/OLevelMeeting';
 import ALevelMeeting from './pages/ALevelMeeting'; 
+import Chat from './pages/Chat';
+import CareerAssessment from './pages/CareerAssessment';
+import JobApply from './pages/JobApply';
+import Profile from './pages/Profile';
+import Setting from './pages/Setting';
+import Feedback from './pages/Feedback';
+import Experience from './pages/Experience';
+import Order from './pages/Order';
+import Admin from './pages/Admin';
+import Signup from './pages/Signup';
+import Subscription from './pages/Subscription';
+import Simulation from './pages/Simulation';
+import NotFound from './pages/NotFound';
+import Login from './pages/Login';
 
 function App() {
   return (
     <Router>
       <Routes>
-        
-        {/* Define the route for the homepage */}  
-        <Route path="/" element={<Splash />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/signup" element={<Signup/>}/>
-        <Route path="/skill" element={<SkillAssessment/>}/>
-        <Route path="/career" element={<CareerAssessment/>}/>
-        {/* Define the Pages related to counseling */}
-        <Route path="/job" element={<JobApply />} />
-        <Route path="/admin" element={<Admin />} />
-        {/* Define the route for the Shop page */}
-        <Route path="/shop" element={<Shop />} />
-        {/* Define the route for the Order page */}
-        <Route path='/order' element={<Order/>}/>
-        {/* Define the route for the Subscription page */}
-        <Route path='/subscription' element={<Subscription/>}/>
-        {/* Define the route for the Meeting pages */}
-        <Route path='/meeting' element={<Meeting/>}/>
-
-        {/* Define the route for the Question pages */}
-        <Route path='/question' element={<Question/>}/>
-        <Route path='/chat' element={<Chat/>}/>
-
-
-        <Route path='/setting' element={<Setting/>}/>
-        <Route path='/feedback' element={<Feedback/>}/>
-        <Route path='/profile' element={<Profile/>}/>
-
-        {/* Define the route for the Specific Meeting pages */}
-        <Route path="/it-meeting" element={<ITMeeting/>} />
+        <Route path='/' element={<Home />} />
+        <Route path='/shop' element={<Shop />} />
+        <Route path="/skill" element={<SkillAssessment />} />
+        <Route path='/meeting' element={<Meeting />} />
+        <Route path="/it-meeting" element={<ITMeeting />} />
         <Route path="/science-meeting" element={<ScienceMeeting />} />
         <Route path="/business-meeting" element={<BusinessMeeting />} />
         <Route path="/olevel-meeting" element={<OLevelMeeting />} />
-        <Route path="/alevel-meeting" element={<ALevelMeeting />} />        
+        <Route path="/alevel-meeting" element={<ALevelMeeting />} />
+        <Route path='/chat' element={<Chat/>}/>
+        <Route path="/career" element={<CareerAssessment/>}/>
+        <Route path="/job" element={<JobApply />} />
+        <Route path='/profile' element={<Profile/>}/>
+        <Route path='/setting' element={<Setting/>}/>
+        <Route path='/feedback' element={<Feedback/>}></Route>
+        <Route path='/report' element={<Experience />}/>
+        <Route path='/order' element={<Order />}/>
+        <Route path='/admin' element={<Admin/>}/>
+        <Route path='/signup' element={<Signup/>}/>
+        <Route path='/subscription' element={<Subscription/>}/>
+        <Route path='/simulation' element={<Simulation/>}/>
+        <Route path='*' element={<NotFound/>}/>
+        <Route path='/login' element={<Login/>}/>
+        
       </Routes>
     </Router>
   );

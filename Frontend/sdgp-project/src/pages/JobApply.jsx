@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../style/JobApply.css';
 import NowHiring from '../Images/NowHiring.png';
 import Header from '../components/Header.jsx';
+import Footer from '../components/Footer.jsx';
 
 const JobApply = () => {
     // State to manage form data
@@ -145,21 +146,23 @@ const JobApply = () => {
     };
 
     return (
-        <div className="JobApplication">
+
+
+        <div>
+        <div className='JobApplication'>
+
             <Header />
 
             <div className="JobApplication-container">
                 <header className="JobApplying-header">
                     {/* Job application introduction with key details */}
                     <img src={NowHiring} alt="Job Hiring" />
-                    <h1>Apply for Counselor Job</h1>
-                    <h3 id="job-application-message">Scroll down to apply for counselor job</h3>
+
+                    <h1>Apply for counselor Job</h1>
+                    {/* <h3 id="job-application-message">Scroll down to apply for counselor job</h3> */}
                     <h2>Join Our Team of Expert Counselors</h2>
-                    
-                    {/* Job application eligibility and criteria */}
-                    <p id="job-application-q">🟢 Are you passionate about guiding students, graduates, and professionals toward successful career paths?</p>
-                    <p id="job-application-a">- Become a part of Professional Odyssey, Sri Lanka’s premier career guidance platform.</p>
-                    
+                    <p id="job-application-q">Are you passionate about guiding students, graduates, and professionals toward successful career paths?</p>
+                    <p id="job-application-a">Become a part of Professional Odyssey, Sri Lanka’s premier career guidance platform.</p>
                     <h3>Who Can Apply?</h3>
                     <p>We welcome applications from qualified individuals who have:</p>
                     <ul>
@@ -204,7 +207,7 @@ const JobApply = () => {
 
                     {/* Input fields for first and last name */}
                     <div className="input-group">
-                        <div className="input-field">
+                        <div className="input-field1">
                             <label>First Name</label>
                             <input 
                                 type="text" 
@@ -215,7 +218,7 @@ const JobApply = () => {
                                 required 
                             />
                         </div>
-                        <div className="input-field">
+                        <div className="input-field1">
                             <label>Last Name</label>
                             <input 
                                 type="text" 
@@ -229,7 +232,8 @@ const JobApply = () => {
                     </div>
 
                     {/* Email field with validation */}
-                    <div className="input-field">
+                    <div className="input-field1">
+
                         <label>Email Address</label>
                         <input
                             type="email"
@@ -294,6 +298,9 @@ const JobApply = () => {
                     <button type="submit" disabled={isUploading}>Submit Application</button>
                 </form>
             </div>
+        </div>
+        <Footer />
+
         </div>
     );
 };

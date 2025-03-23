@@ -10,6 +10,8 @@ import LearningSoftSkills from "../Images/Learning Soft Skills.jpg";
 import PeopleSmart from "../Images/Personal Intelligence.jpg";
 import ConversationallySpeaking from "../Images/Conversationally Speaking.jpg";
 import FineArtSmallTalk from "../Images/The Fine Art of Small Talk.jpg";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Shop = () => {
   const [cartOpen, setCartOpen] = useState(false); // Controls cart visibility
@@ -32,7 +34,7 @@ const Shop = () => {
         "PeopleSmart by Mel Silberman Ph.d is a practical guide to improving your interpersonal effectiveness in both professional and personal relationships.",
     },
     {
-      name: "Conversation -ally Speaking",
+      name: "Conversationally Speaking",
       price: 8184.98,
       image: ConversationallySpeaking,
       description:
@@ -83,6 +85,7 @@ const Shop = () => {
 
   return (
     <div>
+      <Header />
       <ShopNavbar toggleCart={toggleCart} />
       <Cart
         cartItems={cartItems}
@@ -93,6 +96,7 @@ const Shop = () => {
         buyNow={buyNow}
       />
       <ProductList products={products} addToCart={addToCart} />
+      <Footer />
     </div>
   );
 };

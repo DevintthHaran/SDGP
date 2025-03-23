@@ -5,6 +5,8 @@ import SkillCategories from '../components/SkillCategories';
 import AssessmentQuestions from '../components/AssessmentQuestions';
 import ResultsPage from '../components/ResultsPage';
 import '../style/Skill.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const SkillAssessment = () => {
   const [step, setStep] = useState(0);
@@ -23,17 +25,20 @@ const SkillAssessment = () => {
       weaknesses: ['Data Analysis'],
       careers: ['Data Analyst', 'Project Manager'],
     });
-    setStep(3);
+    setStep(2);
   };
 
   return (
-    <div className="SkillAssessment">
-   
-      {step === 0 && <WelcomeSection onStart={handleStart} />}
-      {step === 1 && <SkillCategories onNext={handleCategorySelect} />}
-      {step === 2 && <AssessmentQuestions categories={categories} onComplete={handleComplete} />}
-      {step === 3 && <ResultsPage results={results} />}
-      
+    <div>
+      <Header />
+      <div className="SkillAssessment">
+
+        {step === 0 && <WelcomeSection onStart={handleStart} />}
+        {step === 1 && <AssessmentQuestions categories={categories} onComplete={handleComplete} />}
+        {step === 2 && <ResultsPage results={results} />}
+
+      </div>
+      <Footer />
     </div>
   );
 };

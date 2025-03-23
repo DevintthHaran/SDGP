@@ -1,16 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
 .category-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
   gap: 20px;
-  padding: 40px 20px;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: auto;
+  padding: 40px 20px;
+  justify-content: center;
+  margin-top: 3%; /* Centers items if row has only two */
 }
 
 .category-box {
-  flex: 1 1 calc(33.333% - 20px);
-  max-width: calc(33.333% - 20px);
   text-align: center;
   border: 1px solid #ddd;
   border-radius: 12px;
@@ -18,30 +19,32 @@
   background-color: #ffffff;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 250px; /* Ensures proper sizing */
 }
+
+
 
 .category-box:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-.category-box:nth-child(4),
+/* .category-box:nth-child(4),
 .category-box:nth-child(5) {
   flex: 1 1 calc(50% - 20px);
   max-width: calc(50% - 20px);
-}
+} */
 
 .category-image {
   width: 100%;
-  height: auto;
+  height: 225px;
   border-radius: 8px;
 }
 
 .category-title {
-  margin: 20px 0 15px;
-  font-size: 30px;
-  font-weight: 700;
-  color: #222;
+  margin: 0px 0 15px;
+  font-size: 25px;
+  font-family: 'Manrope';
 }
 
 .schedule-button {
@@ -51,7 +54,7 @@
   margin-top: 15px;
   font-size: 16px;
   font-weight: 600;
-  background-color: #007BFF;
+  background-color: #fd9b23b0;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -60,7 +63,7 @@
 }
 
 .schedule-button:hover {
-  background-color: #0056b3;
+  background-color: #818C78;
   transform: scale(1.05);
 }
 

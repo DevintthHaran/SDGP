@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 function InputField({
   label,
@@ -6,22 +6,28 @@ function InputField({
   id,
   value,
   changeFunction,
-  className,
   placeholder,
+  error
 }) {
   const inputStyles = {
     padding: "0.375rem 0.75rem",
     fontSize: "1rem",
     lineHeight: "1.5",
     borderRadius: "0.25rem",
-    border: "1px solid #ced4da",
-    width: "100%",
+    border: error ? "1px solid red" : "1px solid #ced4da",
+    width: "90%",
   };
 
   const labelStyles = {
     fontSize: "1rem",
     color: "#6c757d",
-    marginBottom: "0.5rem", 
+    marginBottom: "0.5rem",
+  };
+
+  const errorStyles = {
+    color: "red",
+    fontSize: "0.8rem",
+    marginTop: "0.25rem"
   };
 
   return (
@@ -37,6 +43,7 @@ function InputField({
         placeholder={placeholder}
         style={inputStyles}
       />
+      {error && <div style={errorStyles}>{error}</div>}
     </div>
   );
 }

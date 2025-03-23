@@ -5,22 +5,25 @@ import NowHiring from '../Images/NowHiring.png';
 import Header from '../components/Header.jsx';
 
 const JobApply = () => {
+    // State to manage form data
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
         email: '',
         contactNumber: '',
         position: '',
-        fileUrl: '', // Store the file URL here
-        status: 'Pending',  // Default value for status
-        googleMeetLink: 'Not Assigned',  // Default value for Google Meet link
+        fileUrl: '', // Stores the uploaded CV file URL
+        status: 'Pending',  // Default status for job applications
+        googleMeetLink: 'Not Assigned',  // Default placeholder for Google Meet link
     });
+
+    // State variables for error messages and upload status
     const [errorMessage, setErrorMessage] = useState('');
     const [emailError, setEmailError] = useState('');
     const [contactError, setContactError] = useState('');
-    const [isUploading, setIsUploading] = useState(false); // Add this line
+    const [isUploading, setIsUploading] = useState(false); // Tracks upload progress
 
-    // Handle change in form fields
+    // Handles input field changes
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -29,34 +32,45 @@ const JobApply = () => {
         });
     };
 
-    // Handle file upload to Cloudinary
+    // Handles file upload to Cloudinary
     const handleFileChange = async (e) => {
         const selectedFile = e.target.files[0];
         if (selectedFile) {
-            setIsUploading(true); // Set uploading state to true
+            setIsUploading(true); // Start file upload status
             const formDataToUpload = new FormData();
             formDataToUpload.append('file', selectedFile);
-            formDataToUpload.append('upload_preset', 'cv_preset'); // Use the preset created in Cloudinary
+            formDataToUpload.append('upload_preset', 'cv_preset'); // Cloudinary preset for CV uploads
 
-            // Upload file to Cloudinary
             try {
+                // Upload file to Cloudinary
                 const response = await axios.post('https://api.cloudinary.com/v1_1/dq1znqlu6/upload', formDataToUpload);
+                
+                // Modify the uploaded file URL if needed
+                let modifiedUrl = response.data.secure_url;
+                if (modifiedUrl.endsWith('.pdf')) {
+                    // Replaces ".pdf" with ".png" (not typical for CVs, check if required)
+                    modifiedUrl = modifiedUrl.replace('.pdf', '.png');
+                }
+
+                // Store the modified file URL in the form data
                 setFormData({
                     ...formData,
-                    fileUrl: response.data.secure_url, // Store the file URL from Cloudinary
+                    fileUrl: modifiedUrl,
                 });
             } catch (error) {
                 console.error("File upload error:", error);
                 setErrorMessage("File upload failed. Please try again.");
             } finally {
-                setIsUploading(false); // Set uploading state to false after upload
+                setIsUploading(false); // Reset upload status
             }
         }
     };
 
-    // Form validation
+    // Form validation function
     const validateForm = () => {
         let valid = true;
+
+        // Check if all required fields are filled
         if (!formData.firstName || !formData.lastName || !formData.email || !formData.contactNumber || !formData.position || !formData.fileUrl) {
             setErrorMessage('All fields are required.');
             valid = false;
@@ -64,6 +78,7 @@ const JobApply = () => {
             setErrorMessage('');
         }
 
+        // Validate contact number (must be exactly 10 digits)
         if (!/^\d{10}$/.test(formData.contactNumber)) {
             setContactError('Invalid contact number. Must be 10 digits.');
             valid = false;
@@ -71,6 +86,7 @@ const JobApply = () => {
             setContactError('');
         }
 
+        // Validate email format
         if (!/^[^\s@]+@[^\s@]+$/.test(formData.email)) {
             setEmailError('Invalid email format.');
             valid = false;
@@ -81,30 +97,36 @@ const JobApply = () => {
         return valid;
     };
 
-    // Handle form submission
+    // Handles form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
+        // Validate form before submitting
         if (!validateForm()) return;
-    
+
+        // Create job application object
         const applicationData = {
             firstName: formData.firstName,
             lastName: formData.lastName,
             email: formData.email,
             contactNumber: formData.contactNumber,
             position: formData.position,
-            fileUrl: formData.fileUrl, // Just send as a string
-            status: formData.status,  // Default value for status
-            googleMeetLink: formData.googleMeetLink,  // Default value for Google Meet link
+            fileUrl: formData.fileUrl, // CV file URL
+            status: formData.status,  // Default application status
+            googleMeetLink: formData.googleMeetLink,  // Default meeting link
         };
-    
+
         try {
+            // Send job application data to backend
             const response = await axios.post("http://localhost:8080/job-apply", applicationData, {
                 headers: { "Content-Type": "application/json" }, // JSON request
             });
-    
-            if (response.status === 200) {
+
+            // Handle successful submission
+            if (response.status === 201) {
                 alert("Job application submitted successfully!");
+                
+                // Reset form fields after submission
                 setFormData({
                     firstName: '',
                     lastName: '',
@@ -112,8 +134,8 @@ const JobApply = () => {
                     contactNumber: '',
                     position: '',
                     fileUrl: '',
-                    status: 'Pending',  // Default value for status
-                    googleMeetLink: 'Not Assigned',  // Default value for Google Meet link
+                    status: 'Pending',  
+                    googleMeetLink: '',  
                 });
             }
         } catch (error) {
@@ -121,7 +143,6 @@ const JobApply = () => {
             alert("Failed to submit application.");
         }
     };
-    
 
     return (
         <div className="JobApplication">
@@ -129,12 +150,16 @@ const JobApply = () => {
 
             <div className="JobApplication-container">
                 <header className="JobApplying-header">
+                    {/* Job application introduction with key details */}
                     <img src={NowHiring} alt="Job Hiring" />
                     <h1>Apply for Counselor Job</h1>
                     <h3 id="job-application-message">Scroll down to apply for counselor job</h3>
                     <h2>Join Our Team of Expert Counselors</h2>
+                    
+                    {/* Job application eligibility and criteria */}
                     <p id="job-application-q">🟢 Are you passionate about guiding students, graduates, and professionals toward successful career paths?</p>
                     <p id="job-application-a">- Become a part of Professional Odyssey, Sri Lanka’s premier career guidance platform.</p>
+                    
                     <h3>Who Can Apply?</h3>
                     <p>We welcome applications from qualified individuals who have:</p>
                     <ul>
@@ -142,6 +167,8 @@ const JobApply = () => {
                         <li>Professional certifications or degrees in counseling or career guidance.</li>
                         <li>Proven experience in mentoring, coaching, or counseling students or professionals.</li>
                     </ul>
+                    
+                    {/* Requirements for application */}
                     <h3>Criteria for Application</h3>
                     <p>To ensure a high standard of service for our users, applicants must:</p>
                     <ol>
@@ -150,6 +177,8 @@ const JobApply = () => {
                         <li>Communication Skills: Demonstrate strong interpersonal and communication skills, with fluency in English, Sinhala, or Tamil.</li>
                         <li>Technology Skills: Be comfortable using digital tools and platforms for virtual counseling sessions.</li>
                     </ol>
+                    
+                    {/* Benefits of joining */}
                     <h3>Why Join Us?</h3>
                     <ul>
                         <li>Opportunity to make a meaningful impact on students and professionals.</li>
@@ -157,6 +186,8 @@ const JobApply = () => {
                         <li>Access to resources and tools for effective career guidance.</li>
                         <li>A platform to expand your reach and build your professional profile.</li>
                     </ul>
+                    
+                    {/* Application process */}
                     <h3>How to Apply?</h3>
                     <p>Click the Apply Now button and complete the application form with the following details:</p>
                     <ul>
@@ -167,9 +198,11 @@ const JobApply = () => {
                     </ul>
                 </header>
 
+                {/* Job application form */}
                 <form className="CounselorJobForm" onSubmit={handleSubmit}>
                     <h2>Counselor Job Application</h2>
 
+                    {/* Input fields for first and last name */}
                     <div className="input-group">
                         <div className="input-field">
                             <label>First Name</label>
@@ -195,6 +228,7 @@ const JobApply = () => {
                         </div>
                     </div>
 
+                    {/* Email field with validation */}
                     <div className="input-field">
                         <label>Email Address</label>
                         <input
@@ -208,6 +242,7 @@ const JobApply = () => {
                         {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
                     </div>
 
+                    {/* Contact number field with validation */}
                     <div className="input-field">
                         <label>Contact Number</label>
                         <input
@@ -221,6 +256,7 @@ const JobApply = () => {
                         {contactError && <p style={{ color: 'red' }}>{contactError}</p>}
                     </div>
 
+                    {/* Dropdown for selecting the position */}
                     <div className="input-field">
                         <label>Position Applying For</label>
                         <select 
@@ -239,8 +275,9 @@ const JobApply = () => {
                         </select>
                     </div>
 
+                    {/* CV upload field with file restrictions */}
                     <div className="input-field">
-                        <label>Upload CV</label>
+                        <label>Upload CV (More than one page CV won't be reviewed)</label>
                         <input 
                             type="file" 
                             accept=".pdf, .doc, .docx" 
@@ -250,8 +287,10 @@ const JobApply = () => {
                         {isUploading && <p>Uploading file...</p>} {/* Display message during upload */}
                     </div>
 
+                    {/* Error message display */}
                     {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
 
+                    {/* Submit button */}
                     <button type="submit" disabled={isUploading}>Submit Application</button>
                 </form>
             </div>

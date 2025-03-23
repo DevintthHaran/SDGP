@@ -114,11 +114,11 @@ const Admin = () => {
             {selectedCandidate ? (
               <div>
                 <h4>{selectedCandidate.firstName} {selectedCandidate.lastName}</h4>
-                <p>Email: {selectedCandidate.email}</p>
+                <p>Email: <a href={`mailto:${selectedCandidate.email}`} className="email-link">{selectedCandidate.email}</a></p>
                 <p>Status: {selectedCandidate.status}</p>
                 <p>Position: {selectedCandidate.position}</p>
                 <p>Contact: {selectedCandidate.contactNumber}</p>
-                <p>Google Meet Link: <a href={selectedCandidate.googleMeetLink} target="_blank" rel="noopener noreferrer">{selectedCandidate.googleMeetLink}</a></p>
+                {/* <p>Google Meet Link: <a href={selectedCandidate.googleMeetLink} target="_blank" rel="noopener noreferrer">{selectedCandidate.googleMeetLink}</a></p> */}
               </div>
             ) : (
               <p>Select a candidate to view details</p>
@@ -131,4 +131,3 @@ const Admin = () => {
 };
 
 export default Admin;
-

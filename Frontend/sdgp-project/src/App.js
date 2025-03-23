@@ -24,33 +24,37 @@ import Subscription from './pages/Subscription';
 import Simulation from './pages/Simulation';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
+
+import ProtectedRoute from "./components/ProtectedRoute";
+
 import CareerTrend from './pages/CareerTrend';
+
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/shop' element={<Shop />} />
-        <Route path="/skill" element={<SkillAssessment />} />
-        <Route path='/meeting' element={<Meeting />} />
-        <Route path="/it-meeting" element={<ITMeeting />} />
-        <Route path="/science-meeting" element={<ScienceMeeting />} />
-        <Route path="/business-meeting" element={<BusinessMeeting />} />
-        <Route path="/olevel-meeting" element={<OLevelMeeting />} />
-        <Route path="/alevel-meeting" element={<ALevelMeeting />} />
-        <Route path='/chat' element={<Chat/>}/>
-        <Route path="/career" element={<CareerAssessment/>}/>
-        <Route path="/job" element={<JobApply />} />
-        <Route path='/profile' element={<Profile/>}/>
+        <Route path="/shop" element={<ProtectedRoute><Shop /></ProtectedRoute>} />
+        <Route path="/skill" element={<ProtectedRoute><SkillAssessment/></ProtectedRoute>} />
+        <Route path='/meeting' element={<ProtectedRoute><Meeting /></ProtectedRoute>} />
+        <Route path="/it-meeting" element={<ProtectedRoute><ITMeeting /></ProtectedRoute>} />
+        <Route path="/science-meeting" element={<ProtectedRoute><ScienceMeeting /></ProtectedRoute>} />
+        <Route path="/business-meeting" element={<ProtectedRoute><BusinessMeeting /></ProtectedRoute>} />
+        <Route path="/olevel-meeting" element={<ProtectedRoute><OLevelMeeting /></ProtectedRoute>} />
+        <Route path="/alevel-meeting" element={<ProtectedRoute><ALevelMeeting /></ProtectedRoute>} />
+        <Route path='/chat' element={<ProtectedRoute><Chat/></ProtectedRoute>}/>
+        <Route path="/career" element={<ProtectedRoute><CareerAssessment/></ProtectedRoute>}/>
+        <Route path="/job" element={<ProtectedRoute><JobApply /></ProtectedRoute>} />
+        <Route path='/profile' element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
         <Route path='/setting' element={<Setting/>}/>
-        <Route path='/feedback' element={<Feedback/>}></Route>
-        <Route path='/report' element={<Experience />}/>
-        <Route path='/order' element={<Order />}/>
-        <Route path='/admin' element={<Admin/>}/>
+        <Route path='/feedback' element={<ProtectedRoute><Feedback/></ProtectedRoute>}></Route>
+        <Route path='/report' element={<ProtectedRoute><Experience /></ProtectedRoute>}/>
+        <Route path='/order' element={<ProtectedRoute><Order /></ProtectedRoute>}/>
+        <Route path='/admin' element={<ProtectedRoute><Admin/></ProtectedRoute>}/>
         <Route path='/signup' element={<Signup/>}/>
-        <Route path='/subscription' element={<Subscription/>}/>
-        <Route path='/simulation' element={<Simulation/>}/>
+        <Route path='/subscription' element={<ProtectedRoute><Subscription/></ProtectedRoute>}/>
+        <Route path='/simulation' element={<ProtectedRoute><Simulation/></ProtectedRoute>}/>
         <Route path='*' element={<NotFound/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/careertrend' element={<CareerTrend/>}/>

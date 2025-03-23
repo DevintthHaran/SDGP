@@ -12,6 +12,7 @@
   padding: 20px;
   box-sizing: border-box;
   overflow: auto;
+  padding-top: 80px;
 }
 
 /* Title Style */

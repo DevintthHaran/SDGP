@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #f7dbb4, #FF9D23);
+  background: linear-gradient(135deg,#f7dbb4, #FF9D23);
 }
 
 /* Main Container */
@@ -14,7 +14,7 @@
   background: white;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.2);
 }
 
 /* Left Side: Image Section */
@@ -88,8 +88,8 @@
 .signup button {
   width: 100%;
   padding: 12px;
-  background: linear-gradient(90deg, #b67418, #FF9D23);
-  color: white;
+  background: linear-gradient(90deg, #dd9024, #FF9D23);
+  color: rgb(0, 0, 0);
   font-size: 18px;
   border: none;
   border-radius: 5px;
@@ -99,45 +99,9 @@
 }
 
 .signup button:hover {
-  background: linear-gradient(90deg,  #FF9D23 ,#b67418);
+  background: linear-gradient(90deg,   #FF9D23, #8a5203);
 }
 
-/* Social Login Buttons */
-.signup .social-login {
-  margin-top: 20px;
-}
-
-.signup .social-login{
-  margin-top: 20px;
-}
-
-.signup .social-login button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s ease;
-  margin-bottom: 10px;
-}
-
-.signup .twitter-login {
-  background: #1DA1F2;
-  color: white;
-}
-
-.signup .facebook-login {
-  background: #3b5998;
-  color: white;
-}
-
-.signup .social-login button svg {
-  margin-right: 10px;
-}
 
 /* Link to Login */
 .signup p {

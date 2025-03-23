@@ -5,6 +5,7 @@ import { FaEye, FaEyeSlash, FaTwitter, FaFacebook } from 'react-icons/fa';
 import image from '../Images/login.jpeg';
 import '../style/Login.css';
 
+
 const Login = () => {
     const [formData, setFormData] = useState({
         userEmailId: '',
@@ -24,8 +25,10 @@ const Login = () => {
         try {
             const response = await axios.post('http://localhost:8080/api/users/signin', formData);
             if (response.status === 200) {
+                const token = response.data.token;  
+            localStorage.setItem("token", token);  
                 alert(response.data.message);
-                navigate("/dashboard");
+                navigate("/");
             }
         } catch (error) {
             setError(error.response?.data?.message || "Login failed!");
@@ -68,10 +71,7 @@ const Login = () => {
                         <button type="submit">Login</button>
                     </form>
 
-                    <div className="social-login">
-                        <button className="twitter-login"><FaTwitter /> Login with Twitter</button>
-                        <button className="facebook-login"><FaFacebook /> Login with Facebook</button>
-                    </div>
+                   
 
                     <p>Don't have an account? <a href="/signup">Sign Up</a></p>
                 </div>

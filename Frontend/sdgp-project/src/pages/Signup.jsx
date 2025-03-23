@@ -27,7 +27,8 @@ const Signup = () => {
             await axios.post('http://localhost:8080/api/users/signup', formData);
             navigate('/login');
         } catch (err) {
-            setError(err.response?.data || 'Registration failed');
+          const errorMessage = err.response?.data?.message || "Registration failed";
+          setError(errorMessage);
         }
     };
 
@@ -73,17 +74,15 @@ const Signup = () => {
                         <button type="submit">Sign Up</button>
                     </form>
 
-                    <div className="social-login">
-                        <button className="twitter-login"><FaTwitter /> Sign in with Twitter</button>
-                        <button className="facebook-login"><FaFacebook /> Sign in with Facebook</button>
-                    </div>
-
+                    
                     <p>Already have an account? <a href="/login">Login</a></p>
                 </div>
             </div>
         </div>
+
+       
         </div>
     );
 };
 
-export default Signup;
+export default Signup; 

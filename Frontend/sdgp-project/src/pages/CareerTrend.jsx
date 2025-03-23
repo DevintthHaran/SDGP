@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import JobListings from '../components/JobListings';
 import JobMarketTrends from '../components/JobMarketTrends';
 import '../style/CareerTrend.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
 
 function CareerTrend() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -15,6 +18,7 @@ function CareerTrend() {
 
   return (
     <div className="trend">
+      <Header/>
     <div className="app">
       <h1 className="title">Professional Odyssey</h1>
       <div className="search-container">
@@ -34,6 +38,7 @@ function CareerTrend() {
       {activeSection === 'trends' && <JobMarketTrends job={searchTerm} />}
       {activeSection === 'jobs' && <JobListings jobTitle={searchTerm} />}
     </div>
+    <Footer/>
     </div>
   );
 }

@@ -97,8 +97,8 @@
     cursor: pointer;
     padding: 10px;
     position: relative;
-    width: 30px;
-    height: 24px;
+    width: 10px;
+    height: 10px;
     z-index: 1010;
     outline: none;
   }

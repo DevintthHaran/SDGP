@@ -1,7 +1,8 @@
 package com.devintth.sdgp.controller;
 
 import com.devintth.sdgp.model.Counselor;
-import com.devintth.sdgp.service.CounselorService;
+import com.devintth.sdgp.services.CounselorService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

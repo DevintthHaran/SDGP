@@ -9,9 +9,14 @@ public class Counselor {
     @Id
     private String id;
     private String counselorId;
+    private String email;
+    private String contactNumber;
     private String firstName;
     private String lastName;
+    private String position;
     private String status; // Status of the counselor (e.g., "pending", "verified")
+    private String fileUrl;
+    
 
     // Getters and Setters
     public String getId() {
@@ -30,6 +35,22 @@ public class Counselor {
         this.counselorId = counselorId;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -46,6 +67,14 @@ public class Counselor {
         this.lastName = lastName;
     }
 
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -53,4 +82,14 @@ public class Counselor {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public String getFileUrl() {
+        return fileUrl;
+    }
+
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
+    }
+
+    
 }

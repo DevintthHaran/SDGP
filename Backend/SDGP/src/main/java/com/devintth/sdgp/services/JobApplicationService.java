@@ -1,4 +1,4 @@
-package com.devintth.sdgp.service;
+package com.devintth.sdgp.services;
 
 import com.devintth.sdgp.model.JobApplication;
 import com.devintth.sdgp.repository.JobApplicationRepository;
@@ -12,11 +12,13 @@ import org.springframework.stereotype.Service;
 public class JobApplicationService {
 
     @Autowired
+    // Injects the JobApplicationRepository to interact with the database
     private JobApplicationRepository jobApplicationRepository;
 
+    // Retrieves all job applications from the database
     public List<JobApplication> getAllJobApplications() {
-        return jobApplicationRepository.findAll();
-    }
+        return jobApplicationRepository.findAll(); // Calls the repository method to fetch all records
+}
 
     // Save the job application to the database
     public JobApplication saveJobApplication(JobApplication jobApplication) {

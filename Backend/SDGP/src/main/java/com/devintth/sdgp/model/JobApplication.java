@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "job_application")
+@Document(collection = "counselors")
 public class JobApplication  {
 
     @Id
@@ -21,7 +21,7 @@ public class JobApplication  {
     private String email;
     private String contactNumber;
     private String position;
-    private String fileUrl;  // Store Cloudinary file URL
+    private String fileUrl;  
 
     private String status;
     private String googleMeetLink;

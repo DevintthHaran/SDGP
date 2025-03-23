@@ -1,8 +1,7 @@
 package com.devintth.sdgp.controller;
 
 import com.devintth.sdgp.model.JobApplication;
-import com.devintth.sdgp.service.JobApplicationService;
-
+import com.devintth.sdgp.services.JobApplicationService;
 
 import java.util.List;
 
@@ -22,10 +21,7 @@ public class JobApplicationController {
     @Autowired
     private JobApplicationService jobApplicationService;
 
-
-    
-    
-
+    // Defines a POST endpoint to Create update data to mongodb
     @PostMapping
     public ResponseEntity<Object> submitJobApplication(@RequestBody JobApplication jobApplication) {
         try {
@@ -48,16 +44,22 @@ public class JobApplicationController {
         }
     }
 
+    // Defines a GET endpoint to retrieve all job applications
     @GetMapping
     public ResponseEntity<Object> getAllApplications() {
         try {
+            // Calls the service layer to fetch all job applications from the database
             List<JobApplication> applications = jobApplicationService.getAllJobApplications();
+            
+            // Returns the list of job applications with an HTTP 200 (OK) response
             return ResponseEntity.ok(applications);
         } catch (Exception e) {
+            // Handles any exceptions and returns an HTTP 500 (Internal Server Error) response
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error fetching job applications: " + e.getMessage());
         }
     }
+
 
 
 

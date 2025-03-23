@@ -12,6 +12,13 @@ public class UserService {
     private UserRepository userRepository;
 
     public User signUp(User user) {
+        if (userRepository.findByUserEmailId(user.getUserEmailId()) != null) {
+            throw new RuntimeException("Email already exists");
+        }
+
+        user.setAccessible(3);
+
+
         return userRepository.save(user);
     }
 
@@ -25,6 +32,19 @@ public class UserService {
 
         return false;
     }
+    public User findByEmail(String email) {
+        return userRepository.findByUserEmailId(email);
+    }
+
+    public boolean updateAccessibility(String email, int accessible) {
+        User user = userRepository.findByUserEmailId(email);
+        if (user != null) {
+            user.setAccessible(accessible);
+            userRepository.save(user);
+            return true;
+        }
+        return false;
+    }
+
 
 }
-

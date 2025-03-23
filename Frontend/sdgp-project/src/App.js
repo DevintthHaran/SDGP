@@ -26,11 +26,16 @@ import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import Splash from './pages/Splash';
 
+import ProtectedRoute from "./components/ProtectedRoute";
+
+import CareerTrend from './pages/CareerTrend';
+
+
 function App() {
   return (
     <Router>
       <Routes>
-      <Route path='/' element={<Splash />} />
+        <Route path='/' element={<Splash />} />
         <Route path='/Home' element={<Home />} />
         <Route path='/shop' element={<Shop />} />
         <Route path="/skill" element={<SkillAssessment />} />
@@ -44,16 +49,18 @@ function App() {
         <Route path="/career" element={<CareerAssessment/>}/>
         <Route path="/job" element={<JobApply />} />
         <Route path='/profile' element={<Profile/>}/>
+
         <Route path='/setting' element={<Setting/>}/>
-        <Route path='/feedback' element={<Feedback/>}></Route>
-        <Route path='/report' element={<Experience />}/>
-        <Route path='/order' element={<Order />}/>
-        <Route path='/admin' element={<Admin/>}/>
+        <Route path='/feedback' element={<ProtectedRoute><Feedback/></ProtectedRoute>}></Route>
+        <Route path='/report' element={<ProtectedRoute><Experience /></ProtectedRoute>}/>
+        <Route path='/order' element={<ProtectedRoute><Order /></ProtectedRoute>}/>
+        <Route path='/admin' element={<ProtectedRoute><Admin/></ProtectedRoute>}/>
         <Route path='/signup' element={<Signup/>}/>
-        <Route path='/subscription' element={<Subscription/>}/>
-        <Route path='/simulation' element={<Simulation/>}/>
+        <Route path='/subscription' element={<ProtectedRoute><Subscription/></ProtectedRoute>}/>
+        <Route path='/simulation' element={<ProtectedRoute><Simulation/></ProtectedRoute>}/>
         <Route path='*' element={<NotFound/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/careertrend' element={<ProtectedRoute><CareerTrend/></ProtectedRoute>}/>
         
       </Routes>
     </Router>

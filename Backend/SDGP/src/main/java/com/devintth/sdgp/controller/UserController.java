@@ -22,11 +22,13 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity<User> signup(@Valid @RequestBody User user){
-        try{
-            return ResponseEntity.ok(userService.signUp(user));
-        } catch (Exception e){
-            return ResponseEntity.badRequest().body((User) Map.of("message", "Email already in use"));}
+    public ResponseEntity<?> signup(@Valid @RequestBody User user) {
+        try {
+            return ResponseEntity.ok(userService.signUp(user));  // Successful signup
+        } catch (RuntimeException e) {
+            // Return error message as Map in response body
+            return ResponseEntity.badRequest().body(Map.of("message", "Email already exists"));
+        }
     }
 
     @PostMapping("/signin")
@@ -40,6 +42,29 @@ public class UserController {
         }
     }
 
+    @GetMapping("/accessibility/{email}")
+    public ResponseEntity<?> getAccessibility(@PathVariable String email) {
+        User user = userService.findByEmail(email);
+        if (user != null) {
+            return ResponseEntity.ok(Map.of("accessible", user.getAccessible()));
+        } else {
+            return ResponseEntity.status(404).body(Map.of("message", "User not found"));
+        }
+    }
+
+    @PutMapping("/accessibility")
+    public ResponseEntity<?> updateAccessibility(@RequestBody Map<String, Object> request) {
+        String email = (String) request.get("email");
+        int accessible = (int) request.get("accessible");
+
+        boolean updated = userService.updateAccessibility(email, accessible);
+        if (updated) {
+            return ResponseEntity.ok(Map.of("message", "Accessibility updated successfully"));
+        } else {
+            return ResponseEntity.status(404).body(Map.of("message", "User not found"));
+        }
+    }
+
+
+
 }
-
-

@@ -120,6 +120,12 @@ const Setting = () => {
     setShowCookieBanner(false);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Remove token
+    window.location.href = "/"; // Redirect to login page
+  };
+
+
   return (
     <>
       <Header />
@@ -135,7 +141,10 @@ const Setting = () => {
               <div className="button-group">
                 <button className="button button-secondary"> <Link to="/profile" style={{ textDecoration: "none", color: "inherit" }}><span>Edit Profile</span></Link></button>
                 <button className="button button-secondary"> <Link to="/signup" style={{ textDecoration: "none", color: "inherit" }}><span>Change Password</span></Link></button>
+                <button onClick={handleLogout}className="button button-secondary"> <Link to="/logout" style={{ textDecoration: "none", color: "inherit" }}><span>Logout</span></Link></button>
+
                 <button onClick={handleDeleteAccount} className="button button-danger"><span>Delete Account</span></button>
+
               </div>
             </section>
 

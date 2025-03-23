@@ -22,6 +22,16 @@ public class User {
 
     private String userPassword;
 
+    private int accessible;
+
+    public int getAccessible() {
+        return this.accessible;
+    }
+
+    public void setAccessible(int accessible) {
+        this.accessible = accessible;
+    }
+
     public String getUserName() {
         return this.userName;
     }
@@ -36,6 +46,3 @@ public class User {
 
 
 }
-
-
-

@@ -32,7 +32,7 @@ public class SkillService {
                 + " User Answer:" + answer
                 + "Generate the next follow-up question in the format: How would you rate your proficiency in [Skill]? or How comfortable are you with [Skill/Concept]?";
         String requestBody = String.format(
-                "{\"model\": \"gpt-4o-mini\", \"messages\": [{\"role\": \"system\", \"content\": \"You are an intelligent career assessment interviewer. Your job is to conduct personalized skill assessments by asking questions in a conversational style. Start with general questions and gradually ask more specific or deeper follow-up questions based on the user's previous answer. Always generate questions that are:" +
+                "{\"model\": \"gpt-3.5-turbo\", \"messages\": [{\"role\": \"system\", \"content\": \"You are an intelligent career assessment interviewer. Your job is to conduct personalized skill assessments by asking questions in a conversational style. Start with general questions and gradually ask more specific or deeper follow-up questions based on the user's previous answer. Always generate questions that are:" +
                         "- Clear and professional" +
                         "- Context-aware" +
                         "- Personalized to the user's previous answer" +
@@ -85,7 +85,7 @@ public class SkillService {
 
         // Construct JSON request body
         String requestBody = String.format(
-                "{\"model\": \"gpt-4o-mini\", \"messages\": [" +
+                "{\"model\": \"gpt-3.5-turbo\", \"messages\": [" +
                         "{\"role\": \"system\", \"content\": \"%s\"}, " +
                         "{\"role\": \"user\", \"content\": \"%s\"}" +
                         "], \"max_tokens\": 50}",

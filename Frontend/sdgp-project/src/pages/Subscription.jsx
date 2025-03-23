@@ -11,7 +11,7 @@ const Subscription = () => {
       price: 3000,
       recurrence: "1 Month",
       id: "silver",
-      featureA: "+3 counseling",
+      featureA: "+3 skill assessment",
       featureB: "Free career assessment",
       featureC: "Free job assessment",
       accessibility: 3,
@@ -21,7 +21,7 @@ const Subscription = () => {
       price: 4000,
       recurrence: "1 Month",
       id: "gold",
-      featureA: "+4 counseling",
+      featureA: "+4 skill assessment",
       featureB: "Free career assessment",
       featureC: "Free job assessment",
       accessibility: 4,
@@ -31,7 +31,7 @@ const Subscription = () => {
       price: 5000,
       recurrence: "1 Month",
       id: "platinum",
-      featureA: "+5 counseling",
+      featureA: "+5 skill assessment",
       featureB: "Free career assessment",
       featureC: "Free job assessment",
       accessibility: 5,
@@ -51,6 +51,17 @@ const Subscription = () => {
     // Restore accessible value
     const storedAccessible = parseInt(localStorage.getItem("accessible"), 10) || 0;
     setAccessible(storedAccessible);
+
+    const userEmail = localStorage.getItem("EmailId");
+  if (userEmail) {
+    fetch(`http://localhost:8080/api/users/accessibility/${userEmail}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.accessible !== undefined) {
+          setAccessible(data.accessible);
+        }
+      })
+      .catch((error) => console.error("Error fetching accessibility:", error));}
 
     // Clean up expired subscriptions
     const updatedSubscriptions = storedSubscriptions.filter(
@@ -121,7 +132,21 @@ const Subscription = () => {
       const updatedAccessible = accessible + plan.accessibility;
       setAccessible(updatedAccessible);
       localStorage.setItem("accessible", updatedAccessible.toString());
+
+      const userEmail = localStorage.getItem("EmailId");
+  if (userEmail) {
+    fetch("http://localhost:8080/api/users/accessibility", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: userEmail, accessible: updatedAccessible }),
+    })
+    .then((response) => response.json())
+    .then((data) => console.log("Accessibility updated:", data))
+    .catch((error) => console.error("Error updating accessibility:", error));
+  }
     };
+
+
 
     payhere.onDismissed = () => {
       console.log(`Subscription for ${plan.name} dismissed`);

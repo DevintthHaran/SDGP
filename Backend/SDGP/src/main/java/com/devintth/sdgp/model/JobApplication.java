@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -99,11 +98,11 @@ public class JobApplication  {
     }
 
     // Getter and Setter for googleMeetLink
-    public String glink() {
+    public String getLink() {
         return link;
     }
 
-    public void setGoogleMeetLink(String link) {
+    public void setLink(String link) {
         this.link = link;
     }
 }

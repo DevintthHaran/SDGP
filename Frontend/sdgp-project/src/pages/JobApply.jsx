@@ -15,7 +15,7 @@ const JobApply = () => {
         position: '',
         fileUrl: '', // Stores the uploaded CV file URL
         status: 'Pending',  // Default status for job applications
-        googleMeetLink: '',  // Google Meet link field
+        link: '',  // Google Meet link field
     });
 
     // State variables for error messages and upload status
@@ -73,7 +73,7 @@ const JobApply = () => {
         let valid = true;
 
         // Check if all required fields are filled
-        if (!formData.firstName || !formData.lastName || !formData.email || !formData.contactNumber || !formData.position || !formData.googleMeetLink || !formData.fileUrl) {
+        if (!formData.firstName || !formData.lastName || !formData.email || !formData.contactNumber || !formData.position || !formData.link || !formData.fileUrl) {
             setErrorMessage('All fields are required.');
             valid = false;
         } else {
@@ -115,7 +115,7 @@ const JobApply = () => {
             position: formData.position,
             fileUrl: formData.fileUrl, // CV file URL
             status: formData.status,  // Default application status
-            link: formData.googleMeetLink,  // Google Meet link
+            link: formData.link,  // Google Meet link
         };
 
         try {
@@ -137,7 +137,7 @@ const JobApply = () => {
                     position: '',
                     fileUrl: '',
                     status: 'Pending',  
-                    googleMeetLink: '',  
+                    link: '',  
                 });
             }
         } catch (error) {
@@ -258,14 +258,15 @@ const JobApply = () => {
                         <div className="input-field1">
                             <label>Your Google Meet Link</label>
                             <input
-                                type="text"
-                                placeholder="Enter your Google Meet link"
-                                name="googleMeetLink"
-                                value={formData.googleMeetLink}
+                                type="url"
+                                placeholder="Google Meet link"
+                                name="link"
+                                value={formData.link}
                                 onChange={handleChange}
                                 required
                             />
                         </div>
+
                         <div className="upload-box">
                             <p>More than one page CV won't be reviewed</p>
                             <label>Upload CV</label>

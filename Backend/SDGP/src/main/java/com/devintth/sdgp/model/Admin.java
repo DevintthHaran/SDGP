@@ -16,7 +16,7 @@ public class Admin {
     private String position;
     private String status; // Status of the counselor (e.g., "pending", "verified")
     private String fileUrl;
-    
+    private String link;
     
 
     // Getters and Setters
@@ -91,6 +91,16 @@ public class Admin {
     public void setFileUrl(String fileUrl) {
         this.fileUrl = fileUrl;
     }
+
+    // Getter and Setter for googleMeetLink
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
 
     
 }

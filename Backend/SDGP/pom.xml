@@ -42,6 +42,7 @@
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 
+
 		<!-- Lombok (Optional, for cleaner code) -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>

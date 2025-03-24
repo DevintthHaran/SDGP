@@ -62,10 +62,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <h4>Follow Us</h4>
           <div className="Footer-social-links">
-            <a href="https://web.facebook.com/iitsl/" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.icons8.com/?size=100&id=118487&format=png&color=FFFFFF" alt="Facebook - Professional Odyssey" />
-            </a>
-            <a href="https://www.instagram.com/iitlife/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/prof.essionalodyssey/" target="_blank" rel="noopener noreferrer">
               <img src="https://img.icons8.com/?size=100&id=85154&format=png&color=FFFFFF" alt="Instagram - Professional Odyssey" />
             </a>
             <a href="https://www.linkedin.com/in/professional-odyssey-206a82352/" target="_blank" rel="noopener noreferrer">

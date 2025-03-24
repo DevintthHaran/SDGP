@@ -36,19 +36,19 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<Splash />} />
-        <Route path='/Home' element={<Home />} />
-        <Route path='/shop' element={<Shop />} />
-        <Route path="/skill" element={<SkillAssessment />} />
-        <Route path='/meeting' element={<Meeting />} />
-        <Route path="/it-meeting" element={<ITMeeting />} />
-        <Route path="/science-meeting" element={<ScienceMeeting />} />
-        <Route path="/business-meeting" element={<BusinessMeeting />} />
-        <Route path="/olevel-meeting" element={<OLevelMeeting />} />
-        <Route path="/alevel-meeting" element={<ALevelMeeting />} />
-        <Route path='/chat' element={<Chat/>}/>
-        <Route path="/career" element={<CareerAssessment/>}/>
-        <Route path="/job" element={<JobApply />} />
-        <Route path='/profile' element={<Profile/>}/>
+        <Route path='/home' element={<Home />} />
+        <Route path='/shop' element={<ProtectedRoute><Shop /></ProtectedRoute>} />
+        <Route path="/skill" element={<ProtectedRoute><SkillAssessment /></ProtectedRoute>} />
+        <Route path='/meeting' element={<ProtectedRoute><Meeting /></ProtectedRoute>} />
+        <Route path="/it-meeting" element={<ProtectedRoute><ITMeeting /></ProtectedRoute>} />
+        <Route path="/science-meeting" element={<ProtectedRoute><ScienceMeeting /></ProtectedRoute>} />
+        <Route path="/business-meeting" element={<ProtectedRoute><BusinessMeeting /></ProtectedRoute>} />
+        <Route path="/olevel-meeting" element={<ProtectedRoute><OLevelMeeting /></ProtectedRoute>} />
+        <Route path="/alevel-meeting" element={<ProtectedRoute><ALevelMeeting /></ProtectedRoute>} />
+        <Route path='/chat' element={<ProtectedRoute><Chat/></ProtectedRoute>}/>
+        <Route path="/career" element={<ProtectedRoute><CareerAssessment/></ProtectedRoute>}/>
+        <Route path="/job" element={<ProtectedRoute><JobApply /></ProtectedRoute>} />
+        <Route path='/profile' element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
 
         <Route path='/setting' element={<Setting/>}/>
         <Route path='/feedback' element={<ProtectedRoute><Feedback/></ProtectedRoute>}></Route>

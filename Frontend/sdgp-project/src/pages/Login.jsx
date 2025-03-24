@@ -31,7 +31,11 @@ const Login = () => {
             localStorage.setItem("EmailId",formData.userEmailId );
 
                 alert(response.data.message);
+                if(formData.userEmailId==="professional.odyssey.lk@gmail.com"){
+                    navigate("/admin");
+                }else{
                 navigate("/");
+                }
             }
         } catch (error) {
             setError(error.response?.data?.message || "Login failed!");

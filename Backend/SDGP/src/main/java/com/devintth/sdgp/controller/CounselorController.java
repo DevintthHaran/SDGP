@@ -49,7 +49,7 @@ public class CounselorController {
     }
     @GetMapping("/olevel")
     public ResponseEntity<List<CounselorProjection>> getApprovedCounselorsOlevel() {
-        List<CounselorProjection> counselors = counselorService.getApprovedCounselorsByPosition("Olevel");
+        List<CounselorProjection> counselors = counselorService.getApprovedCounselorsByPosition("O Level");
 
         if (!counselors.isEmpty()) {
             return ResponseEntity.ok(counselors);
@@ -59,7 +59,7 @@ public class CounselorController {
     }
     @GetMapping("/alevel")
     public ResponseEntity<List<CounselorProjection>> getApprovedCounselorsAlevel() {
-        List<CounselorProjection> counselors = counselorService.getApprovedCounselorsByPosition("Alevel");
+        List<CounselorProjection> counselors = counselorService.getApprovedCounselorsByPosition("A Level");
 
         if (!counselors.isEmpty()) {
             return ResponseEntity.ok(counselors);

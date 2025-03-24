@@ -21,6 +21,8 @@ const WelcomeSection = ({ onStart }) => {
 
   const handleStartAssessment = () => {
     if (accessible > 0) {
+      localStorage.removeItem("question");
+      localStorage.removeItem("answers");
       const userEmail = localStorage.getItem("EmailId");
       const updatedAccessible = accessible - 1;
 

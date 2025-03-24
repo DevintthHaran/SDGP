@@ -29,6 +29,7 @@ const Login = () => {
             localStorage.setItem("token", token);  
 
             localStorage.setItem("EmailId",formData.userEmailId );
+            localStorage.removeItem("hasSeenSplash");
 
                 alert(response.data.message);
                 if(formData.userEmailId==="professional.odyssey.lk@gmail.com"){

@@ -256,7 +256,7 @@ const JobApply = () => {
                             </select>
                         </div>
                         <div className="input-field1">
-                            <label>Your Google Meet Link</label>
+                            <label>Your Google Booking Link</label>
                             <input
                                 type="url"
                                 placeholder="Google Meet link"

@@ -35,7 +35,7 @@ const Footer = () => {
           <div>
             <h3 className="footer-title">Resources</h3>
             <ul className="footer-list">
-                <li><a href="../">About us</a></li>
+                <li><a href="/home">About us</a></li>
                 <li><a href="../">Contact Us</a></li>
                 <li><a href="mailto:professional.odyssey.lk@gmail.com">professional.odyssey.lk@gmail.com</a></li>
             </ul>
@@ -44,13 +44,13 @@ const Footer = () => {
           <div >
           <div className="footer-list" >
             <h3 className="footer-title" >Addition</h3>
-            <p className="Footer-button-description">If you are interested in receiving up-to-date notifications</p>
-            <button className="Footer-footer-button" onClick={() => window.location.href = '../pages/feedback.jsx'}>Subscribe now</button>
+            <p className="Footer-button-description">If you are interested in enjoying our skill assessment features</p>
+            <button className="Footer-footer-button" onClick={() => window.location.href = '/subscription'}>Subscribe now</button>
             <p className="Footer-button-description">Your feedback helps us grow</p>
-            <button className="Footer-footer-button" onClick={() => window.location.href = '..pages/'}>Send Feedback</button>
+            <button className="Footer-footer-button" onClick={() => window.location.href = '/feedback'}>Send Feedback</button>
             <p className="Footer-button-description">Apply for Counseling Job</p>
-            <button className="Footer-footer-button" onClick={() => window.location.href = '../pages/job.jsx'}>Click here</button>
-            <button className="Footer-footer-button" onClick={() => window.location.href = '../pages/signup.jsx'}>Sign-up</button>
+            <button className="Footer-footer-button" onClick={() => window.location.href = '/job'}>Click here</button>
+            <button className="Footer-footer-button" onClick={() => window.location.href = '/signup'}>Sign-up</button>
           </div>
         </div>
         
